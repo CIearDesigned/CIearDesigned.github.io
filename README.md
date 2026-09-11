@@ -1,4 +1,4 @@
-# ifkabout.github.io
+# CIearDesigned.github.io
 
 Welcome to my personal website! 
 

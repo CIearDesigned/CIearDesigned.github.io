@@ -6,41 +6,41 @@
     <title>CIearDesigned - Moderator & Community Specialist</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f5f7fa; min-height: 100vh; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #1f2937; background: #edf0f3; min-height: 100vh; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); padding: 50px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(30, 58, 138, 0.15); text-align: center; margin-bottom: 40px; }
+        header { background: linear-gradient(135deg, #4b5563 0%, #9ca3af 100%); padding: 50px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(75, 85, 99, 0.18); text-align: center; margin-bottom: 40px; }
         h1 { font-size: 2.8em; color: #fff; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; }
-        .roles { font-size: 1.2em; color: #e0e7ff; margin-top: 15px; font-weight: 500; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .role-badge { background: rgba(255,255,255,.2); padding: 8px 16px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.3); }
-        .tagline { font-size: 1.3em; color: #dbeafe; margin-bottom: 15px; font-weight: 500; }
-        header p { color: #bfdbfe; font-size: 1.1em; }
-        .content { background: #fff; padding: 45px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.08); margin-bottom: 40px; }
-        h2 { color: #1e3a8a; margin-top: 35px; margin-bottom: 20px; font-size: 1.8em; font-weight: 600; border-bottom: 3px solid #2563eb; padding-bottom: 10px; text-align: center; }
+        .roles { font-size: 1.2em; color: #f3f4f6; margin-top: 15px; font-weight: 500; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .role-badge { background: rgba(255,255,255,.12); padding: 8px 16px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.22); }
+        .tagline { font-size: 1.3em; color: #f9fafb; margin-bottom: 15px; font-weight: 500; }
+        header p { color: #e5e7eb; font-size: 1.1em; }
+        .content { background: #fff; padding: 45px; border-radius: 12px; box-shadow: 0 4px 20px rgba(17,24,39,.08); margin-bottom: 40px; }
+        h2 { color: #374151; margin-top: 35px; margin-bottom: 20px; font-size: 1.8em; font-weight: 600; border-bottom: 3px solid #9ca3af; padding-bottom: 10px; text-align: center; }
         h2:first-child { margin-top: 0; text-align: left; }
         p { margin-bottom: 18px; line-height: 1.8; color: #4b5563; }
         ul { margin-left: 25px; margin-bottom: 20px; }
         li { margin-bottom: 12px; color: #4b5563; }
         .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin: 35px 0; }
-        .skill-card { background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%); padding: 25px; border-radius: 10px; border-left: 5px solid #2563eb; box-shadow: 0 2px 10px rgba(37,99,235,.08); transition: all .3s ease; }
-        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(37,99,235,.15); border-left-color: #1e40af; }
-        .skill-card h3 { color: #1e3a8a; margin-bottom: 12px; font-size: 1.2em; font-weight: 600; }
-        .skill-card p { color: #475569; font-size: .95em; }
+        .skill-card { background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); padding: 25px; border-radius: 10px; border-left: 5px solid #9ca3af; box-shadow: 0 2px 10px rgba(107,114,128,.08); transition: all .3s ease; }
+        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(107,114,128,.15); border-left-color: #4b5563; }
+        .skill-card h3 { color: #374151; margin-bottom: 12px; font-size: 1.2em; font-weight: 600; }
+        .skill-card p { color: #4b5563; font-size: .95em; }
         .games-wrapper { display: flex; justify-content: center; gap: 25px; margin: 35px 0; flex-wrap: wrap; }
-        .game-card { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 30px; border-radius: 10px; border: 2px solid #2563eb; box-shadow: 0 2px 15px rgba(37,99,235,.1); transition: all .3s ease; text-align: center; max-width: 350px; width: 100%; }
-        .game-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(37,99,235,.2); border-color: #1e40af; }
+        .game-card { background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%); padding: 30px; border-radius: 10px; border: 2px solid #d1d5db; box-shadow: 0 2px 15px rgba(107,114,128,.08); transition: all .3s ease; width: 100%; max-width: 320px; }
+        .game-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(107,114,128,.14); border-color: #9ca3af; }
         .game-logo-wrapper { display: flex; justify-content: center; margin-bottom: 20px; width: 100%; }
-        .game-logo { max-width: 240px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(37,99,235,.15); }
-        .game-card h3 { color: #1e3a8a; margin-bottom: 15px; font-size: 1.5em; font-weight: 700; }
-        .game-stats { background: rgba(37,99,235,.1); padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid rgba(37,99,235,.2); }
-        .stat-line { font-size: 1.1em; font-weight: 600; color: #1e3a8a; margin: 8px 0; }
-        .game-card p { color: #475569; margin-bottom: 20px; }
-        .game-card a { display: inline-block; background: #2563eb; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all .3s ease; }
-        .game-card a:hover { background: #1e40af; border-bottom: none; }
-        footer { text-align: center; padding: 30px 20px; color: #64748b; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
-        a { color: #2563eb; text-decoration: none; font-weight: 500; transition: all .3s ease; border-bottom: 2px solid transparent; }
-        a:hover { color: #1e40af; border-bottom-color: #2563eb; }
-        ul a { display: inline-block; padding: 8px 16px; background: #dbeafe; border-radius: 6px; margin-right: 10px; margin-bottom: 10px; }
-        ul a:hover { background: #bfdbfe; }
+        .game-logo { max-width: 240px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(75,85,99,.12); }
+        .game-card h3 { color: #374151; margin-bottom: 15px; font-size: 1.5em; font-weight: 700; }
+        .game-stats { background: rgba(156,163,175,.12); padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid rgba(156,163,175,.25); }
+        .stat-line { font-size: 1.1em; font-weight: 600; color: #374151; margin: 8px 0; }
+        .game-card p { color: #4b5563; margin-bottom: 20px; }
+        .game-card a { display: inline-block; background: #6b7280; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all .3s ease; }
+        .game-card a:hover { background: #4b5563; border-bottom: none; }
+        footer { text-align: center; padding: 30px 20px; color: #6b7280; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(17,24,39,.05); }
+        a { color: #4b5563; text-decoration: none; font-weight: 500; transition: all .3s ease; border-bottom: 2px solid transparent; }
+        a:hover { color: #1f2937; border-bottom-color: #9ca3af; }
+        ul a { display: inline-block; padding: 8px 16px; background: #f3f4f6; border-radius: 6px; margin-right: 10px; margin-bottom: 10px; }
+        ul a:hover { background: #e5e7eb; }
     </style>
 </head>
 <body>
@@ -53,7 +53,7 @@
         </header>
         <div class="content">
             <h2>About Me</h2>
-            <p>I specialize in managing and protecting player communities within specific Roblox games. Working directly within game servers, I enforce rules, investigate exploits, handle player reports, and maintain a safe and enjoyable environment for all players.</p>
+            <p>I specialize in managing and protecting player communities within specific Roblox games. Working directly within game servers, I enforce rules, investigate exploits, handle player reports, and maintain a positive gaming environment.</p>
             <p>My focus is helping developers keep their games fair, fun, and safe for everyone.</p>
             <h2>What I Do</h2>
             <div class="skills">

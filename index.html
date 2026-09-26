@@ -6,41 +6,356 @@
     <title>CIearDesigned - Moderator & Community Specialist</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #1f2937; background: #edf0f3; min-height: 100vh; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #1a1a1a; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(107, 114, 128, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(75, 85, 99, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #4b5563 0%, #9ca3af 100%); padding: 50px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(75, 85, 99, 0.18); text-align: center; margin-bottom: 40px; }
-        h1 { font-size: 2.8em; color: #fff; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; }
-        .roles { font-size: 1.2em; color: #f3f4f6; margin-top: 15px; font-weight: 500; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .role-badge { background: rgba(255,255,255,.12); padding: 8px 16px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.22); }
-        .tagline { font-size: 1.3em; color: #f9fafb; margin-bottom: 15px; font-weight: 500; }
-        header p { color: #e5e7eb; font-size: 1.1em; }
-        .content { background: #fff; padding: 45px; border-radius: 12px; box-shadow: 0 4px 20px rgba(17,24,39,.08); margin-bottom: 40px; }
-        h2 { color: #374151; margin-top: 35px; margin-bottom: 20px; font-size: 1.8em; font-weight: 600; border-bottom: 3px solid #9ca3af; padding-bottom: 10px; text-align: center; }
-        h2:first-child { margin-top: 0; text-align: left; }
-        p { margin-bottom: 18px; line-height: 1.8; color: #4b5563; }
+        header { 
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 50%, #667084 100%);
+            padding: 60px 40px; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 50px rgba(45, 55, 72, 0.25), inset 0 1px 0 rgba(255,255,255,.1);
+            text-align: center; 
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        h1 { 
+            font-size: 3.2em; 
+            color: #fff; 
+            margin-bottom: 12px; 
+            font-weight: 800; 
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,.2);
+        }
+        .roles { 
+            font-size: 1.1em; 
+            color: #e8ecf1; 
+            margin-top: 18px; 
+            font-weight: 600; 
+            display: flex; 
+            justify-content: center; 
+            gap: 12px; 
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        .role-badge { 
+            background: rgba(255,255,255,.12); 
+            padding: 10px 18px; 
+            border-radius: 25px; 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255,255,255,.25);
+            transition: all .3s ease;
+        }
+        .role-badge:hover {
+            background: rgba(255,255,255,.18);
+            border-color: rgba(255,255,255,.35);
+            transform: translateY(-2px);
+        }
+        .tagline { 
+            font-size: 1.4em; 
+            color: #f0f4f8; 
+            margin-bottom: 15px; 
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        header p { 
+            color: #d1d5db; 
+            font-size: 1.1em;
+            position: relative;
+            z-index: 2;
+        }
+        .content { 
+            background: #ffffff; 
+            padding: 50px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 40px rgba(17,24,39,.1), inset 0 1px 0 rgba(255,255,255,.6);
+            margin-bottom: 50px;
+            border: 1px solid rgba(107, 114, 128, .1);
+            position: relative;
+        }
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(107,114,128,.2), transparent);
+            border-radius: 16px 16px 0 0;
+        }
+        h2 { 
+            color: #2d3748; 
+            margin-top: 40px; 
+            margin-bottom: 25px; 
+            font-size: 2em; 
+            font-weight: 700; 
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667084, #9ca3af);
+            border-radius: 2px;
+        }
+        h2:first-child { 
+            margin-top: 0; 
+        }
+        h2:first-child::after {
+            width: 100%;
+        }
+        p { 
+            margin-bottom: 20px; 
+            line-height: 1.8; 
+            color: #4b5563;
+            font-size: 1.05em;
+        }
         ul { margin-left: 25px; margin-bottom: 20px; }
-        li { margin-bottom: 12px; color: #4b5563; }
-        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin: 35px 0; }
-        .skill-card { background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); padding: 25px; border-radius: 10px; border-left: 5px solid #9ca3af; box-shadow: 0 2px 10px rgba(107,114,128,.08); transition: all .3s ease; }
-        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(107,114,128,.15); border-left-color: #4b5563; }
-        .skill-card h3 { color: #374151; margin-bottom: 12px; font-size: 1.2em; font-weight: 600; }
-        .skill-card p { color: #4b5563; font-size: .95em; }
-        .games-wrapper { display: flex; justify-content: center; gap: 25px; margin: 35px 0; flex-wrap: wrap; }
-        .game-card { background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%); padding: 30px; border-radius: 10px; border: 2px solid #d1d5db; box-shadow: 0 2px 15px rgba(107,114,128,.08); transition: all .3s ease; width: 100%; max-width: 320px; }
-        .game-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(107,114,128,.14); border-color: #9ca3af; }
-        .game-logo-wrapper { display: flex; justify-content: center; margin-bottom: 20px; width: 100%; }
-        .game-logo { max-width: 240px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(75,85,99,.12); }
-        .game-card h3 { color: #374151; margin-bottom: 15px; font-size: 1.5em; font-weight: 700; }
-        .game-stats { background: rgba(156,163,175,.12); padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid rgba(156,163,175,.25); }
-        .stat-line { font-size: 1.1em; font-weight: 600; color: #374151; margin: 8px 0; }
-        .game-card p { color: #4b5563; margin-bottom: 20px; }
-        .game-card a { display: inline-block; background: #6b7280; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all .3s ease; }
-        .game-card a:hover { background: #4b5563; border-bottom: none; }
-        footer { text-align: center; padding: 30px 20px; color: #6b7280; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(17,24,39,.05); }
-        a { color: #4b5563; text-decoration: none; font-weight: 500; transition: all .3s ease; border-bottom: 2px solid transparent; }
-        a:hover { color: #1f2937; border-bottom-color: #9ca3af; }
-        ul a { display: inline-block; padding: 8px 16px; background: #f3f4f6; border-radius: 6px; margin-right: 10px; margin-bottom: 10px; }
-        ul a:hover { background: #e5e7eb; }
+        li { 
+            margin-bottom: 12px; 
+            color: #4b5563;
+            font-size: 1.05em;
+        }
+        .skills { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 28px; 
+            margin: 40px 0; 
+        }
+        .skill-card { 
+            background: linear-gradient(135deg, #f8f9fb 0%, #f3f5f9 100%);
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(107, 114, 128, .15);
+            border-left: 5px solid;
+            background-clip: padding-box;
+            box-shadow: 0 4px 15px rgba(75,85,99,.08);
+            transition: all .4s cubic-bezier(.4, 0, .2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667084, transparent);
+        }
+        .skill-card:nth-child(1) { border-left-color: #667084; }
+        .skill-card:nth-child(2) { border-left-color: #9ca3af; }
+        .skill-card:nth-child(3) { border-left-color: #d1d5db; }
+        .skill-card:nth-child(4) { border-left-color: #e5e7eb; }
+        .skill-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 16px 35px rgba(75,85,99,.15);
+            border-left-color: #2d3748;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fb 100%);
+        }
+        .skill-card h3 { 
+            color: #2d3748; 
+            margin-bottom: 15px; 
+            font-size: 1.3em; 
+            font-weight: 700;
+        }
+        .skill-card p { 
+            color: #6b7280; 
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+        .games-wrapper { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            margin: 40px 0; 
+            flex-wrap: wrap; 
+        }
+        .game-card { 
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            padding: 35px; 
+            border-radius: 14px; 
+            border: 1.5px solid rgba(107, 114, 128, .2);
+            box-shadow: 0 8px 25px rgba(75,85,99,.1);
+            transition: all .4s cubic-bezier(.4, 0, .2, 1);
+            width: 100%; 
+            max-width: 340px;
+            position: relative;
+            overflow: hidden;
+        }
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 112, 132, .05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .game-card:hover { 
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(75,85,99,.18);
+            border-color: rgba(107, 114, 128, .4);
+        }
+        .game-logo-wrapper { 
+            display: flex; 
+            justify-content: center; 
+            margin-bottom: 25px; 
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .game-logo { 
+            max-width: 240px; 
+            width: 100%; 
+            height: auto; 
+            border-radius: 10px; 
+            box-shadow: 0 8px 20px rgba(75,85,99,.15);
+            transition: transform .4s ease;
+        }
+        .game-card:hover .game-logo {
+            transform: scale(1.05);
+        }
+        .game-card h3 { 
+            color: #2d3748; 
+            margin-bottom: 18px; 
+            font-size: 1.6em; 
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+        }
+        .game-stats { 
+            background: linear-gradient(135deg, rgba(102, 112, 132, .08) 0%, rgba(107, 114, 128, .04) 100%);
+            padding: 18px; 
+            border-radius: 10px; 
+            margin: 22px 0; 
+            border: 1px solid rgba(107, 114, 128, .2);
+            position: relative;
+            z-index: 2;
+        }
+        .stat-line { 
+            font-size: 1.1em; 
+            font-weight: 700; 
+            color: #2d3748; 
+            margin: 10px 0;
+        }
+        .game-card p { 
+            color: #6b7280; 
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 2;
+        }
+        .game-card a { 
+            display: inline-block; 
+            background: linear-gradient(135deg, #4a5568 0%, #667084 100%);
+            color: #fff; 
+            padding: 12px 26px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all .3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(75, 85, 99, .2);
+        }
+        .game-card a:hover { 
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(75, 85, 99, .3);
+        }
+        footer { 
+            text-align: center; 
+            padding: 35px 25px; 
+            color: #6b7280; 
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border-radius: 14px; 
+            box-shadow: 0 4px 15px rgba(17,24,39,.08);
+            border: 1px solid rgba(107, 114, 128, .1);
+            font-weight: 600;
+        }
+        a { 
+            color: #4a5568; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all .3s ease; 
+            border-bottom: 2px solid transparent; 
+        }
+        a:hover { 
+            color: #2d3748; 
+            border-bottom-color: #667084; 
+        }
+        ul a { 
+            display: inline-block; 
+            padding: 10px 18px; 
+            background: linear-gradient(135deg, #e8ecf1 0%, #f3f5f9 100%);
+            border-radius: 8px; 
+            margin-right: 12px; 
+            margin-bottom: 12px;
+            border: 1px solid rgba(107, 114, 128, .15);
+            box-shadow: 0 2px 8px rgba(75,85,99,.08);
+        }
+        ul a:hover { 
+            background: linear-gradient(135deg, #d1d5db 0%, #e5e7eb 100%);
+            border-color: rgba(75, 85, 99, .3);
+        }
+        @media (max-width: 768px) {
+            .content { padding: 30px; }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 1.6em; }
+            header { padding: 40px 25px; }
+        }
     </style>
 </head>
 <body>
@@ -57,10 +372,10 @@
             <p>My focus is helping developers keep their games fair, fun, and safe for everyone.</p>
             <h2>What I Do</h2>
             <div class="skills">
-                <div class="skill-card"><h3>Community Management</h3><p>Oversee player interactions and foster a welcoming, respectful gaming environment.</p></div>
-                <div class="skill-card"><h3>Rule Enforcement</h3><p>Implement and enforce game rules consistently and fairly.</p></div>
-                <div class="skill-card"><h3>Exploit Investigation</h3><p>Identify and investigate potential exploits and cheating.</p></div>
-                <div class="skill-card"><h3>Player Support</h3><p>Handle player reports and resolve disputes professionally.</p></div>
+                <div class="skill-card"><h3>🛡️ Community Management</h3><p>Oversee player interactions and foster a welcoming, respectful gaming environment.</p></div>
+                <div class="skill-card"><h3>⚖️ Rule Enforcement</h3><p>Implement and enforce game rules consistently and fairly.</p></div>
+                <div class="skill-card"><h3>🔍 Exploit Investigation</h3><p>Identify and investigate potential exploits and cheating.</p></div>
+                <div class="skill-card"><h3>💬 Player Support</h3><p>Handle player reports and resolve disputes professionally.</p></div>
             </div>
             <h2>Games I've Worked With</h2>
             <div class="games-wrapper">

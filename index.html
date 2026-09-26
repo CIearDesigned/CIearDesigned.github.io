@@ -6,19 +6,7 @@
     <title>CIearDesigned - Moderator, Developer & Tester</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary-dark: #0f2d3a;
-            --primary: #1d5a6b;
-            --primary-light: #38a6b8;
-            --accent: #4dd0e1;
-            --accent-light: #8be1ef;
-            --bg: #f5f7fa;
-            --surface: #fff;
-            --soft: #f8f9fb;
-            --text: #24313a;
-            --muted: #65727b;
-            --border: #e2e7eb;
-        }
+        :root { --primary-dark: #0f2d3a; --primary: #1d5a6b; --primary-light: #38a6b8; --accent: #4dd0e1; --accent-light: #8be1ef; --bg: #f5f7fa; --surface: #fff; --soft: #f8f9fb; --text: #24313a; --muted: #65727b; --border: #e2e7eb; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; min-height: 100vh; transition: background .3s ease; }
         .container { max-width: 1180px; margin: auto; padding: 0 20px; }
         header { position: relative; overflow: hidden; text-align: center; padding: 72px 20px 30px; margin-bottom: 45px; border-radius: 0 0 20px 20px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; transition: background .35s ease; }
@@ -48,7 +36,7 @@
         .experience-card p, .game-card p { margin-bottom: 0; }
         .game-card { overflow: hidden; }
         .game-logo-wrapper { display: flex; justify-content: center; margin-bottom: 22px; }
-        .game-logo { width: 100%; max-width: 230px; border-radius: 9px; box-shadow: 0 5px 15px rgba(25,40,50,.14); }
+        .game-logo { width: 100%; max-width: 230px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 9px; box-shadow: 0 5px 15px rgba(25,40,50,.14); }
         .game-stats { background: rgba(77,208,225,.09); border: 1px solid rgba(77,208,225,.25); border-radius: 8px; padding: 14px; margin: 17px 0; }
         .stat-line { color: var(--primary); font-weight: 700; margin: 6px 0; }
         .game-card a, .contact-link { display: inline-block; text-decoration: none; color: #fff; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 7px; padding: 10px 20px; font-weight: 700; transition: .25s ease; }
@@ -69,10 +57,10 @@
                 <div class="roles"><span class="role-badge">🎮 Game Moderator</span><span class="role-badge">🧪 Game Tester</span><span class="role-badge">💻 Developer</span></div>
                 <p>Building, testing, and protecting better Roblox communities.</p>
                 <nav class="theme-tabs" aria-label="Experience tabs">
-                    <button class="tab active" data-tab="overview" data-theme="moderator">About Me</button>
-                    <button class="tab" data-tab="moderator" data-theme="moderator">Moderator</button>
-                    <button class="tab" data-tab="tester" data-theme="tester">Tester</button>
-                    <button class="tab" data-tab="developer" data-theme="developer">Developer</button>
+                    <button class="tab active" data-tab="overview" data-theme="moderator" type="button">About Me</button>
+                    <button class="tab" data-tab="moderator" data-theme="moderator" type="button">Moderator</button>
+                    <button class="tab" data-tab="tester" data-theme="tester" type="button">Tester</button>
+                    <button class="tab" data-tab="developer" data-theme="developer" type="button">Developer</button>
                 </nav>
             </div>
         </header>
@@ -107,6 +95,7 @@
                 <div class="games-wrapper">
                     <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="horse-ranch-logo.png" alt="Horse Ranch Logo"></div><h3>Horse Ranch</h3><div class="game-stats"><div class="stat-line">🧪 Testing Experience</div><div class="stat-line">👥 Active 50</div><div class="stat-line">👁️ 100K+ Visits</div></div><p>Gameplay testing, issue discovery, and feedback for a better player experience.</p><a href="https://www.roblox.com/games/83699919411251/Horse-Ranch" target="_blank">View Game</a></article>
                     <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="InShot_20260609_201137247.jpg" alt="Stay For Fortune Logo"></div><h3>Stay For Fortune</h3><div class="game-stats"><div class="stat-line">🧪 Testing Experience</div><div class="stat-line">👥 Active 40</div><div class="stat-line">👁️ 2M+ Visits</div></div><p>Testing gameplay systems, checking updates, and reporting problems clearly.</p><a href="https://www.roblox.com/games/86036663717254/Stay-For-Fortune" target="_blank">View Game</a></article>
+                    <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="flex-verified-friends.jpg" alt="Flex Verified Friends Logo"></div><h3>Flex Verified Friends</h3><div class="game-stats"><div class="stat-line">🧪 Testing Experience</div><div class="stat-line">👥 Active 10</div><div class="stat-line">👁️ 200K+ Visits</div></div><p>Gameplay testing, quality checks, and clear feedback to help improve the experience.</p></article>
                 </div>
             </section>
 
@@ -120,22 +109,9 @@
 
     <script>
         const root = document.documentElement;
-        const themes = {
-            moderator: ['#0f2d3a','#1d5a6b','#38a6b8','#4dd0e1','#8be1ef'],
-            tester: ['#173d2b','#236b42','#3ba76c','#63d28d','#a8efc0'],
-            developer: ['#142b4d','#204d9a','#4d82d8','#6aa7ff','#a9d0ff']
-        };
-        function setTheme(name) {
-            const [dark, primary, light, accent, accentLight] = themes[name];
-            root.style.setProperty('--primary-dark', dark); root.style.setProperty('--primary', primary); root.style.setProperty('--primary-light', light); root.style.setProperty('--accent', accent); root.style.setProperty('--accent-light', accentLight);
-        }
-        document.querySelectorAll('.tab').forEach(button => button.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-            button.classList.add('active');
-            document.getElementById(button.dataset.tab).classList.add('active');
-            setTheme(button.dataset.theme);
-        }));
+        const themes = { moderator: ['#0f2d3a','#1d5a6b','#38a6b8','#4dd0e1','#8be1ef'], tester: ['#173d2b','#236b42','#3ba76c','#63d28d','#a8efc0'], developer: ['#142b4d','#204d9a','#4d82d8','#6aa7ff','#a9d0ff'] };
+        function setTheme(name) { const [dark, primary, light, accent, accentLight] = themes[name]; root.style.setProperty('--primary-dark', dark); root.style.setProperty('--primary', primary); root.style.setProperty('--primary-light', light); root.style.setProperty('--accent', accent); root.style.setProperty('--accent-light', accentLight); }
+        document.querySelectorAll('.tab').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active')); document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active')); button.classList.add('active'); document.getElementById(button.dataset.tab).classList.add('active'); setTheme(button.dataset.theme); }));
     </script>
 </body>
 </html>

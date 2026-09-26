@@ -3,422 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIearDesigned - Moderator & Community Specialist</title>
+    <title>CIearDesigned - Moderator, Developer & Tester</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
-            --primary-dark: #1a1f2e;
-            --primary: #2d3748;
-            --primary-light: #4a5568;
-            --accent: #667084;
-            --accent-light: #9ca3af;
-            --bg-light: #f8f9fb;
-            --bg-lighter: #fafbfc;
-            --text-dark: #1a1a1a;
-            --text-main: #2d3748;
-            --text-muted: #6b7280;
-            --border: #e5e7eb;
-            --border-light: #f3f4f6;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
-            --tab-bg: rgba(255,255,255,0.12);
-            --tab-border: rgba(255,255,255,0.24);
-            --tab-text: #f3f4f6;
-            --header-gradient-1: #1a1f2e;
-            --header-gradient-2: #2d3748;
-            --header-glow: rgba(102,112,132,0.2);
-            --button-gradient-1: #2d3748;
-            --button-gradient-2: #4a5568;
-            --underline: #667084;
-            --highlight: #9ca3af;
+            --primary-dark: #0f2d3a;
+            --primary: #1d5a6b;
+            --primary-light: #38a6b8;
+            --accent: #4dd0e1;
+            --accent-light: #8be1ef;
+            --bg: #f5f7fa;
+            --surface: #fff;
+            --soft: #f8f9fb;
+            --text: #24313a;
+            --muted: #65727b;
+            --border: #e2e7eb;
         }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background: #f5f7fa;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--header-gradient-1) 0%, var(--header-gradient-2) 100%);
-            padding: 70px 20px 28px;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 18px 18px;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 50%, var(--header-glow) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .header-inner {
-            position: relative;
-            z-index: 2;
-        }
-
-        header h1 {
-            font-size: 3.5em;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            font-size: 1.3em;
-            color: #d1d5db;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .roles {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 18px;
-        }
-
-        .role-badge {
-            background: rgba(255, 255, 255, 0.13);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #f3f4f6;
-            padding: 9px 18px;
-            border-radius: 25px;
-            font-size: 0.95em;
-            font-weight: 600;
-            backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
-        }
-
-        .role-badge:hover {
-            background: rgba(255,255,255,0.18);
-            transform: translateY(-2px);
-        }
-
-        header > .header-inner > p {
-            color: #bfdbfe;
-            font-size: 1.1em;
-        }
-
-        .theme-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .tab {
-            border: 1px solid var(--tab-border);
-            background: var(--tab-bg);
-            color: var(--tab-text);
-            padding: 11px 22px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.96em;
-            transition: all 0.25s ease;
-            letter-spacing: 0.02em;
-        }
-
-        .tab:hover {
-            transform: translateY(-2px);
-            background: rgba(255,255,255,0.18);
-        }
-
-        .tab.active {
-            background: rgba(255,255,255,0.22);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-            border-color: rgba(255,255,255,0.35);
-        }
-
-        .content {
-            background: #ffffff;
-            padding: 60px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 60px;
-            border: 1px solid var(--border);
-        }
-
-        h2 {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-top: 50px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--underline);
-            display: inline-block;
-        }
-
-        h2:first-child {
-            margin-top: 0;
-        }
-
-        p {
-            font-size: 1.05em;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            margin: 45px 0;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, var(--bg-lighter) 0%, var(--bg-light) 100%);
-            padding: 35px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            border-radius: 10px 10px 0 0;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
-        }
-
-        .skill-card h3 {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .skill-card p {
-            color: var(--text-muted);
-            margin-bottom: 0;
-        }
-
-        .games-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            margin: 45px 0;
-            flex-wrap: wrap;
-        }
-
-        .game-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 40px;
-            width: 100%;
-            max-width: 340px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .game-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
-        }
-
-        .game-logo-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .game-logo {
-            max-width: 240px;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease;
-        }
-
-        .game-card:hover .game-logo {
-            transform: scale(1.05);
-        }
-
-        .game-card h3 {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-        }
-
-        .game-stats {
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-
-        .stat-line {
-            font-size: 1.05em;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-
-        .game-card p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .game-card a {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--button-gradient-1) 0%, var(--button-gradient-2) 100%);
-            color: #ffffff;
-            padding: 12px 30px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.25);
-        }
-
-        .game-card a:hover {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(45, 55, 72, 0.35);
-        }
-
-        ul {
-            margin-left: 0;
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        li {
-            margin-bottom: 12px;
-        }
-
-        ul a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            margin-right: 12px;
-            margin-bottom: 12px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        ul a:hover {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
-        }
-
-        a:hover {
-            color: var(--primary-dark);
-            border-bottom-color: var(--accent);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            box-shadow: var(--shadow-md);
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.4em;
-            }
-
-            .tagline {
-                font-size: 1.1em;
-            }
-
-            h2 {
-                font-size: 1.8em;
-            }
-
-            .content {
-                padding: 40px 25px;
-            }
-
-            .skills {
-                grid-template-columns: 1fr;
-            }
-
-            .games-wrapper {
-                gap: 25px;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .game-card {
-                max-width: 100%;
-            }
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; min-height: 100vh; transition: background .3s ease; }
+        .container { max-width: 1180px; margin: auto; padding: 0 20px; }
+        header { position: relative; overflow: hidden; text-align: center; padding: 72px 20px 30px; margin-bottom: 45px; border-radius: 0 0 20px 20px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; transition: background .35s ease; }
+        header::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.14), transparent 34%), radial-gradient(circle at 90% 90%, rgba(255,255,255,.08), transparent 38%); }
+        .header-inner { position: relative; z-index: 1; }
+        h1 { font-size: clamp(2.4rem, 6vw, 3.7rem); letter-spacing: -1px; margin-bottom: 8px; }
+        .tagline { color: #dce7eb; font-size: 1.25rem; font-weight: 600; margin-bottom: 20px; }
+        header > .header-inner > p { color: #d2e1e5; font-size: 1.05rem; }
+        .roles, .theme-tabs { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .roles { margin-bottom: 18px; }
+        .role-badge, .tab { color: #fff; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.12); border-radius: 999px; padding: 9px 17px; font-weight: 700; }
+        .theme-tabs { margin-top: 25px; }
+        .tab { cursor: pointer; padding: 11px 23px; transition: .25s ease; }
+        .tab:hover, .tab.active { background: rgba(255,255,255,.25); transform: translateY(-2px); box-shadow: 0 7px 18px rgba(0,0,0,.16); }
+        main { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 12px 35px rgba(25,40,50,.1); padding: clamp(28px, 6vw, 60px); margin-bottom: 45px; }
+        .tab-panel { display: none; animation: fadeIn .3s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { color: var(--primary-dark); font-size: 2rem; margin: 0 0 22px; padding-bottom: 12px; border-bottom: 3px solid var(--accent); display: inline-block; transition: color .3s ease, border-color .3s ease; }
+        h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 9px; }
+        p { color: var(--muted); margin-bottom: 18px; }
+        .intro { max-width: 850px; font-size: 1.08rem; }
+        .experience-grid, .games-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; margin: 30px 0 44px; }
+        .experience-card, .game-card { background: linear-gradient(135deg, #fff, var(--soft)); border: 1px solid var(--border); border-radius: 12px; padding: 28px; box-shadow: 0 4px 14px rgba(25,40,50,.07); transition: .3s ease; }
+        .experience-card { border-top: 4px solid var(--accent); }
+        .experience-card:hover, .game-card:hover { transform: translateY(-6px); box-shadow: 0 13px 28px rgba(25,40,50,.13); border-color: var(--accent); }
+        .experience-card p, .game-card p { margin-bottom: 0; }
+        .game-card { overflow: hidden; }
+        .game-logo-wrapper { display: flex; justify-content: center; margin-bottom: 22px; }
+        .game-logo { width: 100%; max-width: 230px; border-radius: 9px; box-shadow: 0 5px 15px rgba(25,40,50,.14); }
+        .game-stats { background: rgba(77,208,225,.09); border: 1px solid rgba(77,208,225,.25); border-radius: 8px; padding: 14px; margin: 17px 0; }
+        .stat-line { color: var(--primary); font-weight: 700; margin: 6px 0; }
+        .game-card a, .contact-link { display: inline-block; text-decoration: none; color: #fff; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 7px; padding: 10px 20px; font-weight: 700; transition: .25s ease; }
+        .game-card a:hover, .contact-link:hover { transform: translateY(-2px); filter: brightness(.9); }
+        .coming-soon { text-align: center; padding: 70px 25px; border: 2px dashed var(--accent); border-radius: 14px; background: linear-gradient(135deg, var(--soft), #fff); }
+        .coming-soon strong { display: block; color: var(--primary); font-size: 1.6rem; margin-bottom: 10px; }
+        .contacts { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
+        footer { text-align: center; color: var(--muted); padding: 28px 20px 40px; font-weight: 600; }
+        @media (max-width: 700px) { header { padding-top: 48px; } main { padding: 28px 20px; } .experience-grid, .games-wrapper { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -426,172 +65,77 @@
         <header>
             <div class="header-inner">
                 <h1>CIearDesigned</h1>
-                <p class="tagline">Moderator & Community Specialist</p>
-                <div class="roles">
-                    <div class="role-badge">🎮 Game Moderator</div>
-                    <div class="role-badge">💬 Discord Moderator</div>
-                </div>
-                <p>Managing and protecting player communities in Roblox games</p>
-
-                <div class="theme-tabs" aria-label="Role theme tabs">
-                    <button class="tab active" data-theme="moderator" type="button">Moderator</button>
-                    <button class="tab" data-theme="tester" type="button">Tester</button>
-                    <button class="tab" data-theme="developer" type="button">Developer</button>
-                </div>
+                <p class="tagline">Moderator • Developer • Tester</p>
+                <div class="roles"><span class="role-badge">🎮 Game Moderator</span><span class="role-badge">🧪 Game Tester</span><span class="role-badge">💻 Developer</span></div>
+                <p>Building, testing, and protecting better Roblox communities.</p>
+                <nav class="theme-tabs" aria-label="Experience tabs">
+                    <button class="tab active" data-tab="overview" data-theme="moderator">About Me</button>
+                    <button class="tab" data-tab="moderator" data-theme="moderator">Moderator</button>
+                    <button class="tab" data-tab="tester" data-theme="tester">Tester</button>
+                    <button class="tab" data-tab="developer" data-theme="developer">Developer</button>
+                </nav>
             </div>
         </header>
 
-        <div class="content">
-            <h2>About Me</h2>
-            <p>I specialize in managing and protecting player communities within specific Roblox games. Working directly within game servers, I enforce rules, investigate exploits, handle player reports, and maintain a positive gaming environment.</p>
-            <p>My focus is helping developers keep their games fair, fun, and safe for everyone.</p>
+        <main>
+            <section class="tab-panel active" id="overview">
+                <h2>About Me</h2>
+                <p class="intro">I am CIearDesigned, a dedicated Roblox community specialist with experience as a moderator, tester, and developer. I care about creating safe, enjoyable, and well-built experiences for players while helping communities and development teams succeed.</p>
+                <p class="intro">Use the tabs above to explore my experience in each area.</p>
+                <div class="experience-grid">
+                    <article class="experience-card"><h3>🛡️ Moderator</h3><p>I manage communities, enforce rules fairly, investigate exploits, and support players.</p></article>
+                    <article class="experience-card"><h3>🧪 Tester</h3><p>I test gameplay, find bugs, check systems, and provide clear feedback to improve games.</p></article>
+                    <article class="experience-card"><h3>💻 Developer</h3><p>I am building my development experience and learning how to create better Roblox projects.</p></article>
+                </div>
+                <h2>Connect With Me</h2>
+                <div class="contacts"><a class="contact-link" href="https://discordapp.com/users/1281633254092574893">Discord Profile</a><a class="contact-link" href="https://www.roblox.com/users/4845011869/profile">Roblox Profile</a></div>
+            </section>
 
-            <h2>What I Do</h2>
-            <div class="skills">
-                <div class="skill-card">
-                    <h3>Community Management</h3>
-                    <p>Oversee player interactions and foster a welcoming, respectful gaming environment.</p>
+            <section class="tab-panel" id="moderator">
+                <h2>Moderator Experience</h2>
+                <p class="intro">As a moderator, I help keep Roblox communities fair, welcoming, and safe. My experience includes player support, rule enforcement, exploit investigation, and maintaining a positive environment.</p>
+                <div class="games-wrapper">
+                    <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="InShot_20260609_201137247.jpg" alt="Stay For Fortune Logo"></div><h3>Stay For Fortune</h3><div class="game-stats"><div class="stat-line">👥 Active 40</div><div class="stat-line">👁️ 2M+ Visits</div><div class="stat-line">🛡️ Role: Moderator</div></div><p>Community moderation and player support specialist.</p><a href="https://www.roblox.com/games/86036663717254/Stay-For-Fortune" target="_blank">Play Game</a></article>
+                    <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="1000040642.jpg" alt="Emergency Response: Liberty County Logo"></div><h3>Emergency Response: Liberty County</h3><div class="game-stats"><div class="stat-line">👥 Active 3K+</div><div class="stat-line">👁️ 2B+ Visits</div><div class="stat-line">🛡️ Role: Moderator</div></div><p>Community moderation and player support specialist.</p><a href="https://www.roblox.com/games/2534724415/Emergency-Response-Liberty-County" target="_blank">Play Game</a></article>
+                    <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="horse-ranch-logo.png" alt="Horse Ranch Logo"></div><h3>Horse Ranch</h3><div class="game-stats"><div class="stat-line">👥 Active 50</div><div class="stat-line">👁️ 100K+ Visits</div><div class="stat-line">🛡️ Role: Moderator</div></div><p>Community moderation and player support specialist.</p><a href="https://www.roblox.com/games/83699919411251/Horse-Ranch" target="_blank">Play Game</a></article>
                 </div>
-                <div class="skill-card">
-                    <h3>Rule Enforcement</h3>
-                    <p>Implement and enforce game rules consistently and fairly.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Exploit Investigation</h3>
-                    <p>Identify and investigate potential exploits and cheating.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Player Support</h3>
-                    <p>Handle player reports and resolve disputes professionally.</p>
-                </div>
-            </div>
+            </section>
 
-            <h2>Games I've Worked With</h2>
-            <div class="games-wrapper">
-                <div class="game-card">
-                    <div class="game-logo-wrapper">
-                        <img src="InShot_20260609_201137247.jpg" alt="Stay For Fortune Logo" class="game-logo">
-                    </div>
-                    <h3>Stay For Fortune</h3>
-                    <div class="game-stats">
-                        <div class="stat-line">👥 Active 40</div>
-                        <div class="stat-line">👁️ 2M+ Visits</div>
-                        <div class="stat-line">🛡️ Role: Moderator</div>
-                    </div>
-                    <p>Community moderation and player support specialist</p>
-                    <a href="https://www.roblox.com/games/86036663717254/Stay-For-Fortune" target="_blank">Play Game</a>
+            <section class="tab-panel" id="tester">
+                <h2>Tester Experience</h2>
+                <p class="intro">As a tester, I focus on finding issues before players do. I check gameplay, report bugs clearly, test updates, and provide practical feedback to help improve the player experience.</p>
+                <div class="games-wrapper">
+                    <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="horse-ranch-logo.png" alt="Horse Ranch Logo"></div><h3>Horse Ranch</h3><div class="game-stats"><div class="stat-line">🧪 Testing Experience</div><div class="stat-line">👥 Active 50</div><div class="stat-line">👁️ 100K+ Visits</div></div><p>Gameplay testing, issue discovery, and feedback for a better player experience.</p><a href="https://www.roblox.com/games/83699919411251/Horse-Ranch" target="_blank">View Game</a></article>
+                    <article class="game-card"><div class="game-logo-wrapper"><img class="game-logo" src="InShot_20260609_201137247.jpg" alt="Stay For Fortune Logo"></div><h3>Stay For Fortune</h3><div class="game-stats"><div class="stat-line">🧪 Testing Experience</div><div class="stat-line">👥 Active 40</div><div class="stat-line">👁️ 2M+ Visits</div></div><p>Testing gameplay systems, checking updates, and reporting problems clearly.</p><a href="https://www.roblox.com/games/86036663717254/Stay-For-Fortune" target="_blank">View Game</a></article>
                 </div>
+            </section>
 
-                <div class="game-card">
-                    <div class="game-logo-wrapper">
-                        <img src="1000040642.jpg" alt="Emergency Response: Liberty County Logo" class="game-logo">
-                    </div>
-                    <h3>Emergency Response: Liberty County</h3>
-                    <div class="game-stats">
-                        <div class="stat-line">👥 Active 3K+</div>
-                        <div class="stat-line">👁️ 2B+ Visits</div>
-                        <div class="stat-line">🛡️ Role: Moderator</div>
-                    </div>
-                    <p>Community moderation and player support specialist</p>
-                    <a href="https://www.roblox.com/games/2534724415/Emergency-Response-Liberty-County" target="_blank">Play Game</a>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-logo-wrapper">
-                        <img src="horse-ranch-logo.png" alt="Horse Ranch Logo" class="game-logo">
-                    </div>
-                    <h3>Horse Ranch</h3>
-                    <div class="game-stats">
-                        <div class="stat-line">👥 Active 50</div>
-                        <div class="stat-line">👁️ 100K+ Visits</div>
-                        <div class="stat-line">🛡️ Role: Moderator</div>
-                    </div>
-                    <p>Community moderation and player support specialist</p>
-                    <a href="https://www.roblox.com/games/83699919411251/Horse-Ranch" target="_blank">Play Game</a>
-                </div>
-            </div>
-
-            <h2>Connect With Me</h2>
-            <ul>
-                <li><a href="https://discordapp.com/users/1281633254092574893">Discord Profile</a></li>
-                <li><a href="https://www.roblox.com/users/4845011869/profile">Roblox Profile</a></li>
-            </ul>
-        </div>
-
-        <footer>
-            <p>&copy; 2026 CIearDesigned. All rights reserved.</p>
-        </footer>
+            <section class="tab-panel" id="developer">
+                <h2>Developer Experience</h2>
+                <div class="coming-soon"><strong>Developer projects coming soon</strong><p>I am currently growing my development experience. Check back soon to see my upcoming projects and creations.</p></div>
+            </section>
+        </main>
+        <footer><p>&copy; 2026 CIearDesigned. All rights reserved.</p></footer>
     </div>
 
     <script>
         const root = document.documentElement;
-        const themeMap = {
-            moderator: {
-                '--primary-dark': '#0f2d3a',
-                '--primary': '#1d5a6b',
-                '--primary-light': '#3ca4b8',
-                '--accent': '#4dd0e1',
-                '--accent-light': '#8be1ef',
-                '--button-gradient-1': '#1d5a6b',
-                '--button-gradient-2': '#38a6b8',
-                '--underline': '#4dd0e1',
-                '--header-gradient-1': '#0f2d3a',
-                '--header-gradient-2': '#1d5a6b',
-                '--header-glow': 'rgba(77, 208, 225, 0.18)',
-                '--tab-bg': 'rgba(255,255,255,0.12)',
-                '--tab-border': 'rgba(255,255,255,0.24)',
-                '--tab-text': '#f3f4f6'
-            },
-            tester: {
-                '--primary-dark': '#173d2b',
-                '--primary': '#236b42',
-                '--primary-light': '#3ba76c',
-                '--accent': '#63d28d',
-                '--accent-light': '#a8efc0',
-                '--button-gradient-1': '#236b42',
-                '--button-gradient-2': '#3ba76c',
-                '--underline': '#63d28d',
-                '--header-gradient-1': '#173d2b',
-                '--header-gradient-2': '#236b42',
-                '--header-glow': 'rgba(99, 210, 141, 0.18)',
-                '--tab-bg': 'rgba(255,255,255,0.12)',
-                '--tab-border': 'rgba(255,255,255,0.24)',
-                '--tab-text': '#f3f4f6'
-            },
-            developer: {
-                '--primary-dark': '#142b4d',
-                '--primary': '#204d9a',
-                '--primary-light': '#4d82d8',
-                '--accent': '#6aa7ff',
-                '--accent-light': '#a9d0ff',
-                '--button-gradient-1': '#204d9a',
-                '--button-gradient-2': '#4d82d8',
-                '--underline': '#6aa7ff',
-                '--header-gradient-1': '#142b4d',
-                '--header-gradient-2': '#204d9a',
-                '--header-glow': 'rgba(106, 167, 255, 0.2)',
-                '--tab-bg': 'rgba(255,255,255,0.12)',
-                '--tab-border': 'rgba(255,255,255,0.24)',
-                '--tab-text': '#f3f4f6'
-            }
+        const themes = {
+            moderator: ['#0f2d3a','#1d5a6b','#38a6b8','#4dd0e1','#8be1ef'],
+            tester: ['#173d2b','#236b42','#3ba76c','#63d28d','#a8efc0'],
+            developer: ['#142b4d','#204d9a','#4d82d8','#6aa7ff','#a9d0ff']
         };
-
-        function applyTheme(themeName) {
-            const theme = themeMap[themeName];
-            Object.entries(theme).forEach(([key, value]) => {
-                root.style.setProperty(key, value);
-            });
-
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.toggle('active', tab.dataset.theme === themeName);
-            });
+        function setTheme(name) {
+            const [dark, primary, light, accent, accentLight] = themes[name];
+            root.style.setProperty('--primary-dark', dark); root.style.setProperty('--primary', primary); root.style.setProperty('--primary-light', light); root.style.setProperty('--accent', accent); root.style.setProperty('--accent-light', accentLight);
         }
-
-        document.querySelectorAll('.tab').forEach(button => {
-            button.addEventListener('click', () => applyTheme(button.dataset.theme));
-        });
-
-        applyTheme('moderator');
+        document.querySelectorAll('.tab').forEach(button => button.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            button.classList.add('active');
+            document.getElementById(button.dataset.tab).classList.add('active');
+            setTheme(button.dataset.theme);
+        }));
     </script>
 </body>
 </html>

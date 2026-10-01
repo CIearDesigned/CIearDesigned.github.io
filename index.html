@@ -4,16 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CIearDesigned | Moderator • Developer • Tester</title>
-    <meta
-      name="description"
-      content="Building safer, smoother, and better Roblox communities through moderation, testing, and development support."
-    />
+    <meta name="description" content="Building safer, smoother, and better Roblox communities through moderation, testing, and development support." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
       :root {
         --bg: #071019;
@@ -40,699 +34,154 @@
         color: var(--text);
         line-height: 1.6;
       }
-
       a { color: inherit; text-decoration: none; }
       img { max-width: 100%; display: block; }
       button, input, textarea { font: inherit; }
 
-      .container {
-        width: min(1200px, calc(100% - 32px));
-        margin: 0 auto;
-      }
-
+      .container { width: min(1200px, calc(100% - 32px)); margin: 0 auto; }
       .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(7, 16, 25, 0.72);
-        backdrop-filter: blur(12px);
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(7, 16, 25, 0.72); backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--line);
       }
-
       .nav {
-        min-height: 74px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        min-height: 74px; display: flex; align-items: center; justify-content: space-between;
       }
-
       .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        display: flex; align-items: center; gap: 12px; font-weight: 800;
+        letter-spacing: 0.08em; text-transform: uppercase;
       }
-
       .brand-mark {
-        width: 24px;
-        height: 24px;
-        border-radius: 8px;
+        width: 24px; height: 24px; border-radius: 8px;
         background: linear-gradient(135deg, var(--primary), var(--purple));
-        box-shadow: 0 0 24px rgba(116, 232, 255, 0.5);
+        box-shadow: 0 0 24px rgba(116,232,255,0.5);
       }
-
       .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-        color: var(--muted);
-        font-size: 0.96rem;
+        display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: 0.96rem;
       }
-
       .nav-links a:hover { color: var(--text); }
-
-      .nav-actions {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
-
+      .nav-actions { display: flex; gap: 12px; align-items: center; }
       .nav-cta, .nav-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 0 18px;
-        border-radius: 12px;
-        border: none;
-        font-weight: 800;
-        cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer;
       }
-
       .nav-cta {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #071018;
+        background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #071018;
       }
-
       .nav-button {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--line);
-        color: var(--text);
+        background: rgba(255,255,255,0.02); border: 1px solid var(--line); color: var(--text);
       }
 
-      .hero {
-        padding: 80px 0 30px;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.08fr 0.92fr;
-        align-items: center;
-        gap: 38px;
-      }
-
+      .hero { padding: 80px 0 30px; }
+      .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: 38px; }
       .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 18px;
-        color: var(--primary);
-        font-weight: 700;
-        font-size: 0.76rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+        display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; color: var(--primary);
+        font-weight: 700; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
       }
-
-      .eyebrow::before {
-        content: "";
-        display: block;
-        width: 28px;
-        height: 1px;
-        background: var(--primary);
-      }
-
-      h1 {
-        margin: 0 0 16px;
-        font-size: clamp(3rem, 6vw, 5.7rem);
-        line-height: 0.95;
-        letter-spacing: -0.07em;
-      }
-
-      .hero-copy {
-        margin: 0;
-        max-width: 620px;
-        color: var(--muted);
-        font-size: 1.08rem;
-        line-height: 1.8;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 30px;
-      }
-
+      .eyebrow::before { content: ""; display: block; width: 28px; height: 1px; background: var(--primary); }
+      h1 { margin: 0 0 16px; font-size: clamp(3rem, 6vw, 5.7rem); line-height: 0.95; letter-spacing: -0.07em; }
+      .hero-copy { margin: 0; max-width: 620px; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; }
       .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 52px;
-        padding: 0 22px;
-        border-radius: 14px;
-        border: 1px solid transparent;
-        font-weight: 700;
-        transition: transform 0.2s ease, filter 0.2s ease;
-        cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px; border-radius: 14px; border: 1px solid transparent; font-weight: 700; transition: transform 0.2s ease, filter 0.2s ease; cursor: pointer;
       }
+      .btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
+      .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #061018; }
+      .btn-secondary { background: rgba(255,255,255,0.02); border-color: var(--line); color: var(--text); }
 
-      .btn:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.03);
-      }
+      .stats { margin-top: 32px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+      .stat { padding: 24px 18px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); }
+      .stat strong { display: block; margin-bottom: 8px; font-size: clamp(2rem, 3vw, 3rem); line-height: 1; letter-spacing: -0.07em; }
+      .stat span { color: var(--muted); font-size: 0.92rem; }
 
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #061018;
-      }
+      .hero-visual { position: relative; min-height: 520px; border: 1px solid var(--line); border-radius: 28px; background: radial-gradient(circle at 18% 18%, rgba(116,232,255,0.16), transparent 24%), radial-gradient(circle at 80% 26%, rgba(159,141,255,0.18), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)), var(--panel); overflow: hidden; box-shadow: 0 30px 60px var(--shadow); }
+      .hero-visual::before { content: ""; position: absolute; inset: 28px; border-radius: 22px; background: linear-gradient(135deg, rgba(116,232,255,0.2), rgba(159,141,255,0.14)); border: 1px solid rgba(255,255,255,0.04); }
+      .screen { position: absolute; left: 42px; right: 42px; top: 52px; bottom: 42px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(9,18,28,0.7); }
+      .screen-top { height: 60px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+      .screen-body { display: grid; grid-template-columns: 1.25fr 0.75fr; height: calc(100% - 60px); }
+      .main-panel { padding: 24px; }
+      .big-box { height: 170px; border-radius: 16px; background: linear-gradient(135deg, rgba(116,232,255,0.52), rgba(138,240,200,0.18)); }
+      .mini-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+      .mini-box { height: 84px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+      .side-panel { padding: 22px 18px; border-left: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.015); }
+      .chip { height: 74px; border-radius: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
 
-      .btn-secondary {
-        background: rgba(255,255,255,0.02);
-        border-color: var(--line);
-        color: var(--text);
-      }
+      section { padding: 86px 0; }
+      .section-head { display: flex; justify-content: space-between; align-items: end; gap: 26px; margin-bottom: 28px; }
+      .section-head h2 { margin: 0; font-size: clamp(2.2rem, 4vw, 3.2rem); letter-spacing: -0.06em; }
+      .section-head p { max-width: 640px; margin: 0; color: var(--muted); line-height: 1.8; }
+      .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+      .card { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); transition: transform 0.2s ease, border-color 0.2s ease; }
+      .card:hover { transform: translateY(-4px); border-color: rgba(116,232,255,0.35); }
+      .card-visual { height: 240px; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, rgba(116,232,255,0.3), rgba(159,141,255,0.2)), linear-gradient(180deg, #14273a, #0d1623); }
+      .card-body { padding: 22px 20px 24px; }
+      .card-body h3 { margin: 0 0 8px; font-size: 1.35rem; }
+      .card-body p { margin: 0; color: var(--muted); line-height: 1.8; }
 
-      .stats {
-        margin-top: 32px;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+      .about-visual { min-height: 420px; border-radius: 24px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(116,232,255,0.18), rgba(159,141,255,0.18)), linear-gradient(180deg, #112232, #0b1722); position: relative; overflow: hidden; }
+      .about-visual::before { content: ""; position: absolute; inset: 18% 15%; border-radius: 50%; background: radial-gradient(circle, rgba(116,232,255,0.32), transparent 60%); filter: blur(18px); }
+      .about-panel { padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
+      .about-panel h3 { margin: 0 0 18px; font-size: 2rem; letter-spacing: -0.05em; }
+      .about-panel p { margin: 0 0 18px; color: var(--muted); line-height: 1.9; }
+      .feature-list { display: grid; gap: 14px; margin-top: 18px; }
+      .feature-item { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+      .feature-dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); box-shadow: 0 0 18px rgba(116,232,255,0.6); }
 
-      .stat {
-        padding: 24px 18px;
-        border-radius: 18px;
-        border: 1px solid var(--line);
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-      }
+      .process { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+      .step { padding: 24px 22px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
+      .step-num { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 12px; background: rgba(116,232,255,0.10); color: var(--primary); font-weight: 800; margin-bottom: 18px; }
+      .step h3 { margin: 0 0 10px; font-size: 1.2rem; }
+      .step p { margin: 0; color: var(--muted); line-height: 1.8; }
 
-      .stat strong {
-        display: block;
-        margin-bottom: 8px;
-        font-size: clamp(2rem, 3vw, 3rem);
-        line-height: 1;
-        letter-spacing: -0.07em;
-      }
+      .cta-box { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 38px 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(135deg, rgba(116,232,255,0.12), rgba(159,141,255,0.12)), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
+      .cta-box h3 { margin: 0; font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.06em; }
+      .cta-box p { margin: 8px 0 0; color: var(--muted); }
 
-      .stat span {
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
+      .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 26px; }
+      .panel { padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
+      .panel h3 { margin: 0 0 16px; font-size: 2rem; letter-spacing: -0.05em; }
+      .panel p { margin: 0; color: var(--muted); line-height: 1.8; }
+      .panel ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; color: var(--muted); }
 
-      .hero-visual {
-        position: relative;
-        min-height: 520px;
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        background:
-          radial-gradient(circle at 18% 18%, rgba(116,232,255,0.16), transparent 24%),
-          radial-gradient(circle at 80% 26%, rgba(159,141,255,0.18), transparent 28%),
-          linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)),
-          var(--panel);
-        overflow: hidden;
-        box-shadow: 0 30px 60px var(--shadow);
-      }
-
-      .hero-visual::before {
-        content: "";
-        position: absolute;
-        inset: 28px;
-        border-radius: 22px;
-        background: linear-gradient(135deg, rgba(116,232,255,0.2), rgba(159,141,255,0.14));
-        border: 1px solid rgba(255,255,255,0.04);
-      }
-
-      .screen {
-        position: absolute;
-        left: 42px;
-        right: 42px;
-        top: 52px;
-        bottom: 42px;
-        border-radius: 18px;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(9, 18, 28, 0.7);
-      }
-
-      .screen-top {
-        height: 60px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        background: rgba(255,255,255,0.02);
-      }
-
-      .screen-body {
-        display: grid;
-        grid-template-columns: 1.25fr 0.75fr;
-        height: calc(100% - 60px);
-      }
-
-      .main-panel {
-        padding: 24px;
-      }
-
-      .big-box {
-        height: 170px;
-        border-radius: 16px;
-        background: linear-gradient(135deg, rgba(116,232,255,0.52), rgba(138,240,200,0.18));
-      }
-
-      .mini-row {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 18px;
-      }
-
-      .mini-box {
-        height: 84px;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.06);
-      }
-
-      .side-panel {
-        padding: 22px 18px;
-        border-left: 1px solid rgba(255,255,255,0.08);
-        background: rgba(255,255,255,0.015);
-      }
-
-      .chip {
-        height: 74px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.06);
-      }
-
-      section {
-        padding: 86px 0;
-      }
-
-      .section-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 26px;
-        margin-bottom: 28px;
-      }
-
-      .section-head h2 {
-        margin: 0;
-        font-size: clamp(2.2rem, 4vw, 3.2rem);
-        letter-spacing: -0.06em;
-      }
-
-      .section-head p {
-        max-width: 640px;
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .card {
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        overflow: hidden;
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-        transition: transform 0.2s ease, border-color 0.2s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(116,232,255,0.35);
-      }
-
-      .card-visual {
-        height: 240px;
-        border-bottom: 1px solid var(--line);
-        background:
-          linear-gradient(135deg, rgba(116,232,255,0.3), rgba(159,141,255,0.2)),
-          linear-gradient(180deg, #14273a, #0d1623);
-      }
-
-      .card-body {
-        padding: 22px 20px 24px;
-      }
-
-      .card-body h3 {
-        margin: 0 0 8px;
-        font-size: 1.35rem;
-      }
-
-      .card-body p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-      }
-
-      .about-visual {
-        min-height: 420px;
-        border-radius: 24px;
-        border: 1px solid var(--line);
-        background:
-          linear-gradient(135deg, rgba(116,232,255,0.18), rgba(159,141,255,0.18)),
-          linear-gradient(180deg, #112232, #0b1722);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .about-visual::before {
-        content: "";
-        position: absolute;
-        inset: 18% 15%;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(116,232,255,0.32), transparent 60%);
-        filter: blur(18px);
-      }
-
-      .about-panel {
-        padding: 30px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      }
-
-      .about-panel h3 {
-        margin: 0 0 18px;
-        font-size: 2rem;
-        letter-spacing: -0.05em;
-      }
-
-      .about-panel p {
-        margin: 0 0 18px;
-        color: var(--muted);
-        line-height: 1.9;
-      }
-
-      .feature-list {
-        display: grid;
-        gap: 14px;
-        margin-top: 18px;
-      }
-
-      .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 600;
-      }
-
-      .feature-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        box-shadow: 0 0 18px rgba(116,232,255,0.6);
-      }
-
-      .process {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .step {
-        padding: 24px 22px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      }
-
-      .step-num {
-        display: inline-flex;
-        width: 42px;
-        height: 42px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        background: rgba(116,232,255,0.10);
-        color: var(--primary);
-        font-weight: 800;
-        margin-bottom: 18px;
-      }
-
-      .step h3 {
-        margin: 0 0 10px;
-        font-size: 1.2rem;
-      }
-
-      .step p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .cta-box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        padding: 38px 30px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background:
-          linear-gradient(135deg, rgba(116,232,255,0.12), rgba(159,141,255,0.12)),
-          linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      }
-
-      .cta-box h3 {
-        margin: 0;
-        font-size: clamp(2rem, 3vw, 3rem);
-        letter-spacing: -0.06em;
-      }
-
-      .cta-box p {
-        margin: 8px 0 0;
-        color: var(--muted);
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-top: 26px;
-      }
-
-      .panel {
-        padding: 28px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      }
-
-      .panel h3 {
-        margin: 0 0 16px;
-        font-size: 2rem;
-        letter-spacing: -0.05em;
-      }
-
-      .panel p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .panel ul {
-        list-style: none;
-        padding: 0;
-        margin: 22px 0 0;
-        display: grid;
-        gap: 12px;
-        color: var(--muted);
-      }
-
-      .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-
-      input, textarea {
-        width: 100%;
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,0.02);
-        border-radius: 12px;
-        padding: 14px 14px;
-        font: inherit;
-        color: var(--text);
-        outline: none;
-      }
-
-      textarea {
-        min-height: 142px;
-        resize: vertical;
-      }
-
+      .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      input, textarea { width: 100%; border: 1px solid var(--line); background: rgba(255,255,255,0.02); border-radius: 12px; padding: 14px 14px; font: inherit; color: var(--text); outline: none; }
+      textarea { min-height: 142px; resize: vertical; }
       .full { grid-column: 1 / -1; }
-
       .submit-btn { margin-top: 16px; }
 
-      .account-panel {
-        margin-top: 28px;
-        padding: 24px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-      }
+      .account-panel { margin-top: 28px; padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
+      .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .auth-box { border: 1px solid var(--line); border-radius: 18px; padding: 20px; background: rgba(255,255,255,0.01); }
+      .auth-box h3 { margin-top: 0; margin-bottom: 12px; }
+      .status { margin-top: 12px; padding: 10px 12px; border-radius: 10px; color: var(--text); background: rgba(255,255,255,0.02); border: 1px solid var(--line); display: none; }
+      .status.show { display: block; }
+      .status.success { border-color: rgba(138,240,200,0.35); background: rgba(138,240,200,0.07); }
+      .status.error { border-color: rgba(255,123,123,0.4); background: rgba(255,123,123,0.08); }
 
-      .auth-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
+      .saved-list { margin-top: 16px; display: grid; gap: 12px; max-height: 400px; overflow-y: auto; }
+      .saved-item { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); }
+      .saved-item strong { display: block; margin-bottom: 4px; }
+      .saved-item small { color: var(--muted); }
 
-      .auth-box {
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 20px;
-        background: rgba(255,255,255,0.01);
-      }
-
-      .auth-box h3 {
-        margin-top: 0;
-        margin-bottom: 12px;
-      }
-
-      .status {
-        margin-top: 12px;
-        padding: 10px 12px;
-        border-radius: 10px;
-        color: var(--text);
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--line);
-        display: none;
-      }
-
-      .status.show {
-        display: block;
-      }
-
-      .status.success {
-        border-color: rgba(138,240,200,0.35);
-        background: rgba(138,240,200,0.07);
-      }
-
-      .status.error {
-        border-color: rgba(255,123,123,0.4);
-        background: rgba(255,123,123,0.08);
-      }
-
-      .saved-list {
-        margin-top: 16px;
-        display: grid;
-        gap: 12px;
-        max-height: 400px;
-        overflow-y: auto;
-      }
-
-      .saved-item {
-        padding: 12px 14px;
-        border-radius: 12px;
-        border: 1px solid var(--line);
-        background: rgba(255,255,255,0.02);
-      }
-
-      .saved-item strong {
-        display: block;
-        margin-bottom: 4px;
-      }
-
-      .saved-item small {
-        color: var(--muted);
-      }
-
-      .message-thread {
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 20px;
-        background: rgba(255,255,255,0.01);
-        max-height: 500px;
-        overflow-y: auto;
-        margin-top: 12px;
-      }
-
-      .message {
-        margin-bottom: 14px;
-        padding: 12px 14px;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.02);
-      }
-
-      .message.sent {
-        background: rgba(116,232,255,0.12);
-        border-left: 3px solid var(--primary);
-      }
-
-      .message.received {
-        background: rgba(159,141,255,0.08);
-        border-left: 3px solid var(--purple);
-      }
-
-      .message-time {
-        color: var(--muted);
-        font-size: 0.8rem;
-        margin-top: 6px;
-      }
-
+      .message-thread { border: 1px solid var(--line); border-radius: 18px; padding: 20px; background: rgba(255,255,255,0.01); max-height: 500px; overflow-y: auto; margin-top: 12px; }
+      .message { margin-bottom: 14px; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,0.02); }
+      .message.sent { background: rgba(116,232,255,0.12); border-left: 3px solid var(--primary); }
+      .message.received { background: rgba(159,141,255,0.08); border-left: 3px solid var(--purple); }
+      .message-time { color: var(--muted); font-size: 0.8rem; margin-top: 6px; }
       .hidden { display: none !important; }
 
-      .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.6);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
-      }
+      .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 100; }
+      .modal-overlay.show { display: flex; }
+      .modal { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px; max-width: 500px; width: calc(100% - 32px); max-height: 90vh; overflow-y: auto; }
+      .modal h3 { margin-top: 0; margin-bottom: 14px; }
 
-      .modal-overlay.show {
-        display: flex;
-      }
-
-      .modal {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        padding: 28px;
-        max-width: 500px;
-        width: calc(100% - 32px);
-        max-height: 90vh;
-        overflow-y: auto;
-      }
-
-      .modal h3 {
-        margin-top: 0;
-        margin-bottom: 14px;
-      }
-
-      footer {
-        padding: 28px 0 54px;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-      }
-
-      .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 18px;
-        flex-wrap: wrap;
-      }
+      footer { padding: 28px 0 54px; border-top: 1px solid var(--line); color: var(--muted); }
+      .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
 
       @media (max-width: 980px) {
-        .hero-grid, .about-grid, .contact-grid, .cards, .process, .auth-grid {
-          grid-template-columns: 1fr;
-        }
-
+        .hero-grid, .about-grid, .contact-grid, .cards, .process, .auth-grid { grid-template-columns: 1fr; }
         .nav-links { display: none; }
       }
-
       @media (max-width: 640px) {
         .stats, .form-grid { grid-template-columns: 1fr; }
       }
@@ -779,18 +228,9 @@
             </div>
 
             <div class="stats">
-              <div class="stat">
-                <strong>2B+</strong>
-                <span>Visits contributed</span>
-              </div>
-              <div class="stat">
-                <strong>3</strong>
-                <span>Active community roles</span>
-              </div>
-              <div class="stat">
-                <strong>100%</strong>
-                <span>Player-first focus</span>
-              </div>
+              <div class="stat"><strong>2B+</strong><span>Visits contributed</span></div>
+              <div class="stat"><strong>3</strong><span>Active community roles</span></div>
+              <div class="stat"><strong>100%</strong><span>Player-first focus</span></div>
             </div>
           </div>
 
@@ -821,10 +261,7 @@
         <div class="container">
           <div class="section-head">
             <h2>What I do</h2>
-            <p>
-              I bring together community protection, quality assurance, and development-minded thinking to support
-              better gaming experiences and healthy online spaces.
-            </p>
+            <p>I bring together community protection, quality assurance, and development-minded thinking to support better gaming experiences and healthy online spaces.</p>
           </div>
 
           <div class="cards">
@@ -859,18 +296,10 @@
         <div class="container">
           <div class="about-grid">
             <div class="about-visual"></div>
-
             <div class="about-panel">
               <h3>Built around fairness, quality, and community trust.</h3>
-              <p>
-                I'm CIearDesigned, a Roblox community specialist with hands-on experience in moderation, testing,
-                and development-focused support. I care about designing better online spaces where players feel respected,
-                supported, and able to enjoy the game without unnecessary issues.
-              </p>
-              <p>
-                My work blends practical community management with an eye for quality and improvement, helping creators and communities stay healthy, active, and better organized.
-              </p>
-
+              <p>I’m CIearDesigned, a Roblox community specialist with hands-on experience in moderation, testing, and development-focused support.</p>
+              <p>My work blends practical community management with an eye for quality and improvement, helping creators and communities stay healthy, active, and better organized.</p>
               <div class="feature-list">
                 <div class="feature-item"><span class="feature-dot"></span> Rule enforcement with fairness</div>
                 <div class="feature-item"><span class="feature-dot"></span> Player support and issue investigation</div>
@@ -885,24 +314,19 @@
         <div class="container">
           <div class="section-head">
             <h2>Experience</h2>
-            <p>
-              My background spans moderation, testing, and community support across multiple Roblox environments.
-            </p>
+            <p>My background spans moderation, testing, and community support across multiple Roblox environments.</p>
           </div>
-
           <div class="process">
             <div class="step">
               <div class="step-num">01</div>
               <h3>Moderator</h3>
               <p>Helping manage player behavior, enforce rules, handle reports, and maintain a healthy community atmosphere.</p>
             </div>
-
             <div class="step">
               <div class="step-num">02</div>
               <h3>Tester</h3>
               <p>Reviewing gameplay systems, identifying issues early, and helping deliver better experiences before release.</p>
             </div>
-
             <div class="step">
               <div class="step-num">03</div>
               <h3>Developer</h3>
@@ -916,9 +340,8 @@
         <div class="container">
           <div class="section-head">
             <h2>Community work</h2>
-            <p>Selected projects and communities I've supported through moderation, testing, and gameplay improvement.</p>
+            <p>Selected projects and communities I’ve supported through moderation, testing, and gameplay improvement.</p>
           </div>
-
           <div class="cards">
             <article class="card">
               <img class="card-visual" src="InShot_20260609_201137247.jpg" alt="Stay For Fortune" style="object-fit: cover;" />
@@ -927,7 +350,6 @@
                 <p>Community support and gameplay-focused moderation in a live, high-traffic environment.</p>
               </div>
             </article>
-
             <article class="card">
               <img class="card-visual" src="1000040642.jpg" alt="Emergency Response: Liberty County" style="object-fit: cover;" />
               <div class="card-body">
@@ -935,7 +357,6 @@
                 <p>Maintaining fairness and order while supporting a structured, player-driven environment.</p>
               </div>
             </article>
-
             <article class="card">
               <img class="card-visual" src="horse-ranch-logo.png" alt="Horse Ranch" style="object-fit: cover;" />
               <div class="card-body">
@@ -1049,15 +470,26 @@
 
     <footer>
       <div class="container footer-inner">
-        <div class="brand">
-          <div class="brand-mark"></div>
-          <span>CIearDesigned</span>
-        </div>
+        <div class="brand"><div class="brand-mark"></div><span>CIearDesigned</span></div>
         <div>© 2026 CIearDesigned. All rights reserved.</div>
       </div>
     </footer>
 
     <script>
+      // Firebase-ready config block.
+      // For real production use, create a Firebase project and replace these values.
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+
+      const ADMIN_EMAIL = "chiliytrblx@gmail.com";
+      const ADMIN_USERNAME = "CIearDesigned";
+      const ADMIN_PASSWORD = "admin";
       const STORAGE_KEYS = {
         users: 'ciardesigned_users',
         currentUser: 'ciardesigned_active_user',
@@ -1065,9 +497,6 @@
         messages: 'ciardesigned_messages'
       };
 
-      const DEFAULT_ADMIN = 'CIearDesigned';
-
-      // DOM Elements
       const accountToggleBtn = document.getElementById('accountToggleBtn');
       const messagesToggleBtn = document.getElementById('messagesToggleBtn');
       const accountPanel = document.getElementById('accountPanel');
@@ -1087,44 +516,20 @@
       }
 
       function getUsers() {
-        try {
-          return JSON.parse(localStorage.getItem(STORAGE_KEYS.users)) || [];
-        } catch (error) {
-          return [];
-        }
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.users)) || []; } catch { return []; }
       }
-
-      function saveUsers(users) {
-        localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(users));
-      }
-
+      function saveUsers(users) { localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(users)); }
       function getCurrentUser() {
-        try {
-          return JSON.parse(localStorage.getItem(STORAGE_KEYS.currentUser));
-        } catch (error) {
-          return null;
-        }
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.currentUser)); } catch { return null; }
       }
-
       function setCurrentUser(user) {
-        if (user) {
-          localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(user));
-        } else {
-          localStorage.removeItem(STORAGE_KEYS.currentUser);
-        }
+        if (user) localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(user));
+        else localStorage.removeItem(STORAGE_KEYS.currentUser);
       }
-
       function getMessages() {
-        try {
-          return JSON.parse(localStorage.getItem(STORAGE_KEYS.messages)) || [];
-        } catch (error) {
-          return [];
-        }
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.messages)) || []; } catch { return []; }
       }
-
-      function saveMessages(messages) {
-        localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages));
-      }
+      function saveMessages(messages) { localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages)); }
 
       function updateAccountUI() {
         const currentUser = getCurrentUser();
@@ -1136,15 +541,10 @@
           userName.textContent = currentUser.name;
           accountActions.classList.remove('hidden');
           savedInquiries.classList.remove('hidden');
-          
-          // Show messages button only if user is CIearDesigned
-          if (currentUser.name === DEFAULT_ADMIN) {
-            messagesToggleBtn.classList.remove('hidden');
-            renderMessages();
-          } else {
-            messagesToggleBtn.classList.add('hidden');
-          }
-          
+
+          if (currentUser.name === ADMIN_USERNAME) messagesToggleBtn.classList.remove('hidden');
+          else messagesToggleBtn.classList.add('hidden');
+
           renderSavedInquiries();
         } else {
           accountActions.classList.add('hidden');
@@ -1162,18 +562,14 @@
           return;
         }
 
-        list.innerHTML = inquiries
-          .slice()
-          .reverse()
-          .map((item) => `
-            <div class="saved-item">
-              <strong>${item.name || 'Guest'}</strong>
-              <div>${item.project || 'General inquiry'}</div>
-              <small>${new Date(item.date).toLocaleString()} • ${item.email || 'No email'}</small>
-              <div style="margin-top: 8px; color: var(--text);">${item.message || ''}</div>
-            </div>
-          `)
-          .join('');
+        list.innerHTML = inquiries.slice().reverse().map((item) => `
+          <div class="saved-item">
+            <strong>${item.name || 'Guest'}</strong>
+            <div>${item.project || 'General inquiry'}</div>
+            <small>${new Date(item.date).toLocaleString()} • ${item.email || 'No email'}</small>
+            <div style="margin-top: 8px; color: var(--text);">${item.message || ''}</div>
+          </div>
+        `).join('');
       }
 
       function renderMessages() {
@@ -1185,16 +581,13 @@
           return;
         }
 
-        thread.innerHTML = messages
-          .map((msg) => `
-            <div class="message ${msg.sender === DEFAULT_ADMIN ? 'received' : 'sent'}">
-              <strong>${msg.sender}</strong>
-              <div>${msg.text}</div>
-              <div class="message-time">${new Date(msg.time).toLocaleString()}</div>
-            </div>
-          `)
-          .join('');
-        
+        thread.innerHTML = messages.map((msg) => `
+          <div class="message ${msg.sender === ADMIN_USERNAME ? 'received' : 'sent'}">
+            <strong>${msg.sender}</strong>
+            <div>${msg.text}</div>
+            <div class="message-time">${new Date(msg.time).toLocaleString()}</div>
+          </div>
+        `).join('');
         thread.scrollTop = thread.scrollHeight;
       }
 
@@ -1205,31 +598,22 @@
         const status = document.getElementById('signupStatus');
 
         if (!name || !password) {
-          showStatus(status, 'Please enter both your name and password.', 'error');
-          return;
+          showStatus(status, 'Please enter both your name and password.', 'error'); return;
         }
-
         if (name.length > 15) {
-          showStatus(status, 'Username must be 15 letters or less.', 'error');
-          return;
+          showStatus(status, 'Username must be 15 letters or less.', 'error'); return;
         }
-
         if (password.length < 3) {
-          showStatus(status, 'Password must be at least 3 characters long.', 'error');
-          return;
+          showStatus(status, 'Password must be at least 3 characters long.', 'error'); return;
         }
-
-        if (name.toLowerCase() === DEFAULT_ADMIN.toLowerCase()) {
-          showStatus(status, `The username "${DEFAULT_ADMIN}" is already taken.`, 'error');
-          return;
+        if (name.toLowerCase() === ADMIN_USERNAME.toLowerCase()) {
+          showStatus(status, `The username "${ADMIN_USERNAME}" is already reserved.`, 'error'); return;
         }
 
         const users = getUsers();
         const exists = users.some((user) => user.name.toLowerCase() === name.toLowerCase());
-
         if (exists) {
-          showStatus(status, 'That username is already taken. Try another one.', 'error');
-          return;
+          showStatus(status, 'That username is already taken. Try another one.', 'error'); return;
         }
 
         users.push({ name, password, createdAt: new Date().toISOString() });
@@ -1247,13 +631,11 @@
         const status = document.getElementById('loginStatus');
 
         if (!name || !password) {
-          showStatus(status, 'Please enter your username and password.', 'error');
-          return;
+          showStatus(status, 'Please enter your username and password.', 'error'); return;
         }
 
-        // Special login for CIearDesigned admin
-        if (name === DEFAULT_ADMIN && password === 'admin') {
-          setCurrentUser({ name: DEFAULT_ADMIN });
+        if (name === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+          setCurrentUser({ name: ADMIN_USERNAME, email: ADMIN_EMAIL });
           updateAccountUI();
           loginForm.reset();
           showStatus(status, 'Logged in successfully.', 'success');
@@ -1261,13 +643,9 @@
         }
 
         const users = getUsers();
-        const user = users.find(
-          (entry) => entry.name.toLowerCase() === name.toLowerCase() && entry.password === password
-        );
-
+        const user = users.find((entry) => entry.name.toLowerCase() === name.toLowerCase() && entry.password === password);
         if (!user) {
-          showStatus(status, 'Incorrect username or password.', 'error');
-          return;
+          showStatus(status, 'Incorrect username or password.', 'error'); return;
         }
 
         setCurrentUser({ name: user.name });
@@ -1294,14 +672,31 @@
         renderMessages();
       });
 
-      closeMessagesBtn.addEventListener('click', function () {
-        messagesModal.classList.remove('show');
-      });
+      closeMessagesBtn.addEventListener('click', function () { messagesModal.classList.remove('show'); });
+      messagesModal.addEventListener('click', function (event) { if (event.target === messagesModal) messagesModal.classList.remove('show'); });
 
-      messagesModal.addEventListener('click', function (event) {
-        if (event.target === messagesModal) {
-          messagesModal.classList.remove('show');
+      inquiryForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const status = document.getElementById('inquiryStatus');
+        const item = {
+          name: document.getElementById('inquiryName').value.trim(),
+          email: document.getElementById('inquiryEmail').value.trim(),
+          project: document.getElementById('inquiryProject').value.trim(),
+          message: document.getElementById('inquiryMessage').value.trim(),
+          date: new Date().toISOString()
+        };
+
+        if (!item.name || !item.email || !item.message) {
+          showStatus(status, 'Please fill out your name, email, and message.', 'error'); return;
         }
+
+        const savedInquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || '[]');
+        savedInquiries.push(item);
+        localStorage.setItem(STORAGE_KEYS.inquiries, JSON.stringify(savedInquiries));
+
+        renderSavedInquiries();
+        inquiryForm.reset();
+        showStatus(status, 'Inquiry saved successfully.', 'success');
       });
 
       messageForm.addEventListener('submit', function (event) {
@@ -1312,29 +707,26 @@
         const status = document.getElementById('messageStatus');
 
         if (!text) {
-          showStatus(status, 'Please type a message.', 'error');
-          return;
+          showStatus(status, 'Please type a message.', 'error'); return;
         }
-
         if (!currentUser) {
-          showStatus(status, 'You must be logged in to send messages.', 'error');
-          return;
+          showStatus(status, 'You must be logged in to send messages.', 'error'); return;
         }
 
         const messages = getMessages();
-        messages.push({
-          sender: currentUser.name,
-          text,
-          time: new Date().toISOString()
-        });
+        messages.push({ sender: currentUser.name, text, time: new Date().toISOString() });
         saveMessages(messages);
-        
         renderMessages();
         input.value = '';
         showStatus(status, 'Message sent!', 'success');
       });
 
+      // Real Firebase integration is possible here once the project config is added.
+      // Because GitHub Pages is static, Firebase Auth and Firestore must be configured in a real Firebase project.
+      // Without a valid Firebase config, the site falls back to localStorage for demo/testing.
+
       updateAccountUI();
+      renderMessages();
     </script>
   </body>
 </html>

@@ -99,31 +99,27 @@
         align-items: center;
       }
 
-      .nav-cta {
+      .nav-cta, .nav-button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         min-height: 44px;
         padding: 0 18px;
         border-radius: 12px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #071018;
-        font-weight: 800;
         border: none;
+        font-weight: 800;
         cursor: pointer;
       }
 
+      .nav-cta {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #071018;
+      }
+
       .nav-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 0 18px;
-        border-radius: 12px;
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--line);
         color: var(--text);
-        cursor: pointer;
       }
 
       .hero {
@@ -630,6 +626,8 @@
         margin-top: 16px;
         display: grid;
         gap: 12px;
+        max-height: 400px;
+        overflow-y: auto;
       }
 
       .saved-item {
@@ -648,7 +646,70 @@
         color: var(--muted);
       }
 
+      .message-thread {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+        background: rgba(255,255,255,0.01);
+        max-height: 500px;
+        overflow-y: auto;
+        margin-top: 12px;
+      }
+
+      .message {
+        margin-bottom: 14px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.02);
+      }
+
+      .message.sent {
+        background: rgba(116,232,255,0.12);
+        border-left: 3px solid var(--primary);
+      }
+
+      .message.received {
+        background: rgba(159,141,255,0.08);
+        border-left: 3px solid var(--purple);
+      }
+
+      .message-time {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin-top: 6px;
+      }
+
       .hidden { display: none !important; }
+
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+      }
+
+      .modal-overlay.show {
+        display: flex;
+      }
+
+      .modal {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        max-width: 500px;
+        width: calc(100% - 32px);
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal h3 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
 
       footer {
         padding: 28px 0 54px;
@@ -694,7 +755,8 @@
 
         <div class="nav-actions">
           <button class="nav-button" id="accountToggleBtn" type="button">Account</button>
-          <a class="nav-cta" href="#contact">Let’s Talk</a>
+          <button class="nav-button hidden" id="messagesToggleBtn" type="button">Messages</button>
+          <a class="nav-cta" href="#contact">Let's Talk</a>
         </div>
       </div>
     </header>
@@ -801,7 +863,7 @@
             <div class="about-panel">
               <h3>Built around fairness, quality, and community trust.</h3>
               <p>
-                I’m CIearDesigned, a Roblox community specialist with hands-on experience in moderation, testing,
+                I'm CIearDesigned, a Roblox community specialist with hands-on experience in moderation, testing,
                 and development-focused support. I care about designing better online spaces where players feel respected,
                 supported, and able to enjoy the game without unnecessary issues.
               </p>
@@ -854,7 +916,7 @@
         <div class="container">
           <div class="section-head">
             <h2>Community work</h2>
-            <p>Selected projects and communities I’ve supported through moderation, testing, and gameplay improvement.</p>
+            <p>Selected projects and communities I've supported through moderation, testing, and gameplay improvement.</p>
           </div>
 
           <div class="cards">
@@ -889,8 +951,8 @@
         <div class="container">
           <div class="cta-box">
             <div>
-              <h3>Let’s build a better player experience.</h3>
-              <p>Need community support, testing, or dev-minded help for a Roblox project? Let’s talk.</p>
+              <h3>Let's build a better player experience.</h3>
+              <p>Need community support, testing, or dev-minded help for a Roblox project? Let's talk.</p>
             </div>
             <a class="btn btn-primary" href="https://discordapp.com/users/1281633254092574893" target="_blank" rel="noreferrer">Reach out</a>
           </div>
@@ -928,7 +990,7 @@
           <div class="account-panel" id="accountPanel">
             <div class="section-head" style="margin-bottom: 18px;">
               <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem);">Optional account</h2>
-              <p>Optional local account for saving your inquiries and viewing them later.</p>
+              <p>Create an account (max 15 letters) to receive messages and save your inquiries.</p>
             </div>
 
             <div class="auth-grid">
@@ -936,7 +998,7 @@
                 <h3>Create account</h3>
                 <form id="signupForm">
                   <div class="form-grid">
-                    <input type="text" id="signupName" placeholder="Display name" required />
+                    <input type="text" id="signupName" placeholder="Username (max 15 letters)" maxlength="15" required />
                     <input type="password" id="signupPassword" placeholder="Password" required />
                   </div>
                   <button class="btn btn-primary submit-btn" type="submit">Create account</button>
@@ -948,7 +1010,7 @@
                 <h3>Log in</h3>
                 <form id="loginForm">
                   <div class="form-grid">
-                    <input type="text" id="loginName" placeholder="Display name" required />
+                    <input type="text" id="loginName" placeholder="Username" required />
                     <input type="password" id="loginPassword" placeholder="Password" required />
                   </div>
                   <button class="btn btn-primary submit-btn" type="submit">Log in</button>
@@ -970,6 +1032,21 @@
       </section>
     </main>
 
+    <div class="modal-overlay" id="messagesModal">
+      <div class="modal">
+        <h3>Messages with CIearDesigned</h3>
+        <div class="message-thread" id="messageThread"></div>
+        <form id="messageForm" style="margin-top: 14px;">
+          <div class="form-grid">
+            <textarea id="messageInput" class="full" placeholder="Type your message..." style="margin-bottom: 8px; min-height: 80px;" required></textarea>
+          </div>
+          <button class="btn btn-primary submit-btn" type="submit">Send message</button>
+        </form>
+        <div id="messageStatus" class="status" aria-live="polite"></div>
+        <button class="btn btn-secondary" id="closeMessagesBtn" type="button" style="margin-top: 12px;">Close</button>
+      </div>
+    </div>
+
     <footer>
       <div class="container footer-inner">
         <div class="brand">
@@ -984,14 +1061,22 @@
       const STORAGE_KEYS = {
         users: 'ciardesigned_users',
         currentUser: 'ciardesigned_active_user',
-        inquiries: 'ciardesigned_inquiries'
+        inquiries: 'ciardesigned_inquiries',
+        messages: 'ciardesigned_messages'
       };
 
+      const DEFAULT_ADMIN = 'CIearDesigned';
+
+      // DOM Elements
       const accountToggleBtn = document.getElementById('accountToggleBtn');
+      const messagesToggleBtn = document.getElementById('messagesToggleBtn');
       const accountPanel = document.getElementById('accountPanel');
+      const messagesModal = document.getElementById('messagesModal');
+      const closeMessagesBtn = document.getElementById('closeMessagesBtn');
       const signupForm = document.getElementById('signupForm');
       const loginForm = document.getElementById('loginForm');
       const inquiryForm = document.getElementById('inquiryForm');
+      const messageForm = document.getElementById('messageForm');
       const logoutBtn = document.getElementById('logoutBtn');
 
       function showStatus(element, text, type) {
@@ -1029,6 +1114,18 @@
         }
       }
 
+      function getMessages() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEYS.messages)) || [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveMessages(messages) {
+        localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages));
+      }
+
       function updateAccountUI() {
         const currentUser = getCurrentUser();
         const accountActions = document.getElementById('accountActions');
@@ -1039,10 +1136,20 @@
           userName.textContent = currentUser.name;
           accountActions.classList.remove('hidden');
           savedInquiries.classList.remove('hidden');
+          
+          // Show messages button only if user is CIearDesigned
+          if (currentUser.name === DEFAULT_ADMIN) {
+            messagesToggleBtn.classList.remove('hidden');
+            renderMessages();
+          } else {
+            messagesToggleBtn.classList.add('hidden');
+          }
+          
           renderSavedInquiries();
         } else {
           accountActions.classList.add('hidden');
           savedInquiries.classList.add('hidden');
+          messagesToggleBtn.classList.add('hidden');
         }
       }
 
@@ -1069,6 +1176,28 @@
           .join('');
       }
 
+      function renderMessages() {
+        const thread = document.getElementById('messageThread');
+        const messages = getMessages();
+
+        if (!messages.length) {
+          thread.innerHTML = '<div class="message" style="text-align: center; color: var(--muted);">No messages yet. Start the conversation!</div>';
+          return;
+        }
+
+        thread.innerHTML = messages
+          .map((msg) => `
+            <div class="message ${msg.sender === DEFAULT_ADMIN ? 'received' : 'sent'}">
+              <strong>${msg.sender}</strong>
+              <div>${msg.text}</div>
+              <div class="message-time">${new Date(msg.time).toLocaleString()}</div>
+            </div>
+          `)
+          .join('');
+        
+        thread.scrollTop = thread.scrollHeight;
+      }
+
       signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const name = document.getElementById('signupName').value.trim();
@@ -1080,8 +1209,18 @@
           return;
         }
 
+        if (name.length > 15) {
+          showStatus(status, 'Username must be 15 letters or less.', 'error');
+          return;
+        }
+
         if (password.length < 3) {
           showStatus(status, 'Password must be at least 3 characters long.', 'error');
+          return;
+        }
+
+        if (name.toLowerCase() === DEFAULT_ADMIN.toLowerCase()) {
+          showStatus(status, `The username "${DEFAULT_ADMIN}" is already taken.`, 'error');
           return;
         }
 
@@ -1089,7 +1228,7 @@
         const exists = users.some((user) => user.name.toLowerCase() === name.toLowerCase());
 
         if (exists) {
-          showStatus(status, 'That name is already taken. Try another one.', 'error');
+          showStatus(status, 'That username is already taken. Try another one.', 'error');
           return;
         }
 
@@ -1108,7 +1247,16 @@
         const status = document.getElementById('loginStatus');
 
         if (!name || !password) {
-          showStatus(status, 'Please enter your name and password.', 'error');
+          showStatus(status, 'Please enter your username and password.', 'error');
+          return;
+        }
+
+        // Special login for CIearDesigned admin
+        if (name === DEFAULT_ADMIN && password === 'admin') {
+          setCurrentUser({ name: DEFAULT_ADMIN });
+          updateAccountUI();
+          loginForm.reset();
+          showStatus(status, 'Logged in successfully.', 'success');
           return;
         }
 
@@ -1118,7 +1266,7 @@
         );
 
         if (!user) {
-          showStatus(status, 'Incorrect name or password.', 'error');
+          showStatus(status, 'Incorrect username or password.', 'error');
           return;
         }
 
@@ -1141,34 +1289,52 @@
         accountPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
-      inquiryForm.addEventListener('submit', function (event) {
+      messagesToggleBtn.addEventListener('click', function () {
+        messagesModal.classList.add('show');
+        renderMessages();
+      });
+
+      closeMessagesBtn.addEventListener('click', function () {
+        messagesModal.classList.remove('show');
+      });
+
+      messagesModal.addEventListener('click', function (event) {
+        if (event.target === messagesModal) {
+          messagesModal.classList.remove('show');
+        }
+      });
+
+      messageForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        const inquiryStatus = document.getElementById('inquiryStatus');
+        const currentUser = getCurrentUser();
+        const input = document.getElementById('messageInput');
+        const text = input.value.trim();
+        const status = document.getElementById('messageStatus');
 
-        const item = {
-          name: document.getElementById('inquiryName').value.trim(),
-          email: document.getElementById('inquiryEmail').value.trim(),
-          project: document.getElementById('inquiryProject').value.trim(),
-          message: document.getElementById('inquiryMessage').value.trim(),
-          date: new Date().toISOString()
-        };
-
-        if (!item.name || !item.email || !item.message) {
-          showStatus(inquiryStatus, 'Please fill out your name, email, and message.', 'error');
+        if (!text) {
+          showStatus(status, 'Please type a message.', 'error');
           return;
         }
 
-        const savedInquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || '[]');
-        savedInquiries.push(item);
-        localStorage.setItem(STORAGE_KEYS.inquiries, JSON.stringify(savedInquiries));
+        if (!currentUser) {
+          showStatus(status, 'You must be logged in to send messages.', 'error');
+          return;
+        }
 
-        renderSavedInquiries();
-        inquiryForm.reset();
-        showStatus(inquiryStatus, 'Inquiry saved successfully.', 'success');
+        const messages = getMessages();
+        messages.push({
+          sender: currentUser.name,
+          text,
+          time: new Date().toISOString()
+        });
+        saveMessages(messages);
+        
+        renderMessages();
+        input.value = '';
+        showStatus(status, 'Message sent!', 'success');
       });
 
       updateAccountUI();
-      renderSavedInquiries();
     </script>
   </body>
 </html>

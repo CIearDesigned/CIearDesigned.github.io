@@ -27,6 +27,8 @@
         --secondary: #8af0c8;
         --purple: #9f8dff;
         --shadow: rgba(0,0,0,0.32);
+        --success: #8af0c8;
+        --danger: #ff7b7b;
       }
 
       * { box-sizing: border-box; }
@@ -41,6 +43,7 @@
 
       a { color: inherit; text-decoration: none; }
       img { max-width: 100%; display: block; }
+      button, input, textarea { font: inherit; }
 
       .container {
         width: min(1200px, calc(100% - 32px));
@@ -90,6 +93,12 @@
 
       .nav-links a:hover { color: var(--text); }
 
+      .nav-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
       .nav-cta {
         display: inline-flex;
         align-items: center;
@@ -100,6 +109,21 @@
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: #071018;
         font-weight: 800;
+        border: none;
+        cursor: pointer;
+      }
+
+      .nav-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        color: var(--text);
+        cursor: pointer;
       }
 
       .hero {
@@ -165,6 +189,7 @@
         border: 1px solid transparent;
         font-weight: 700;
         transition: transform 0.2s ease, filter 0.2s ease;
+        cursor: pointer;
       }
 
       .btn:hover {
@@ -551,6 +576,80 @@
 
       .submit-btn { margin-top: 16px; }
 
+      .account-panel {
+        margin-top: 28px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+      }
+
+      .auth-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .auth-box {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+        background: rgba(255,255,255,0.01);
+      }
+
+      .auth-box h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+
+      .status {
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        color: var(--text);
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        display: none;
+      }
+
+      .status.show {
+        display: block;
+      }
+
+      .status.success {
+        border-color: rgba(138,240,200,0.35);
+        background: rgba(138,240,200,0.07);
+      }
+
+      .status.error {
+        border-color: rgba(255,123,123,0.4);
+        background: rgba(255,123,123,0.08);
+      }
+
+      .saved-list {
+        margin-top: 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .saved-item {
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .saved-item strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .saved-item small {
+        color: var(--muted);
+      }
+
+      .hidden { display: none !important; }
+
       footer {
         padding: 28px 0 54px;
         border-top: 1px solid var(--line);
@@ -566,7 +665,7 @@
       }
 
       @media (max-width: 980px) {
-        .hero-grid, .about-grid, .contact-grid, .cards, .process {
+        .hero-grid, .about-grid, .contact-grid, .cards, .process, .auth-grid {
           grid-template-columns: 1fr;
         }
 
@@ -593,7 +692,10 @@
           <a href="#contact">Contact</a>
         </nav>
 
-        <a class="nav-cta" href="#contact">Let’s Talk</a>
+        <div class="nav-actions">
+          <button class="nav-button" id="accountToggleBtn" type="button">Account</button>
+          <a class="nav-cta" href="#contact">Let’s Talk</a>
+        </div>
       </div>
     </header>
 
@@ -806,15 +908,62 @@
 
             <div class="panel">
               <h3>Send a message</h3>
-              <form>
+              <form id="inquiryForm">
                 <div class="form-grid">
-                  <input type="text" placeholder="Your name" />
-                  <input type="email" placeholder="Email address" />
-                  <input type="text" class="full" placeholder="Project or community name" />
-                  <textarea class="full" placeholder="Tell me about your project or the issue you need help with"></textarea>
+                  <input type="text" id="inquiryName" placeholder="Your name" required />
+                  <input type="email" id="inquiryEmail" placeholder="Email address" required />
+                  <input type="text" id="inquiryProject" class="full" placeholder="Project or community name" />
+                  <textarea id="inquiryMessage" class="full" placeholder="Tell me about your project or the issue you need help with" required></textarea>
                 </div>
                 <button class="btn btn-primary submit-btn" type="submit">Send inquiry</button>
               </form>
+              <div id="inquiryStatus" class="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="account-panel" id="accountPanel">
+            <div class="section-head" style="margin-bottom: 18px;">
+              <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem);">Optional account</h2>
+              <p>Optional local account for saving your inquiries and viewing them later.</p>
+            </div>
+
+            <div class="auth-grid">
+              <div class="auth-box">
+                <h3>Create account</h3>
+                <form id="signupForm">
+                  <div class="form-grid">
+                    <input type="text" id="signupName" placeholder="Display name" required />
+                    <input type="password" id="signupPassword" placeholder="Password" required />
+                  </div>
+                  <button class="btn btn-primary submit-btn" type="submit">Create account</button>
+                </form>
+                <div id="signupStatus" class="status" aria-live="polite"></div>
+              </div>
+
+              <div class="auth-box">
+                <h3>Log in</h3>
+                <form id="loginForm">
+                  <div class="form-grid">
+                    <input type="text" id="loginName" placeholder="Display name" required />
+                    <input type="password" id="loginPassword" placeholder="Password" required />
+                  </div>
+                  <button class="btn btn-primary submit-btn" type="submit">Log in</button>
+                </form>
+                <div id="loginStatus" class="status" aria-live="polite"></div>
+                <div id="accountActions" class="hidden" style="margin-top: 14px;">
+                  <p style="margin: 0 0 8px; color: var(--muted);">Logged in as <strong id="currentUserName"></strong></p>
+                  <button class="btn btn-secondary" id="logoutBtn" type="button">Log out</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="savedInquiries" class="hidden" style="margin-top: 22px;">
+              <h3 style="margin-bottom: 8px;">Saved inquiries</h3>
+              <div id="savedInquiriesList" class="saved-list"></div>
             </div>
           </div>
         </div>
@@ -830,5 +979,196 @@
         <div>© 2026 CIearDesigned. All rights reserved.</div>
       </div>
     </footer>
+
+    <script>
+      const STORAGE_KEYS = {
+        users: 'ciardesigned_users',
+        currentUser: 'ciardesigned_active_user',
+        inquiries: 'ciardesigned_inquiries'
+      };
+
+      const accountToggleBtn = document.getElementById('accountToggleBtn');
+      const accountPanel = document.getElementById('accountPanel');
+      const signupForm = document.getElementById('signupForm');
+      const loginForm = document.getElementById('loginForm');
+      const inquiryForm = document.getElementById('inquiryForm');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      function showStatus(element, text, type) {
+        element.textContent = text;
+        element.classList.remove('success', 'error');
+        element.classList.add(type);
+        element.classList.add('show');
+      }
+
+      function getUsers() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEYS.users)) || [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveUsers(users) {
+        localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(users));
+      }
+
+      function getCurrentUser() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEYS.currentUser));
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function setCurrentUser(user) {
+        if (user) {
+          localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(user));
+        } else {
+          localStorage.removeItem(STORAGE_KEYS.currentUser);
+        }
+      }
+
+      function updateAccountUI() {
+        const currentUser = getCurrentUser();
+        const accountActions = document.getElementById('accountActions');
+        const savedInquiries = document.getElementById('savedInquiries');
+        const userName = document.getElementById('currentUserName');
+
+        if (currentUser && currentUser.name) {
+          userName.textContent = currentUser.name;
+          accountActions.classList.remove('hidden');
+          savedInquiries.classList.remove('hidden');
+          renderSavedInquiries();
+        } else {
+          accountActions.classList.add('hidden');
+          savedInquiries.classList.add('hidden');
+        }
+      }
+
+      function renderSavedInquiries() {
+        const list = document.getElementById('savedInquiriesList');
+        const inquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || '[]');
+
+        if (!inquiries.length) {
+          list.innerHTML = '<div class="saved-item"><strong>No saved inquiries yet</strong><small>Send a message and it will appear here.</small></div>';
+          return;
+        }
+
+        list.innerHTML = inquiries
+          .slice()
+          .reverse()
+          .map((item) => `
+            <div class="saved-item">
+              <strong>${item.name || 'Guest'}</strong>
+              <div>${item.project || 'General inquiry'}</div>
+              <small>${new Date(item.date).toLocaleString()} • ${item.email || 'No email'}</small>
+              <div style="margin-top: 8px; color: var(--text);">${item.message || ''}</div>
+            </div>
+          `)
+          .join('');
+      }
+
+      signupForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('signupName').value.trim();
+        const password = document.getElementById('signupPassword').value.trim();
+        const status = document.getElementById('signupStatus');
+
+        if (!name || !password) {
+          showStatus(status, 'Please enter both your name and password.', 'error');
+          return;
+        }
+
+        if (password.length < 3) {
+          showStatus(status, 'Password must be at least 3 characters long.', 'error');
+          return;
+        }
+
+        const users = getUsers();
+        const exists = users.some((user) => user.name.toLowerCase() === name.toLowerCase());
+
+        if (exists) {
+          showStatus(status, 'That name is already taken. Try another one.', 'error');
+          return;
+        }
+
+        users.push({ name, password, createdAt: new Date().toISOString() });
+        saveUsers(users);
+        setCurrentUser({ name });
+        updateAccountUI();
+        signupForm.reset();
+        showStatus(status, 'Account created successfully. You are now logged in.', 'success');
+      });
+
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('loginName').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+        const status = document.getElementById('loginStatus');
+
+        if (!name || !password) {
+          showStatus(status, 'Please enter your name and password.', 'error');
+          return;
+        }
+
+        const users = getUsers();
+        const user = users.find(
+          (entry) => entry.name.toLowerCase() === name.toLowerCase() && entry.password === password
+        );
+
+        if (!user) {
+          showStatus(status, 'Incorrect name or password.', 'error');
+          return;
+        }
+
+        setCurrentUser({ name: user.name });
+        updateAccountUI();
+        loginForm.reset();
+        showStatus(status, 'Logged in successfully.', 'success');
+      });
+
+      logoutBtn.addEventListener('click', function () {
+        setCurrentUser(null);
+        updateAccountUI();
+        document.getElementById('loginStatus').textContent = '';
+        document.getElementById('loginStatus').classList.remove('show');
+        document.getElementById('signupStatus').textContent = '';
+        document.getElementById('signupStatus').classList.remove('show');
+      });
+
+      accountToggleBtn.addEventListener('click', function () {
+        accountPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      inquiryForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const inquiryStatus = document.getElementById('inquiryStatus');
+
+        const item = {
+          name: document.getElementById('inquiryName').value.trim(),
+          email: document.getElementById('inquiryEmail').value.trim(),
+          project: document.getElementById('inquiryProject').value.trim(),
+          message: document.getElementById('inquiryMessage').value.trim(),
+          date: new Date().toISOString()
+        };
+
+        if (!item.name || !item.email || !item.message) {
+          showStatus(inquiryStatus, 'Please fill out your name, email, and message.', 'error');
+          return;
+        }
+
+        const savedInquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || '[]');
+        savedInquiries.push(item);
+        localStorage.setItem(STORAGE_KEYS.inquiries, JSON.stringify(savedInquiries));
+
+        renderSavedInquiries();
+        inquiryForm.reset();
+        showStatus(inquiryStatus, 'Inquiry saved successfully.', 'success');
+      });
+
+      updateAccountUI();
+      renderSavedInquiries();
+    </script>
   </body>
 </html>

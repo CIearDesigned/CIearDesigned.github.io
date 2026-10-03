@@ -82,7 +82,7 @@
       .hero-copy { margin: 0; max-width: 620px; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
       .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; }
       .btn {
-        display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px; border-radius: 14px; border: 1px solid transparent; font-weight: 700; transition: transform 0.2s ease, filter 0.2s ease; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px; border-radius: 14px; border: 1px solid transparent; font-weight: 700; transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
       }
       .btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
       .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #061018; }
@@ -93,9 +93,9 @@
       .stat strong { display: block; margin-bottom: 8px; font-size: clamp(2rem, 3vw, 3rem); line-height: 1; letter-spacing: -0.07em; }
       .stat span { color: var(--muted); font-size: 0.92rem; }
 
-      .hero-visual { position: relative; min-height: 520px; border: 1px solid var(--line); border-radius: 28px; background: radial-gradient(circle at 18% 18%, rgba(116,232,255,0.16), transparent 24%), radial-gradient(circle at 80% 26%, rgba(159,141,255,0.18), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)), var(--panel); overflow: hidden; box-shadow: 0 30px 60px var(--shadow); }
-      .hero-visual::before { content: ""; position: absolute; inset: 28px; border-radius: 22px; background: linear-gradient(135deg, rgba(116,232,255,0.2), rgba(159,141,255,0.14)); border: 1px solid rgba(255,255,255,0.04); }
-      .screen { position: absolute; left: 42px; right: 42px; top: 52px; bottom: 42px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(9,18,28,0.7); }
+      .hero-visual { position: relative; min-height: 520px; border: 1px solid var(--line); border-radius: 28px; background: radial-gradient(circle at 18% 18%, rgba(116,232,255,0.16), transparent 22%), linear-gradient(180deg, rgba(16,29,45,0.9), rgba(10,17,25,0.75)); }
+      .hero-visual::before { content: ""; position: absolute; inset: 28px; border-radius: 22px; background: linear-gradient(135deg, rgba(116,232,255,0.2), rgba(159,141,255,0.14)); border: 1px solid rgba(255,255,255,0.08); }
+      .screen { position: absolute; left: 42px; right: 42px; top: 52px; bottom: 42px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(9,18,28,0.7); box-shadow: 0 20px 50px rgba(0,0,0,0.22); }
       .screen-top { height: 60px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
       .screen-body { display: grid; grid-template-columns: 1.25fr 0.75fr; height: calc(100% - 60px); }
       .main-panel { padding: 24px; }
@@ -112,13 +112,13 @@
       .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
       .card { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); transition: transform 0.2s ease, border-color 0.2s ease; }
       .card:hover { transform: translateY(-4px); border-color: rgba(116,232,255,0.35); }
-      .card-visual { height: 240px; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, rgba(116,232,255,0.3), rgba(159,141,255,0.2)), linear-gradient(180deg, #14273a, #0d1623); }
+      .card-visual { height: 240px; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, rgba(116,232,255,0.3), rgba(159,141,255,0.2)), linear-gradient(180deg, #14273a, #0d1824); }
       .card-body { padding: 22px 20px 24px; }
       .card-body h3 { margin: 0 0 8px; font-size: 1.35rem; }
       .card-body p { margin: 0; color: var(--muted); line-height: 1.8; }
 
       .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-      .about-visual { min-height: 420px; border-radius: 24px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(116,232,255,0.18), rgba(159,141,255,0.18)), linear-gradient(180deg, #112232, #0b1722); position: relative; overflow: hidden; }
+      .about-visual { min-height: 420px; border-radius: 24px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(116,232,255,0.18), rgba(159,141,255,0.18)), linear-gradient(180deg, #102232, #0d1824); position: relative; overflow: hidden; }
       .about-visual::before { content: ""; position: absolute; inset: 18% 15%; border-radius: 50%; background: radial-gradient(circle, rgba(116,232,255,0.32), transparent 60%); filter: blur(18px); }
       .about-panel { padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
       .about-panel h3 { margin: 0 0 18px; font-size: 2rem; letter-spacing: -0.05em; }
@@ -129,11 +129,11 @@
 
       .process { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
       .step { padding: 24px 22px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
-      .step-num { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 12px; background: rgba(116,232,255,0.10); color: var(--primary); font-weight: 800; margin-bottom: 18px; }
-      .step h3 { margin: 0 0 10px; font-size: 1.2rem; }
+      .step-num { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 12px; background: rgba(116,232,255,0.10); color: var(--primary); font-weight: 800; }
+      .step h3 { margin: 18px 0 10px; font-size: 1.2rem; }
       .step p { margin: 0; color: var(--muted); line-height: 1.8; }
 
-      .cta-box { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 38px 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(135deg, rgba(116,232,255,0.12), rgba(159,141,255,0.12)), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); }
+      .cta-box { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 38px 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(135deg, rgba(116,232,255,0.12), rgba(159,141,255,0.06)); }
       .cta-box h3 { margin: 0; font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.06em; }
       .cta-box p { margin: 8px 0 0; color: var(--muted); }
 
@@ -145,6 +145,7 @@
 
       .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
       input, textarea { width: 100%; border: 1px solid var(--line); background: rgba(255,255,255,0.02); border-radius: 12px; padding: 14px 14px; font: inherit; color: var(--text); outline: none; }
+      input:focus, textarea:focus { border-color: rgba(116,232,255,0.5); box-shadow: 0 0 0 3px rgba(116,232,255,0.12); }
       textarea { min-height: 142px; resize: vertical; }
       .full { grid-column: 1 / -1; }
       .submit-btn { margin-top: 16px; }
@@ -436,6 +437,7 @@
                   </div>
                   <button class="btn btn-primary submit-btn" type="submit">Log in</button>
                 </form>
+                <button class="btn btn-secondary submit-btn" id="googleSignInBtn" type="button">Continue with Google</button>
                 <div id="loginStatus" class="status" aria-live="polite"></div>
                 <div id="accountActions" class="hidden" style="margin-top: 14px;">
                   <p style="margin: 0 0 8px; color: var(--muted);">Logged in as <strong id="currentUserName"></strong></p>
@@ -475,44 +477,51 @@
       </div>
     </footer>
 
-    <script>
-      // Firebase-ready config block.
-      // For real production use, create a Firebase project and replace these values.
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+      import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+      import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
       const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.appspot.com",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
+        apiKey: "AIzaSyCH3XgI1095TzSRY3qv-u5oE-2LC7fOps8",
+        authDomain: "cieardesigned.firebaseapp.com",
+        projectId: "cieardesigned",
+        storageBucket: "cieardesigned.firebasestorage.app",
+        messagingSenderId: "229183270855",
+        appId: "1:229183270855:web:ff7258ffdf3d4e1ec833e2",
+        measurementId: "G-B8LTW8L5ZX"
       };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
 
       const ADMIN_EMAIL = "chiliytrblx@gmail.com";
       const ADMIN_USERNAME = "CIearDesigned";
-      const ADMIN_PASSWORD = "admin";
       const STORAGE_KEYS = {
-        users: 'ciardesigned_users',
-        currentUser: 'ciardesigned_active_user',
-        inquiries: 'ciardesigned_inquiries',
-        messages: 'ciardesigned_messages'
+        users: "ciardesigned_users",
+        currentUser: "ciardesigned_active_user",
+        inquiries: "ciardesigned_inquiries",
+        messages: "ciardesigned_messages"
       };
 
-      const accountToggleBtn = document.getElementById('accountToggleBtn');
-      const messagesToggleBtn = document.getElementById('messagesToggleBtn');
-      const accountPanel = document.getElementById('accountPanel');
-      const messagesModal = document.getElementById('messagesModal');
-      const closeMessagesBtn = document.getElementById('closeMessagesBtn');
-      const signupForm = document.getElementById('signupForm');
-      const loginForm = document.getElementById('loginForm');
-      const inquiryForm = document.getElementById('inquiryForm');
-      const messageForm = document.getElementById('messageForm');
-      const logoutBtn = document.getElementById('logoutBtn');
+      const accountToggleBtn = document.getElementById("accountToggleBtn");
+      const messagesToggleBtn = document.getElementById("messagesToggleBtn");
+      const accountPanel = document.getElementById("accountPanel");
+      const messagesModal = document.getElementById("messagesModal");
+      const closeMessagesBtn = document.getElementById("closeMessagesBtn");
+      const signupForm = document.getElementById("signupForm");
+      const loginForm = document.getElementById("loginForm");
+      const inquiryForm = document.getElementById("inquiryForm");
+      const messageForm = document.getElementById("messageForm");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const googleSignInBtn = document.getElementById("googleSignInBtn");
 
       function showStatus(element, text, type) {
         element.textContent = text;
-        element.classList.remove('success', 'error');
+        element.classList.remove("success", "error");
         element.classList.add(type);
-        element.classList.add('show');
+        element.classList.add("show");
       }
 
       function getUsers() {
@@ -533,29 +542,33 @@
 
       function updateAccountUI() {
         const currentUser = getCurrentUser();
-        const accountActions = document.getElementById('accountActions');
-        const savedInquiries = document.getElementById('savedInquiries');
-        const userName = document.getElementById('currentUserName');
+        const accountActions = document.getElementById("accountActions");
+        const savedInquiries = document.getElementById("savedInquiries");
+        const userName = document.getElementById("currentUserName");
+        const isAdmin = !!currentUser && (
+          (currentUser.email && currentUser.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) ||
+          currentUser.name === ADMIN_USERNAME
+        );
 
         if (currentUser && currentUser.name) {
           userName.textContent = currentUser.name;
-          accountActions.classList.remove('hidden');
-          savedInquiries.classList.remove('hidden');
+          accountActions.classList.remove("hidden");
+          savedInquiries.classList.remove("hidden");
 
-          if (currentUser.name === ADMIN_USERNAME) messagesToggleBtn.classList.remove('hidden');
-          else messagesToggleBtn.classList.add('hidden');
+          if (isAdmin) messagesToggleBtn.classList.remove("hidden");
+          else messagesToggleBtn.classList.add("hidden");
 
           renderSavedInquiries();
         } else {
-          accountActions.classList.add('hidden');
-          savedInquiries.classList.add('hidden');
-          messagesToggleBtn.classList.add('hidden');
+          accountActions.classList.add("hidden");
+          savedInquiries.classList.add("hidden");
+          messagesToggleBtn.classList.add("hidden");
         }
       }
 
       function renderSavedInquiries() {
-        const list = document.getElementById('savedInquiriesList');
-        const inquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || '[]');
+        const list = document.getElementById("savedInquiriesList");
+        const inquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || "[]");
 
         if (!inquiries.length) {
           list.innerHTML = '<div class="saved-item"><strong>No saved inquiries yet</strong><small>Send a message and it will appear here.</small></div>';
@@ -564,16 +577,16 @@
 
         list.innerHTML = inquiries.slice().reverse().map((item) => `
           <div class="saved-item">
-            <strong>${item.name || 'Guest'}</strong>
-            <div>${item.project || 'General inquiry'}</div>
-            <small>${new Date(item.date).toLocaleString()} • ${item.email || 'No email'}</small>
-            <div style="margin-top: 8px; color: var(--text);">${item.message || ''}</div>
+            <strong>${item.name || "Guest"}</strong>
+            <div>${item.project || "General inquiry"}</div>
+            <small>${new Date(item.date).toLocaleString()} • ${item.email || "No email"}</small>
+            <div style="margin-top: 8px; color: var(--text);">${item.message || ""}</div>
           </div>
-        `).join('');
+        `).join("");
       }
 
       function renderMessages() {
-        const thread = document.getElementById('messageThread');
+        const thread = document.getElementById("messageThread");
         const messages = getMessages();
 
         if (!messages.length) {
@@ -582,38 +595,38 @@
         }
 
         thread.innerHTML = messages.map((msg) => `
-          <div class="message ${msg.sender === ADMIN_USERNAME ? 'received' : 'sent'}">
+          <div class="message ${msg.sender === ADMIN_USERNAME ? "received" : "sent"}">
             <strong>${msg.sender}</strong>
             <div>${msg.text}</div>
             <div class="message-time">${new Date(msg.time).toLocaleString()}</div>
           </div>
-        `).join('');
+        `).join("");
         thread.scrollTop = thread.scrollHeight;
       }
 
-      signupForm.addEventListener('submit', function (event) {
+      signupForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        const name = document.getElementById('signupName').value.trim();
-        const password = document.getElementById('signupPassword').value.trim();
-        const status = document.getElementById('signupStatus');
+        const name = document.getElementById("signupName").value.trim();
+        const password = document.getElementById("signupPassword").value.trim();
+        const status = document.getElementById("signupStatus");
 
         if (!name || !password) {
-          showStatus(status, 'Please enter both your name and password.', 'error'); return;
+          showStatus(status, "Please enter both your name and password.", "error"); return;
         }
         if (name.length > 15) {
-          showStatus(status, 'Username must be 15 letters or less.', 'error'); return;
+          showStatus(status, "Username must be 15 letters or less.", "error"); return;
         }
         if (password.length < 3) {
-          showStatus(status, 'Password must be at least 3 characters long.', 'error'); return;
+          showStatus(status, "Password must be at least 3 characters long.", "error"); return;
         }
         if (name.toLowerCase() === ADMIN_USERNAME.toLowerCase()) {
-          showStatus(status, `The username "${ADMIN_USERNAME}" is already reserved.`, 'error'); return;
+          showStatus(status, `The username "${ADMIN_USERNAME}" is already reserved.`, "error"); return;
         }
 
         const users = getUsers();
         const exists = users.some((user) => user.name.toLowerCase() === name.toLowerCase());
         if (exists) {
-          showStatus(status, 'That username is already taken. Try another one.', 'error'); return;
+          showStatus(status, "That username is already taken. Try another one.", "error"); return;
         }
 
         users.push({ name, password, createdAt: new Date().toISOString() });
@@ -621,110 +634,170 @@
         setCurrentUser({ name });
         updateAccountUI();
         signupForm.reset();
-        showStatus(status, 'Account created successfully. You are now logged in.', 'success');
+        showStatus(status, "Account created successfully. You are now logged in.", "success");
       });
 
-      loginForm.addEventListener('submit', function (event) {
+      loginForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        const name = document.getElementById('loginName').value.trim();
-        const password = document.getElementById('loginPassword').value.trim();
-        const status = document.getElementById('loginStatus');
+        const name = document.getElementById("loginName").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+        const status = document.getElementById("loginStatus");
 
         if (!name || !password) {
-          showStatus(status, 'Please enter your username and password.', 'error'); return;
+          showStatus(status, "Please enter your username and password.", "error"); return;
         }
 
-        if (name === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        if (name === ADMIN_USERNAME && password === "admin") {
           setCurrentUser({ name: ADMIN_USERNAME, email: ADMIN_EMAIL });
           updateAccountUI();
           loginForm.reset();
-          showStatus(status, 'Logged in successfully.', 'success');
+          showStatus(status, "Logged in successfully.", "success");
           return;
         }
 
         const users = getUsers();
         const user = users.find((entry) => entry.name.toLowerCase() === name.toLowerCase() && entry.password === password);
         if (!user) {
-          showStatus(status, 'Incorrect username or password.', 'error'); return;
+          showStatus(status, "Incorrect username or password.", "error"); return;
         }
 
         setCurrentUser({ name: user.name });
         updateAccountUI();
         loginForm.reset();
-        showStatus(status, 'Logged in successfully.', 'success');
+        showStatus(status, "Logged in successfully.", "success");
       });
 
-      logoutBtn.addEventListener('click', function () {
+      async function signInWithGoogle() {
+        const provider = new GoogleAuthProvider();
+        const status = document.getElementById("loginStatus");
+
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          const displayName = user.displayName || user.email?.split("@")[0] || "User";
+          setCurrentUser({ name: displayName, email: user.email || "" });
+          updateAccountUI();
+          showStatus(status, `Signed in as ${displayName}.`, "success");
+        } catch (error) {
+          showStatus(status, "Google sign-in failed. Please try again.", "error");
+          console.error("Google sign-in failed:", error);
+        }
+      }
+
+      googleSignInBtn.addEventListener("click", signInWithGoogle);
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const displayName = user.displayName || user.email?.split("@")[0] || "User";
+          setCurrentUser({ name: displayName, email: user.email || "" });
+        }
+        updateAccountUI();
+      });
+
+      logoutBtn.addEventListener("click", async function () {
+        try {
+          if (auth.currentUser) await signOut(auth);
+        } catch (error) {
+          console.error("Sign out failed:", error);
+        }
+
         setCurrentUser(null);
         updateAccountUI();
-        document.getElementById('loginStatus').textContent = '';
-        document.getElementById('loginStatus').classList.remove('show');
-        document.getElementById('signupStatus').textContent = '';
-        document.getElementById('signupStatus').classList.remove('show');
+        document.getElementById("loginStatus").textContent = "";
+        document.getElementById("loginStatus").classList.remove("show");
+        document.getElementById("signupStatus").textContent = "";
+        document.getElementById("signupStatus").classList.remove("show");
       });
 
-      accountToggleBtn.addEventListener('click', function () {
-        accountPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      accountToggleBtn.addEventListener("click", function () {
+        accountPanel.scrollIntoView({ behavior: "smooth", block: "start" });
       });
 
-      messagesToggleBtn.addEventListener('click', function () {
-        messagesModal.classList.add('show');
+      messagesToggleBtn.addEventListener("click", function () {
+        messagesModal.classList.add("show");
         renderMessages();
       });
 
-      closeMessagesBtn.addEventListener('click', function () { messagesModal.classList.remove('show'); });
-      messagesModal.addEventListener('click', function (event) { if (event.target === messagesModal) messagesModal.classList.remove('show'); });
+      closeMessagesBtn.addEventListener("click", function () { messagesModal.classList.remove("show"); });
+      messagesModal.addEventListener("click", function (event) { if (event.target === messagesModal) messagesModal.classList.remove("show"); });
 
-      inquiryForm.addEventListener('submit', function (event) {
+      inquiryForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        const status = document.getElementById('inquiryStatus');
+        const status = document.getElementById("inquiryStatus");
         const item = {
-          name: document.getElementById('inquiryName').value.trim(),
-          email: document.getElementById('inquiryEmail').value.trim(),
-          project: document.getElementById('inquiryProject').value.trim(),
-          message: document.getElementById('inquiryMessage').value.trim(),
+          name: document.getElementById("inquiryName").value.trim(),
+          email: document.getElementById("inquiryEmail").value.trim(),
+          project: document.getElementById("inquiryProject").value.trim(),
+          message: document.getElementById("inquiryMessage").value.trim(),
           date: new Date().toISOString()
         };
 
         if (!item.name || !item.email || !item.message) {
-          showStatus(status, 'Please fill out your name, email, and message.', 'error'); return;
+          showStatus(status, "Please fill out your name, email, and message.", "error"); return;
         }
 
-        const savedInquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || '[]');
+        const savedInquiries = JSON.parse(localStorage.getItem(STORAGE_KEYS.inquiries) || "[]");
         savedInquiries.push(item);
         localStorage.setItem(STORAGE_KEYS.inquiries, JSON.stringify(savedInquiries));
 
         renderSavedInquiries();
         inquiryForm.reset();
-        showStatus(status, 'Inquiry saved successfully.', 'success');
+        showStatus(status, "Inquiry saved successfully.", "success");
       });
 
-      messageForm.addEventListener('submit', function (event) {
+      messageForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         const currentUser = getCurrentUser();
-        const input = document.getElementById('messageInput');
+        const input = document.getElementById("messageInput");
         const text = input.value.trim();
-        const status = document.getElementById('messageStatus');
+        const status = document.getElementById("messageStatus");
 
         if (!text) {
-          showStatus(status, 'Please type a message.', 'error'); return;
+          showStatus(status, "Please type a message.", "error"); return;
         }
         if (!currentUser) {
-          showStatus(status, 'You must be logged in to send messages.', 'error'); return;
+          showStatus(status, "You must be logged in to send messages.", "error"); return;
+        }
+
+        const senderName = currentUser.name || "User";
+
+        try {
+          if (auth.currentUser && db) {
+            await addDoc(collection(db, "messages"), {
+              sender: senderName,
+              text,
+              createdAt: serverTimestamp()
+            });
+          }
+        } catch (error) {
+          console.error("Firestore save failed, using localStorage fallback:", error);
         }
 
         const messages = getMessages();
-        messages.push({ sender: currentUser.name, text, time: new Date().toISOString() });
+        messages.push({ sender: senderName, text, time: new Date().toISOString() });
         saveMessages(messages);
         renderMessages();
-        input.value = '';
-        showStatus(status, 'Message sent!', 'success');
+        input.value = "";
+        showStatus(status, "Message sent!", "success");
       });
 
-      // Real Firebase integration is possible here once the project config is added.
-      // Because GitHub Pages is static, Firebase Auth and Firestore must be configured in a real Firebase project.
-      // Without a valid Firebase config, the site falls back to localStorage for demo/testing.
+      function attachMessageListener() {
+        if (!db) return;
+        const q = query(collection(db, "messages"), orderBy("createdAt", "asc"));
+        onSnapshot(q, (snapshot) => {
+          const items = snapshot.docs.map((doc) => {
+            const data = doc.data();
+            const createdAt = data.createdAt && typeof data.createdAt.toDate === "function" ? data.createdAt.toDate().toISOString() : new Date().toISOString();
+            return { sender: data.sender || "Unknown", text: data.text || "", time: createdAt };
+          });
+          saveMessages(items);
+          renderMessages();
+        }, (error) => {
+          console.error("Firestore listener error:", error);
+        });
+      }
 
+      attachMessageListener();
       updateAccountUI();
       renderMessages();
     </script>

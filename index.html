@@ -299,7 +299,7 @@
             <div class="about-visual"></div>
             <div class="about-panel">
               <h3>Built around fairness, quality, and community trust.</h3>
-              <p>I’m CIearDesigned, a Roblox community specialist with hands-on experience in moderation, testing, and development-focused support.</p>
+              <p>I'm CIearDesigned, a Roblox community specialist with hands-on experience in moderation, testing, and development-focused support.</p>
               <p>My work blends practical community management with an eye for quality and improvement, helping creators and communities stay healthy, active, and better organized.</p>
               <div class="feature-list">
                 <div class="feature-item"><span class="feature-dot"></span> Rule enforcement with fairness</div>
@@ -341,7 +341,7 @@
         <div class="container">
           <div class="section-head">
             <h2>Community work</h2>
-            <p>Selected projects and communities I’ve supported through moderation, testing, and gameplay improvement.</p>
+            <p>Selected projects and communities I've supported through moderation, testing, and gameplay improvement.</p>
           </div>
           <div class="cards">
             <article class="card">
@@ -506,6 +506,14 @@
         guestName: "ciardesigned_guest_name"
       };
 
+      // Pre-populate admin username as taken
+      const prefilledUsers = [
+        { name: ADMIN_USERNAME, password: "", createdAt: new Date().toISOString(), isAdmin: true }
+      ];
+      if (!localStorage.getItem(STORAGE_KEYS.users)) {
+        localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(prefilledUsers));
+      }
+
       const accountToggleBtn = document.getElementById("accountToggleBtn");
       const messagesToggleBtn = document.getElementById("messagesToggleBtn");
       const accountPanel = document.getElementById("accountPanel");
@@ -588,6 +596,11 @@
 
       function renderMessages() {
         const thread = document.getElementById("messageThread");
+        const currentUser = getCurrentUser();
+        const isAdmin = !!currentUser && (
+          (currentUser.email && currentUser.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) ||
+          currentUser.name === ADMIN_USERNAME
+        );
         const messages = getMessages();
 
         if (!messages.length) {
@@ -595,13 +608,26 @@
           return;
         }
 
-        thread.innerHTML = messages.map((msg) => `
-          <div class="message ${msg.sender === ADMIN_USERNAME ? "received" : "sent"}">
-            <strong>${msg.sender}</strong>
-            <div>${msg.text}</div>
-            <div class="message-time">${new Date(msg.time).toLocaleString()}</div>
-          </div>
-        `).join("");
+        thread.innerHTML = messages.map((msg) => {
+          const isFromAdmin = msg.sender === ADMIN_USERNAME;
+          const isFromCurrentUser = msg.sender === currentUser?.name;
+
+          // Only show messages if:
+          // 1. Current user is admin (sees all messages)
+          // 2. Message is from current user (sees their own)
+          // 3. Message is from admin (everyone sees admin responses)
+          const shouldShow = isAdmin || isFromCurrentUser || isFromAdmin;
+
+          if (!shouldShow) return '';
+
+          return `
+            <div class="message ${isFromAdmin ? "received" : "sent"}">
+              <strong>${msg.sender}</strong>
+              <div>${msg.text}</div>
+              <div class="message-time">${new Date(msg.time).toLocaleString()}</div>
+            </div>
+          `;
+        }).filter(Boolean).join("");
         thread.scrollTop = thread.scrollHeight;
       }
 
@@ -621,7 +647,7 @@
           showStatus(status, "Password must be at least 3 characters long.", "error"); return;
         }
         if (name.toLowerCase() === ADMIN_USERNAME.toLowerCase()) {
-          showStatus(status, `The username "${ADMIN_USERNAME}" is already reserved.`, "error"); return;
+          showStatus(status, `The username "${ADMIN_USERNAME}" is already taken.`, "error"); return;
         }
 
         const users = getUsers();

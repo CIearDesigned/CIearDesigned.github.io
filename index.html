@@ -502,7 +502,8 @@
         users: "ciardesigned_users",
         currentUser: "ciardesigned_active_user",
         inquiries: "ciardesigned_inquiries",
-        messages: "ciardesigned_messages"
+        messages: "ciardesigned_messages",
+        guestName: "ciardesigned_guest_name"
       };
 
       const accountToggleBtn = document.getElementById("accountToggleBtn");
@@ -679,8 +680,8 @@
           updateAccountUI();
           showStatus(status, `Signed in as ${displayName}.`, "success");
         } catch (error) {
-          showStatus(status, "Google sign-in failed. Please try again.", "error");
           console.error("Google sign-in failed:", error);
+          showStatus(status, "Google sign-in was blocked by your browser. Message sending still works in local mode.", "error");
         }
       }
 
@@ -755,11 +756,24 @@
         if (!text) {
           showStatus(status, "Please type a message.", "error"); return;
         }
+
+        let senderName = currentUser?.name || localStorage.getItem(STORAGE_KEYS.guestName) || "Guest";
+
         if (!currentUser) {
-          showStatus(status, "You must be logged in to send messages.", "error"); return;
+          const promptedName = window.prompt("Enter your name to send this message:", senderName);
+          senderName = (promptedName && promptedName.trim()) || senderName;
+          localStorage.setItem(STORAGE_KEYS.guestName, senderName);
         }
 
-        const senderName = currentUser.name || "User";
+        const message = {
+          sender: senderName,
+          text,
+          time: new Date().toISOString()
+        };
+
+        const messages = getMessages();
+        messages.push(message);
+        saveMessages(messages);
 
         try {
           if (auth.currentUser && db) {
@@ -773,9 +787,6 @@
           console.error("Firestore save failed, using localStorage fallback:", error);
         }
 
-        const messages = getMessages();
-        messages.push({ sender: senderName, text, time: new Date().toISOString() });
-        saveMessages(messages);
         renderMessages();
         input.value = "";
         showStatus(status, "Message sent!", "success");

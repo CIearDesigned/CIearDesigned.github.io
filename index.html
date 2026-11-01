@@ -250,7 +250,7 @@
 
       .game-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 22px;
       }
 
@@ -266,7 +266,7 @@
       }
 
       .game-art {
-        height: 190px;
+        height: 230px;
         display: grid;
         place-items: center;
         background: linear-gradient(135deg, rgba(96, 241, 215, 0.13), rgba(107, 184, 255, 0.13));
@@ -276,8 +276,8 @@
 
       .game-logo {
         width: 100%;
-        max-width: 200px;
-        height: 120px;
+        max-width: 220px;
+        height: 150px;
         display: grid;
         place-items: center;
         border-radius: 18px;
@@ -292,6 +292,7 @@
         height: 100%;
         object-fit: contain;
         background: rgba(0,0,0,0.1);
+        display: block;
       }
 
       .logo-letter {
@@ -362,7 +363,7 @@
 
       .info-grid {
         display: grid;
-        grid-template-columns: 1fr 1.08fr;
+        grid-template-columns: 1fr;
         gap: 22px;
         padding-bottom: 64px;
       }
@@ -393,67 +394,15 @@
         content: "✓"; color: var(--primary); font-weight: 700;
       }
 
-      .chat-shell { display:flex; flex-direction:column; min-height:100%; }
-      .chat-header {
-        display:flex; align-items:center; justify-content:space-between; gap:12px;
-        margin-bottom:16px;
-      }
-      .chat-header h2 { margin:0; }
-      .mini-button {
-        background: rgba(148, 163, 184, 0.04); border: 1px solid rgba(148,163,184,0.2);
-        color: var(--text); border-radius: 10px; padding: 8px 10px; font-weight: 700; cursor: pointer;
-      }
-
-      .identity-form { display:grid; gap:14px; margin-bottom:16px; }
-      .field { display:grid; gap:8px; }
-      .field label {
-        color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
-      }
-      .field input {
-        width:100%; border-radius: 12px; border: 1px solid rgba(148,163,184,0.2);
-        background: rgba(10, 17, 28, 0.8); color: var(--text); padding: 12px 14px; font-size: 1rem;
-      }
-      .field input:focus { outline: 2px solid rgba(96,241,215,0.3); border-color: rgba(96,241,215,0.3); }
-
-      .user-badge {
-        display: inline-flex; align-items:center; gap:8px; padding: 8px 10px;
-        border-radius: 999px; background: rgba(96,241,215,0.08); color: var(--primary);
-        border: 1px solid rgba(96,241,215,0.2); margin-bottom: 12px; font-size: 0.8rem;
-      }
-      .user-badge .avatar-mini {
-        width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-2));
-        color: #041319; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:0.68rem; overflow:hidden;
-      }
-      .user-badge .avatar-mini img { width:100%; height:100%; object-fit:cover; }
-
-      .message-thread {
-        display:flex; flex-direction:column; gap:12px; height: 340px; overflow-y:auto; padding-right: 6px; margin-bottom: 16px;
-      }
-      .message {
-        max-width: 85%; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(148,163,184,0.12);
-      }
-      .message strong { display:block; margin-bottom:4px; font-size:0.8rem; }
-      .message.sent {
-        margin-left: auto; background: linear-gradient(135deg, rgba(96,241,215,0.18), rgba(107,184,255,0.08));
-        border-color: rgba(96,241,215,0.22);
-      }
-      .message.received { background: rgba(148, 163, 184, 0.04); }
-      .message-time { margin-top:8px; color: var(--muted); font-size:0.72rem; }
-
-      .message-form { display:flex; gap:10px; }
-      .message-form input {
-        flex:1; border-radius: 12px; border: 1px solid rgba(148,163,184,0.18); background: rgba(10, 17, 28, 0.8);
-        color: var(--text); padding: 12px 14px; min-width: 0;
-      }
-
       @media (max-width: 980px) {
-        .hero-banner, .info-grid, .game-grid { grid-template-columns: 1fr; }
+        .hero-banner, .game-grid { grid-template-columns: 1fr 1fr; }
         .stats-strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
       }
       @media (max-width: 700px) {
         .nav-links { display:none; }
         .topbar { justify-content:center; }
         .stats-strip { grid-template-columns: 1fr; }
+        .game-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -462,14 +411,13 @@
       <div class="container topbar">
         <div class="brand">
           <div class="brand-name">
-            <strong id="brandDisplayName">CIearDesigned</strong>
+            <strong>CIearDesigned</strong>
           </div>
         </div>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="#about">About</a>
           <a href="#games">Games</a>
           <a href="#services">Services</a>
-          <a href="#chat">Messages</a>
         </nav>
       </div>
     </header>
@@ -486,7 +434,7 @@
               strong community foundation that players trust.
             </p>
             <div class="cta-row">
-              <a class="button primary" href="#chat">Message me</a>
+              <a class="button primary" href="#services">Message me</a>
               <a class="button secondary" href="#games">View games</a>
             </div>
           </div>
@@ -622,263 +570,7 @@
             <li>Protect the integrity of multiplayer gameplay and player trust.</li>
           </ul>
         </article>
-
-        <aside class="card chat-shell" id="chat">
-          <div class="chat-header">
-            <h2>Messages</h2>
-            <button id="logoutBtn" class="mini-button hidden" type="button">Switch user</button>
-          </div>
-
-          <form id="identityForm" class="identity-form">
-            <div class="field">
-              <label for="displayName">Display name</label>
-              <input id="displayName" type="text" placeholder="Your name" maxlength="40" />
-            </div>
-            <div class="field">
-              <label for="userEmail">Email (optional)</label>
-              <input id="userEmail" type="email" placeholder="name@example.com" />
-            </div>
-            <div class="field">
-              <label for="userAvatar">Profile picture URL (optional)</label>
-              <input id="userAvatar" type="url" placeholder="https://example.com/avatar.png" />
-            </div>
-            <button type="submit" class="button primary">Enter chat</button>
-          </form>
-
-          <div id="chatArea" class="hidden">
-            <div id="userBadge" class="user-badge" aria-live="polite"></div>
-            <div id="messageThread" class="message-thread" aria-live="polite"></div>
-            <form id="messageForm" class="message-form">
-              <input id="messageInput" type="text" maxlength="300" placeholder="Type your message..." />
-              <button type="submit" class="button primary">Send</button>
-            </form>
-          </div>
-        </aside>
       </section>
     </main>
-
-    <script>
-      const ADMIN_USERNAME = "CIearDesigned";
-      const ADMIN_EMAIL = "admin@ciardesigned.github.io";
-      const STORAGE_USER_KEY = "communityChatUser";
-      const STORAGE_MESSAGES_KEY = "communityChatMessages";
-      const DEFAULT_ACCOUNT = { name: "CIearDesigned", email: "", avatar: "" };
-
-      const identityForm = document.getElementById("identityForm");
-      const messageForm = document.getElementById("messageForm");
-      const displayNameInput = document.getElementById("displayName");
-      const userEmailInput = document.getElementById("userEmail");
-      const userAvatarInput = document.getElementById("userAvatar");
-      const userBadge = document.getElementById("userBadge");
-      const messageThread = document.getElementById("messageThread");
-      const chatArea = document.getElementById("chatArea");
-      const logoutBtn = document.getElementById("logoutBtn");
-      const messageInput = document.getElementById("messageInput");
-      const brandAvatarImg = document.getElementById("brandAvatarImg");
-      const brandAvatarInitial = document.getElementById("brandAvatarInitial");
-      const brandDisplayName = document.getElementById("brandDisplayName");
-
-      function saveCurrentUser(user) {
-        localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(user));
-      }
-
-      function getCurrentUser() {
-        const raw = localStorage.getItem(STORAGE_USER_KEY);
-        if (!raw) return null;
-        try { return JSON.parse(raw); }
-        catch { return null; }
-      }
-
-      function normalizeUser(user) {
-        const safe = user || { ...DEFAULT_ACCOUNT };
-        return {
-          name: safe.name || DEFAULT_ACCOUNT.name,
-          email: safe.email || "",
-          avatar: safe.avatar || ""
-        };
-      }
-
-      function applyAccountBranding(user) {
-        const profile = normalizeUser(user);
-        brandDisplayName.textContent = profile.name;
-        const initial = (profile.name || "C").trim().charAt(0).toUpperCase() || "C";
-
-        if (profile.avatar && /^https?:\/\//i.test(profile.avatar)) {
-          brandAvatarImg.src = profile.avatar;
-          brandAvatarImg.alt = `${profile.name} profile picture`;
-          brandAvatarImg.classList.remove("hidden");
-          brandAvatarInitial.textContent = "";
-        } else {
-          brandAvatarImg.removeAttribute("src");
-          brandAvatarImg.classList.add("hidden");
-          brandAvatarInitial.textContent = initial;
-        }
-      }
-
-      function isAdminUser(user) {
-        if (!user) return false;
-        const lower = user.email ? user.email.toLowerCase() : "";
-        return user.name === ADMIN_USERNAME || lower === ADMIN_EMAIL.toLowerCase();
-      }
-
-      function createSeedMessages() {
-        return [{
-          id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
-          sender: ADMIN_USERNAME,
-          text: "Welcome to my community support chat. Tell me what you need help with, and I will respond as quickly as I can.",
-          time: Date.now()
-        }];
-      }
-
-      function getMessages() {
-        const stored = localStorage.getItem(STORAGE_MESSAGES_KEY);
-        if (!stored) {
-          const seed = createSeedMessages();
-          localStorage.setItem(STORAGE_MESSAGES_KEY, JSON.stringify(seed));
-          return seed;
-        }
-        try {
-          const parsed = JSON.parse(stored);
-          if (!Array.isArray(parsed) || parsed.length === 0) {
-            const seed = createSeedMessages();
-            localStorage.setItem(STORAGE_MESSAGES_KEY, JSON.stringify(seed));
-            return seed;
-          }
-          return parsed;
-        } catch {
-          const seed = createSeedMessages();
-          localStorage.setItem(STORAGE_MESSAGES_KEY, JSON.stringify(seed));
-          return seed;
-        }
-      }
-
-      function saveMessages(messages) {
-        localStorage.setItem(STORAGE_MESSAGES_KEY, JSON.stringify(messages));
-      }
-
-      function renderMessages() {
-        const currentUser = getCurrentUser();
-        const messages = getMessages();
-        const isAdmin = isAdminUser(currentUser);
-
-        const visibleMessages = messages.filter((msg) => {
-          if (isAdmin) return true;
-          const fromAdmin = msg.sender === ADMIN_USERNAME;
-          const fromCurrentUser = msg.sender === currentUser?.name;
-          return fromAdmin || fromCurrentUser;
-        });
-
-        if (!visibleMessages.length) {
-          messageThread.innerHTML = '<div class="message received"><strong>CIearDesigned</strong><div>No messages yet. Start the conversation!</div></div>';
-          return;
-        }
-
-        messageThread.innerHTML = visibleMessages.map((msg) => {
-          const isFromAdmin = msg.sender === ADMIN_USERNAME;
-          const directionClass = isFromAdmin ? "received" : "sent";
-          const senderName = isFromAdmin ? ADMIN_USERNAME : msg.sender || "You";
-          const timestamp = new Date(msg.time).toLocaleString();
-          return `
-            <div class="message ${directionClass}">
-              <strong>${senderName}</strong>
-              <div>${escapeHtml(msg.text || "")}</div>
-              <div class="message-time">${timestamp}</div>
-            </div>
-          `;
-        }).join("");
-
-        messageThread.scrollTop = messageThread.scrollHeight;
-      }
-
-      function escapeHtml(value) {
-        return value
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/\"/g, "&quot;")
-          .replace(/'/g, "&#39;");
-      }
-
-      function renderUserBadge(user) {
-        const profile = normalizeUser(user);
-        const avatar = profile.avatar && /^https?:\/\//i.test(profile.avatar)
-          ? `<div class="avatar-mini"><img src="${profile.avatar}" alt="${profile.name} avatar" /></div>`
-          : `<div class="avatar-mini">${(profile.name || "C").trim().charAt(0).toUpperCase() || "C"}</div>`;
-        userBadge.innerHTML = `${avatar} ${profile.name}`;
-      }
-
-      function setUserSession(user) {
-        const activeUser = normalizeUser(user);
-        saveCurrentUser(activeUser);
-        applyAccountBranding(activeUser);
-        renderUserBadge(activeUser);
-        identityForm.classList.add("hidden");
-        chatArea.classList.remove("hidden");
-        logoutBtn.classList.remove("hidden");
-        renderMessages();
-      }
-
-      function clearUserSession() {
-        localStorage.removeItem(STORAGE_USER_KEY);
-        applyAccountBranding(DEFAULT_ACCOUNT);
-        renderUserBadge(DEFAULT_ACCOUNT);
-        identityForm.reset();
-        identityForm.classList.remove("hidden");
-        chatArea.classList.add("hidden");
-        logoutBtn.classList.add("hidden");
-        userBadge.textContent = "";
-        displayNameInput.focus();
-      }
-
-      identityForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = displayNameInput.value.trim();
-        const email = userEmailInput.value.trim();
-        const avatar = userAvatarInput.value.trim();
-
-        if (!name) {
-          displayNameInput.focus();
-          return;
-        }
-
-        setUserSession({ name, email, avatar });
-      });
-
-      messageForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const currentUser = getCurrentUser();
-        if (!currentUser) {
-          clearUserSession();
-          return;
-        }
-
-        const text = messageInput.value.trim();
-        if (!text) {
-          messageInput.focus();
-          return;
-        }
-
-        const messages = getMessages();
-        messages.push({
-          id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
-          sender: currentUser.name,
-          text,
-          time: Date.now()
-        });
-        saveMessages(messages);
-        messageInput.value = "";
-        renderMessages();
-      });
-
-      logoutBtn.addEventListener("click", () => clearUserSession());
-
-      applyAccountBranding(DEFAULT_ACCOUNT);
-      renderUserBadge(DEFAULT_ACCOUNT);
-
-      const existingUser = getCurrentUser();
-      if (existingUser) setUserSession(existingUser);
-
-      renderMessages();
-    </script>
   </body>
 </html>

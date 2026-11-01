@@ -282,10 +282,46 @@
         height: 190px;
         display: grid;
         place-items: center;
-        font-size: 4rem;
         background: linear-gradient(135deg, rgba(96, 241, 215, 0.13), rgba(107, 184, 255, 0.13));
         border-bottom: 1px solid var(--border);
+        padding: 18px;
       }
+
+      .game-logo {
+        width: 100%;
+        max-width: 200px;
+        height: 120px;
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(8,14,22,0.7);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+        overflow: hidden;
+      }
+
+      .game-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: rgba(0,0,0,0.1);
+      }
+
+      .logo-letter {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        font-size: clamp(1.5rem, 2vw, 2.5rem);
+        color: var(--text);
+        text-transform: uppercase;
+      }
+
+      .logo-horse { background: linear-gradient(135deg, rgba(17, 27, 39, 0.96), rgba(28, 42, 63, 0.9)); }
+      .logo-stay { background: linear-gradient(135deg, rgba(255, 199, 58, 0.18), rgba(240, 127, 53, 0.1)); }
+      .logo-liberty { background: linear-gradient(135deg, rgba(52, 105, 150, 0.18), rgba(96, 241, 215, 0.12)); }
 
       .game-body {
         padding: 20px 20px 22px;
@@ -507,7 +543,11 @@
 
         <div class="game-grid">
           <article class="game-card featured">
-            <div class="game-art">🐴</div>
+            <div class="game-art">
+              <div class="game-logo logo-horse">
+                <img src="horse-ranch-logo.png" alt="Horse Ranch logo" />
+              </div>
+            </div>
             <div class="game-body">
               <div class="game-header">
                 <h3>Horse Ranch</h3>
@@ -523,7 +563,11 @@
           </article>
 
           <article class="game-card">
-            <div class="game-art">💰</div>
+            <div class="game-art">
+              <div class="game-logo logo-stay">
+                <div class="logo-letter">S4F</div>
+              </div>
+            </div>
             <div class="game-body">
               <div class="game-header">
                 <h3>Stay for Fortune</h3>
@@ -539,7 +583,11 @@
           </article>
 
           <article class="game-card">
-            <div class="game-art">🚒</div>
+            <div class="game-art">
+              <div class="game-logo logo-liberty">
+                <div class="logo-letter">ERLC</div>
+              </div>
+            </div>
             <div class="game-body">
               <div class="game-header">
                 <h3>Emergency Response: Liberty County</h3>

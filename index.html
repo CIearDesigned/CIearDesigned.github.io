@@ -98,7 +98,7 @@
       }
 
       .hero {
-        padding: 64px 0 32px;
+        padding: 64px 0 12px;
       }
 
       .hero-grid {
@@ -215,11 +215,140 @@
         color: var(--text);
       }
 
+      .feature-section {
+        padding: 24px 0 10px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+      }
+
+      .section-tag {
+        color: var(--primary);
+        border: 1px solid rgba(94, 234, 212, 0.25);
+        background: rgba(94, 234, 212, 0.08);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .game-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 22px;
+      }
+
+      .game-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: 0 18px 48px rgba(2, 6, 23, 0.3);
+      }
+
+      .game-card.featured {
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.08), rgba(15, 23, 42, 0.95));
+      }
+
+      .game-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .game-icon {
+        width: 84px;
+        height: 84px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        font-size: 2rem;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(147, 197, 253, 0.18));
+        border: 1px solid rgba(148, 163, 184, 0.2);
+      }
+
+      .game-card h3 {
+        margin: 0 0 6px;
+        font-size: 1.5rem;
+      }
+
+      .visit-pill {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 10px;
+        border-radius: 999px;
+        background: rgba(94, 234, 212, 0.08);
+        border: 1px solid rgba(94, 234, 212, 0.28);
+        color: var(--primary);
+        padding: 6px 10px;
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+
+      .game-card p,
+      .game-card li {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .game-list {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .game-list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .game-list li::before {
+        content: "•";
+        color: var(--primary);
+        font-size: 1.3rem;
+      }
+
+      .mini-stats {
+        display: grid;
+        gap: 12px;
+      }
+
+      .mini-stat {
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        background: rgba(148, 163, 184, 0.03);
+        padding: 16px;
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 1.7rem;
+        color: var(--text);
+      }
+
+      .mini-stat span {
+        color: var(--muted);
+      }
+
       .content-grid {
         display: grid;
         grid-template-columns: 1fr 1.05fr;
         gap: 26px;
-        padding-bottom: 64px;
+        padding: 18px 0 64px;
       }
 
       .card {
@@ -403,7 +532,8 @@
 
       @media (max-width: 840px) {
         .hero-grid,
-        .content-grid {
+        .content-grid,
+        .game-grid {
           grid-template-columns: 1fr;
         }
 
@@ -413,6 +543,10 @@
 
         .topbar {
           justify-content: center;
+        }
+
+        .game-row {
+          align-items: flex-start;
         }
       }
     </style>
@@ -426,6 +560,7 @@
         </div>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="#about">About</a>
+          <a href="#games">Games</a>
           <a href="#services">Services</a>
           <a href="#chat">Messaging</a>
         </nav>
@@ -457,6 +592,49 @@
                 <li><span>Primary role</span><strong>Moderator</strong></li>
                 <li><span>Scope</span><strong>Live game support</strong></li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-section" id="games">
+        <div class="section-heading">
+          <h2>Games & Communities</h2>
+          <div class="section-tag">Live support</div>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-card featured">
+            <div class="game-row">
+              <div class="game-icon">🐴</div>
+              <div>
+                <h3>Horse Ranch</h3>
+                <div class="visit-pill">100K+ visits</div>
+              </div>
+            </div>
+            <p>
+              Horse Ranch is a large and active community where I help maintain a healthy experience,
+              support players, and keep the social environment safe for everyone.
+            </p>
+            <ul class="game-list">
+              <li>Rule enforcement and active moderation</li>
+              <li>Player report handling and conflict resolution</li>
+              <li>Maintaining a fun and respectful server culture</li>
+            </ul>
+          </article>
+
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <strong>100K+</strong>
+              <span>Horse Ranch visits</span>
+            </div>
+            <div class="mini-stat">
+              <strong>24/7</strong>
+              <span>Community presence</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Safe</strong>
+              <span>Fair gameplay culture</span>
             </div>
           </div>
         </div>

@@ -3,574 +3,1028 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CIearDesigned | Games & Community</title>
+    <title>Do Big Studios</title>
     <style>
       :root {
-        --bg: #060d18;
-        --bg-2: #0c1727;
-        --panel: rgba(14, 22, 34, 0.9);
-        --panel-strong: #0e1828;
-        --card: rgba(17, 26, 40, 0.92);
-        --card-alt: rgba(12, 19, 30, 0.95);
-        --border: rgba(148, 163, 184, 0.18);
-        --text: #edf6ff;
-        --muted: #a8bdd9;
-        --primary: #60f1d7;
-        --primary-2: #6bb8ff;
-        --gold: #f9d67b;
-        --danger: #ff7e7e;
-        --shadow: rgba(0, 0, 0, 0.35);
+        --bg: #0a0d12;
+        --bg-2: #111720;
+        --panel: rgba(17, 23, 32, 0.9);
+        --panel-2: #171d28;
+        --card: #121a24;
+        --muted: #a6b1c3;
+        --text: #edf3ff;
+        --soft: #dfe8ff;
+        --line: rgba(255,255,255,0.09);
+        --accent: #87f0ff;
+        --accent-2: #7cffb2;
+        --accent-3: #7a8cff;
+        --shadow: 0 18px 50px rgba(0,0,0,0.35);
       }
 
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background:
-          radial-gradient(circle at top left, rgba(96, 241, 215, 0.12), transparent 26%),
-          radial-gradient(circle at right, rgba(107, 184, 255, 0.12), transparent 25%),
-          var(--bg);
+        font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
         color: var(--text);
+        line-height: 1.5;
       }
-      a { color: inherit; text-decoration: none; }
+
       img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+      button, input, textarea {
+        font: inherit;
+      }
 
       .container {
-        width: min(1220px, calc(100% - 36px));
+        width: min(1180px, calc(100% - 40px));
         margin: 0 auto;
       }
 
       .site-header {
         position: sticky;
         top: 0;
-        z-index: 40;
+        z-index: 30;
+        background: rgba(10, 13, 18, 0.78);
         backdrop-filter: blur(12px);
-        background: rgba(6, 13, 24, 0.78);
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--line);
       }
 
-      .topbar {
-        min-height: 76px;
+      .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
+        height: 80px;
+        gap: 20px;
       }
 
       .brand {
         display: flex;
         align-items: center;
         gap: 12px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
       }
 
-      .brand-name strong {
-        font-size: 1rem;
-        letter-spacing: 0.03em;
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        position: relative;
+        background: linear-gradient(135deg, #a5f3ff 0%, #67d6ff 35%, #7cffb2 100%);
+        box-shadow: 0 12px 22px rgba(135, 240, 255, 0.35);
+      }
+
+      .brand-mark::before {
+        content: "";
+        position: absolute;
+        inset: 7px 8px 7px 8px;
+        border-radius: 7px;
+        border: 2px solid rgba(15,19,25,0.8);
+        background: rgba(10,13,18,0.14);
       }
 
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 22px;
-        color: var(--muted);
+        gap: 30px;
+        color: var(--soft);
         font-size: 0.95rem;
       }
-      .nav-links a:hover { color: var(--text); }
+
+      .nav-links a { opacity: 0.9; }
+      .nav-links a:hover { opacity: 1; }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .btn {
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+        padding: 11px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .btn:hover { transform: translateY(-1px); }
+      .btn.primary {
+        background: linear-gradient(135deg, var(--accent), #9fe6ff 35%, #d8ffba 100%);
+        color: #081018;
+        border-color: transparent;
+        box-shadow: 0 18px 30px rgba(135, 240, 255, 0.2);
+      }
 
       .hero {
-        padding: 56px 0 18px;
+        position: relative;
+        padding: 54px 0 36px;
       }
 
-      .hero-banner {
+      .hero-inner {
         display: grid;
-        grid-template-columns: 1.25fr 0.95fr;
-        gap: 28px;
+        grid-template-columns: 1.15fr 0.85fr;
         align-items: center;
-        background: linear-gradient(135deg, rgba(18, 31, 48, 0.96), rgba(10, 17, 28, 0.96));
-        border: 1px solid var(--border);
-        border-radius: 26px;
-        overflow: hidden;
-        box-shadow: 0 22px 80px rgba(0,0,0,0.32);
-      }
-
-      .hero-copy {
-        padding: 42px 40px 32px;
+        gap: 48px;
       }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: rgba(96, 241, 215, 0.08);
-        border: 1px solid rgba(96, 241, 215, 0.22);
-        color: var(--primary);
+        gap: 10px;
+        font-size: 0.68rem;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        color: var(--accent);
+        opacity: 0.95;
+        margin-bottom: 18px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 18px rgba(135,240,255,0.9);
       }
 
       h1 {
-        margin: 20px 0 16px;
-        font-size: clamp(2.7rem, 5vw, 5rem);
-        line-height: 0.96;
-        letter-spacing: -0.06em;
-      }
-
-      .hero-copy p {
         margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-        font-size: 1.08rem;
-        max-width: 61ch;
+        font-size: clamp(3.1rem, 5vw, 6rem);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+        font-weight: 900;
       }
 
-      .cta-row {
+      .hero-copy {
+        font-size: 1.08rem;
+        line-height: 1.8;
+        color: var(--muted);
+        max-width: 660px;
+        margin-top: 22px;
+      }
+
+      .hero-actions {
         display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
+        gap: 16px;
+        align-items: center;
         margin-top: 28px;
       }
 
-      .button {
-        display: inline-flex;
+      .hero-visual {
+        position: relative;
+        min-height: 500px;
+        display: flex;
         align-items: center;
         justify-content: center;
-        padding: 14px 18px;
-        border-radius: 12px;
-        font-weight: 700;
-        cursor: pointer;
-        border: 1px solid transparent;
-        transition: transform 0.2s ease;
-      }
-      .button:hover { transform: translateY(-1px); }
-      .button.primary {
-        background: linear-gradient(135deg, var(--primary), #7ee8d7);
-        color: #051a1a;
-      }
-      .button.secondary {
-        background: rgba(148, 163, 184, 0.04);
-        border-color: rgba(148, 163, 184, 0.2);
-        color: var(--text);
       }
 
-      .hero-side {
-        padding: 26px 24px 26px 0;
-      }
-
-      .hero-card {
+      .visual-panel {
         position: relative;
-        border-radius: 22px;
+        width: min(100%, 500px);
+        height: 500px;
+        background:
+          radial-gradient(circle at 50% 25%, rgba(146, 227, 255, 0.3), transparent 30%),
+          radial-gradient(circle at 80% 20%, rgba(124, 255, 178, 0.25), transparent 20%),
+          linear-gradient(180deg, #141d2b 0%, #0d131c 100%);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 32px;
+        box-shadow: var(--shadow);
         overflow: hidden;
-        border: 1px solid rgba(148, 163, 184, 0.18);
-        background: linear-gradient(180deg, rgba(12, 20, 32, 0.68), rgba(9, 14, 23, 0.9));
-        min-height: 420px;
       }
 
-      .hero-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .hero-badge {
+      .visual-top {
         position: absolute;
-        left: 18px;
-        bottom: 18px;
-        display: inline-flex;
+        inset: 22px 22px auto 22px;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        color: var(--soft);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        opacity: 0.9;
+      }
+
+      .dot-row {
+        display: flex;
         gap: 8px;
-        padding: 10px 12px;
-        border-radius: 12px;
-        font-weight: 700;
-        background: rgba(5, 13, 20, 0.72);
+      }
+
+      .dot-row span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+      }
+
+      .dot-row span:nth-child(1) { background: rgba(255,112,112,0.8); }
+      .dot-row span:nth-child(2) { background: rgba(255,205,100,0.85); }
+      .dot-row span:nth-child(3) { background: rgba(116,255,157,0.8); }
+
+      .game-preview {
+        position: absolute;
+        left: 36px;
+        right: 36px;
+        bottom: 24px;
+        height: 240px;
+        border-radius: 24px;
+        overflow: hidden;
+        background:
+          linear-gradient(155deg, rgba(124,255,178,0.18), rgba(26,40,59,0.12)),
+          linear-gradient(135deg, #17324b, #081017 60%, #101821);
         border: 1px solid rgba(255,255,255,0.08);
       }
-      .hero-badge .dot {
-        width: 9px; height: 9px; border-radius: 50%;
-        background: var(--primary);
-        box-shadow: 0 0 0 6px rgba(96, 241, 215, 0.12);
+
+      .game-preview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.08), transparent 35%, rgba(255,255,255,0.02)),
+          radial-gradient(circle at 18% 26%, rgba(133, 245, 255, 0.7), transparent 15%),
+          radial-gradient(circle at 70% 28%, rgba(124, 255, 178, 0.35), transparent 22%);
       }
 
-      .stats-strip {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
-        padding: 26px 0 12px;
+      .tower {
+        position: absolute;
+        left: 120px;
+        bottom: 28px;
+        width: 38px;
+        height: 118px;
+        background: linear-gradient(180deg, #b7f6ff, #7fd2ff);
+        border-radius: 14px 14px 10px 10px;
+        box-shadow: 0 0 18px rgba(135,240,255,0.35);
       }
 
-      .stat-box {
-        background: rgba(15, 23, 35, 0.9);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 18px 20px;
+      .tower::before,
+      .tower::after {
+        content: "";
+        position: absolute;
+        width: 54px;
+        height: 54px;
+        left: -8px;
+        bottom: 86px;
+        background: linear-gradient(180deg, #91f8c1, #5ce181);
+        border-radius: 50% 50% 42% 42%;
       }
-      .stat-box strong {
+
+      .tower::after {
+        left: 18px;
+        bottom: 112px;
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(180deg, #e7f7ff, #9ad9ff);
+      }
+
+      .platform {
+        position: absolute;
+        left: 52px;
+        right: 52px;
+        bottom: 18px;
+        height: 22px;
+        border-radius: 12px;
+        background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.12));
+      }
+
+      .mini-badge {
+        position: absolute;
+        right: 20px;
+        bottom: 60px;
+        padding: 10px 14px;
+        border-radius: 16px;
+        background: rgba(8,16,20,0.6);
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .mini-badge strong {
         display: block;
-        font-size: clamp(1.4rem, 2vw, 2.2rem);
-        letter-spacing: -0.04em;
+        font-size: 1.4rem;
+        letter-spacing: -0.05em;
       }
-      .stat-box span {
+
+      .mini-badge span {
         color: var(--muted);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .stats {
+        margin-top: 52px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 24px 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stat {
+        padding: 6px 0;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        letter-spacing: -0.06em;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.92rem;
       }
 
       .section {
-        padding: 30px 0 18px;
+        padding: 94px 0;
       }
 
       .section-head {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 14px;
-        margin-bottom: 18px;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 30px;
       }
 
-      .section-head h2 {
-        margin: 0;
-        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-        letter-spacing: -0.05em;
-      }
-
-      .tiny-tag {
-        display: inline-flex;
-        align-items: center;
-        border-radius: 999px;
-        background: rgba(96, 241, 215, 0.08);
-        border: 1px solid rgba(96, 241, 215, 0.2);
-        color: var(--primary);
-        padding: 8px 10px;
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
+      .kicker {
+        color: var(--accent);
         text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.7rem;
+        margin-bottom: 14px;
+        display: inline-block;
       }
 
-      .game-grid {
+      h2 {
+        margin: 0;
+        font-size: clamp(2.1rem, 4vw, 3.3rem);
+        letter-spacing: -0.06em;
+        line-height: 1.02;
+      }
+
+      .subtext {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.04rem;
+      }
+
+      .games-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 22px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 18px;
       }
 
       .game-card {
-        background: linear-gradient(180deg, rgba(14, 22, 34, 0.96), rgba(11, 17, 27, 0.94));
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-      }
-      .game-card.featured {
-        border-color: rgba(96, 241, 215, 0.32);
-      }
-
-      .game-art {
-        height: 230px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, rgba(96, 241, 215, 0.13), rgba(107, 184, 255, 0.13));
-        border-bottom: 1px solid var(--border);
-        padding: 18px;
-      }
-
-      .game-logo {
-        width: 100%;
-        max-width: 220px;
-        height: 150px;
-        display: grid;
-        place-items: center;
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(8,14,22,0.7);
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
-        overflow: hidden;
-      }
-
-      .game-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        background: rgba(0,0,0,0.1);
-        display: block;
-      }
-
-      .logo-letter {
-        display: grid;
-        place-items: center;
-        width: 100%;
-        height: 100%;
-        font-weight: 900;
-        letter-spacing: 0.06em;
-        font-size: clamp(1.5rem, 2vw, 2.5rem);
-        color: var(--text);
-        text-transform: uppercase;
-      }
-
-      .logo-horse { background: linear-gradient(135deg, rgba(17, 27, 39, 0.96), rgba(28, 42, 63, 0.9)); }
-      .logo-stay { background: linear-gradient(135deg, rgba(255, 199, 58, 0.18), rgba(240, 127, 53, 0.1)); }
-      .logo-liberty { background: linear-gradient(135deg, rgba(52, 105, 150, 0.18), rgba(96, 241, 215, 0.12)); }
-      .logo-flex { background: linear-gradient(135deg, rgba(116, 86, 255, 0.18), rgba(96, 241, 215, 0.12)); }
-
-      .game-body {
-        padding: 20px 20px 22px;
-      }
-
-      .game-header {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
         gap: 12px;
-        margin-bottom: 12px;
-      }
-      .game-header h3 {
-        margin: 0;
-        font-size: 1.5rem;
-      }
-      .game-tier {
-        display: inline-flex;
-        align-items: center;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-size: 0.72rem;
-        color: var(--primary);
-        border: 1px solid rgba(96, 241, 215, 0.25);
-        background: rgba(96, 241, 215, 0.06);
       }
 
-      .game-body p {
-        color: var(--muted);
-        line-height: 1.7;
-        margin: 0 0 14px;
+      .thumb {
+        position: relative;
+        height: 250px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        background:
+          linear-gradient(150deg, rgba(134, 243, 255, 0.22), rgba(10, 13, 18, 0.18)),
+          linear-gradient(135deg, #172636, #0d141d 58%, #0d1217);
+        box-shadow: var(--shadow);
       }
-      .game-list {
-        list-style: none;
-        padding: 0; margin: 0;
-        display: grid; gap: 8px;
+
+      .thumb::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(158, 255, 206, 0.5), transparent 18%),
+          linear-gradient(135deg, rgba(255,255,255,0.04), transparent 36%),
+          linear-gradient(180deg, transparent 0, rgba(8, 10, 13, 0.64) 100%);
       }
-      .game-list li {
-        color: var(--muted);
+
+      .thumb[data-theme="blue"] { background: linear-gradient(150deg, rgba(135, 240, 255, 0.26), rgba(10, 13, 18, 0.18)), linear-gradient(135deg, #0c2341, #0a111a 58%, #0f1924); }
+      .thumb[data-theme="green"] { background: linear-gradient(150deg, rgba(124, 255, 178, 0.22), rgba(10, 13, 18, 0.18)), linear-gradient(135deg, #18382d, #09150f 58%, #121c18); }
+      .thumb[data-theme="pink"] { background: linear-gradient(150deg, rgba(255, 141, 214, 0.24), rgba(10, 13, 18, 0.18)), linear-gradient(135deg, #371e34, #131018 58%, #18161d); }
+      .thumb[data-theme="purple"] { background: linear-gradient(150deg, rgba(150, 146, 255, 0.22), rgba(10, 13, 18, 0.18)), linear-gradient(135deg, #1f1f42, #0d0d18 58%, #16171d); }
+      .thumb[data-theme="orange"] { background: linear-gradient(150deg, rgba(255, 187, 120, 0.24), rgba(10, 13, 18, 0.18)), linear-gradient(135deg, #3a2a1a, #130f0a 58%, #1b1710); }
+
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        z-index: 1;
+      }
+
+      .thumb-label {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255,255,255,0.9);
+        z-index: 2;
+      }
+
+      .game-info {
         display: flex;
-        align-items: flex-start;
+        flex-direction: column;
         gap: 8px;
       }
-      .game-list li::before {
-        content: "•";
-        color: var(--primary);
-        font-size: 1.3rem;
-        line-height: 1;
+
+      .game-name {
+        font-size: 1.05rem;
+        line-height: 1.3;
+        letter-spacing: -0.04em;
       }
 
-      .info-grid {
+      .game-stats {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .link-row { margin-top: 4px; }
+
+      .game-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: var(--text);
+        opacity: 0.9;
+      }
+
+      .game-link::after {
+        content: "→";
+        font-size: 1.2rem;
+      }
+
+      .games-footer {
+        margin-top: 28px;
+      }
+
+      .about-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 22px;
-        padding-bottom: 64px;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 34px;
+        align-items: center;
       }
 
-      .card {
-        background: linear-gradient(180deg, rgba(15, 23, 35, 0.96), rgba(10, 16, 24, 0.96));
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-      }
-      .card h2 {
-        margin: 0 0 16px;
-        font-size: clamp(1.7rem, 2vw, 2.3rem);
-      }
-      .card p, .card li { color: var(--muted); line-height: 1.75; }
-
-      .checklist {
-        list-style: none; padding: 0; margin: 18px 0 0;
-        display: grid; gap: 12px;
-      }
-      .checklist li {
-        display: flex; gap: 12px; align-items: flex-start;
-        padding: 11px 12px; border-radius: 12px;
-        background: rgba(148, 163, 184, 0.04);
-      }
-      .checklist li::before {
-        content: "✓"; color: var(--primary); font-weight: 700;
+      .about-copy {
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.8;
       }
 
-      @media (max-width: 980px) {
-        .hero-banner, .game-grid { grid-template-columns: 1fr 1fr; }
-        .stats-strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .about-panel {
+        background: linear-gradient(180deg, rgba(17, 23, 32, 0.9), rgba(12, 16, 22, 0.96));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px;
+        box-shadow: var(--shadow);
       }
-      @media (max-width: 700px) {
-        .nav-links { display:none; }
-        .topbar { justify-content:center; }
-        .stats-strip { grid-template-columns: 1fr; }
-        .game-grid { grid-template-columns: 1fr; }
+
+      .about-panel .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 18px;
+      }
+
+      .acq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 18px;
+      }
+
+      .acq-card {
+        background: linear-gradient(180deg, rgba(16, 22, 30, 1), rgba(12, 17, 23, 1));
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px 18px 18px;
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .acq-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: rgba(135,240,255,0.1);
+        border: 1px solid rgba(135,240,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.7rem;
+      }
+
+      .acq-card h3 {
+        margin: 20px 0 10px;
+        font-size: 1.15rem;
+        letter-spacing: -0.04em;
+      }
+
+      .acq-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 30px;
+        align-items: start;
+      }
+
+      .contact-summary {
+        background: linear-gradient(180deg, rgba(18, 24, 32, 0.9), rgba(12, 16, 22, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 28px;
+        min-height: 100%;
+      }
+
+      .contact-summary .icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        background: rgba(124,255,178,0.08);
+        border: 1px solid rgba(124,255,178,0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+      }
+
+      .contact-summary h3 {
+        margin: 0 0 10px;
+        font-size: 2.1rem;
+        letter-spacing: -0.06em;
+      }
+
+      .contact-summary p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .form-panel {
+        background: linear-gradient(180deg, rgba(18, 24, 32, 0.9), rgba(12, 16, 22, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px;
+      }
+
+      .field-group {
+        display: grid;
+        gap: 16px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .field label {
+        color: var(--soft);
+        font-size: 0.9rem;
+      }
+
+      .field input,
+      .field textarea {
+        width: 100%;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        color: var(--text);
+        padding: 15px 16px;
+        outline: none;
+      }
+
+      .field input:focus,
+      .field textarea:focus {
+        border-color: rgba(135,240,255,0.45);
+        box-shadow: 0 0 0 3px rgba(135,240,255,0.08);
+      }
+
+      .field textarea {
+        min-height: 160px;
+        resize: vertical;
+      }
+
+      .form-meta {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .form-meta a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      .submit-row {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 0 40px;
+        color: var(--muted);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        color: var(--text);
+        margin-bottom: 12px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-links a { color: var(--muted); }
+
+      .copy {
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: rgba(166,177,195,0.8);
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 1100px) {
+        .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .acq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .hero-inner,
+        .about-grid,
+        .contact-wrap { grid-template-columns: 1fr; }
+      }
+
+      @media (max-width: 760px) {
+        .nav-links { display: none; }
+        .nav-actions .btn.secondary { display: none; }
+        h1 { font-size: 3rem; }
+        .stats-grid { grid-template-columns: 1fr; }
+        .games-grid, .acq-grid, .footer-grid { grid-template-columns: 1fr; }
+        .section-head { flex-direction: column; align-items: flex-start; }
+        .visual-panel { height: 420px; }
       }
     </style>
   </head>
   <body>
     <header class="site-header">
-      <div class="container topbar">
+      <div class="container nav">
         <div class="brand">
-          <div class="brand-name">
-            <strong>CIearDesigned</strong>
-          </div>
+          <span class="brand-mark"></span>
+          <span>Do Big</span>
         </div>
+
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#games">Games</a>
-          <a href="#services">Services</a>
+          <a href="#">Home</a>
+          <a href="#">Our Games</a>
+          <a href="#">Careers</a>
+          <a href="#">Merch</a>
+          <a href="#">Bug Bounty</a>
+          <a href="#">Do Good</a>
         </nav>
+
+        <div class="nav-actions">
+          <a class="btn secondary" href="#">Talk to us</a>
+          <a class="btn primary" href="#">Join our team</a>
+        </div>
       </div>
     </header>
 
-    <main class="container">
+    <main>
       <section class="hero">
-        <div class="hero-banner">
-          <div class="hero-copy">
-            <div class="eyebrow">Moderator • Community Specialist</div>
-            <h1>Building the next generation of safe, active communities.</h1>
-            <p>
-              I manage and protect player communities across Roblox games, helping servers stay fair,
-              healthy, and enjoyable for everyone. From enforcement to support, my focus is on creating a
-              strong community foundation that players trust.
+        <div class="container hero-inner">
+          <div>
+            <span class="eyebrow">Gaming company</span>
+            <h1>We build games<br>that people keep playing.</h1>
+            <p class="hero-copy">
+              From discovery to live ops, we help ambitious creators and teams grow
+              truly memorable gaming experiences at scale.
             </p>
-            <div class="cta-row">
-              <a class="button primary" href="#services">Message me</a>
-              <a class="button secondary" href="#games">View games</a>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#">Explore our games</a>
+              <a class="btn" href="#">Talk to us</a>
             </div>
           </div>
 
-          <div class="hero-side">
-            <div class="hero-card">
-              <img src="1000040642.jpg" alt="Emergency Response: Liberty County" />
-              <div class="hero-badge"><span class="dot"></span> Active community</div>
+          <div class="hero-visual" aria-label="Game showcase">
+            <div class="visual-panel">
+              <div class="visual-top">
+                <div class="dot-row">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <span>Live Studio</span>
+              </div>
+
+              <div class="game-preview">
+                <div class="tower"></div>
+                <div class="platform"></div>
+              </div>
+
+              <div class="mini-badge">
+                <strong>2.1B</strong>
+                <span>Monthly plays</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="stats-strip">
-          <div class="stat-box">
-            <strong>2B+</strong>
-            <span>Contributed Visits</span>
+        <div class="container stats">
+          <div class="stats-grid">
+            <div class="stat">
+              <strong>2,057,656</strong>
+              <span>Players playing our games</span>
+            </div>
+            <div class="stat">
+              <strong>201.8B+</strong>
+              <span>Total play sessions</span>
+            </div>
+            <div class="stat">
+              <strong>3.4M</strong>
+              <span>Monthly active users</span>
+            </div>
           </div>
-          <div class="stat-box">
-            <strong>24/7</strong>
-            <span>Live support</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="kicker">Our Top Hits</span>
+              <h2>Here are some of our top games</h2>
+            </div>
           </div>
-          <div class="stat-box">
-            <strong>4</strong>
-            <span>Featured games</span>
+
+          <div class="games-grid">
+            <article class="game-card">
+              <div class="thumb" data-theme="blue">
+                <img src="1000040642.jpg" alt="Emergency Response: Liberty County" />
+                <span class="thumb-label">Tower Defense</span>
+              </div>
+              <div class="game-info">
+                <div class="game-name">Emergency Response: Liberty County</div>
+                <div class="game-stats">5.1B plays</div>
+                <div class="link-row">
+                  <a href="#" class="game-link">View Game</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="game-card">
+              <div class="thumb" data-theme="green">
+                <img src="noFilter.webp" alt="Flex Verified Friends" />
+                <span class="thumb-label">Fisch</span>
+              </div>
+              <div class="game-info">
+                <div class="game-name">Flex Verified Friends</div>
+                <div class="game-stats">5.1B plays</div>
+                <div class="link-row">
+                  <a href="#" class="game-link">View Game</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="game-card">
+              <div class="thumb" data-theme="pink">
+                <img src="InShot_20260609_201137247.jpg" alt="Stay for Fortune" />
+                <span class="thumb-label">Steal</span>
+              </div>
+              <div class="game-info">
+                <div class="game-name">Stay for Fortune</div>
+                <div class="game-stats">10.1B plays</div>
+                <div class="link-row">
+                  <a href="#" class="game-link">View Game</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="game-card">
+              <div class="thumb" data-theme="purple">
+                <img src="flex-verified-friends.jpg" alt="Flex Verified Friends" />
+                <span class="thumb-label">Brainrot</span>
+              </div>
+              <div class="game-info">
+                <div class="game-name">Flex Verified Friends</div>
+                <div class="game-stats">74.3B plays</div>
+                <div class="link-row">
+                  <a href="#" class="game-link">View Game</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="game-card">
+              <div class="thumb" data-theme="orange">
+                <img src="horse-ranch-logo.png" alt="Horse Ranch" />
+                <span class="thumb-label">Egg</span>
+              </div>
+              <div class="game-info">
+                <div class="game-name">Horse Ranch</div>
+                <div class="game-stats">47.4M plays</div>
+                <div class="link-row">
+                  <a href="#" class="game-link">View Game</a>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="stat-box">
-            <strong>Safe</strong>
-            <span>Fair play focus</span>
+
+          <div class="games-footer">
+            <a href="#" class="btn">View all games</a>
           </div>
         </div>
       </section>
 
-      <section class="section" id="games">
-        <div class="section-head">
-          <h2>Featured games</h2>
-          <div class="tiny-tag">Community first</div>
-        </div>
+      <section class="section">
+        <div class="container">
+          <div class="about-grid">
+            <div>
+              <span class="kicker">About Us</span>
+              <h2>We build games<br>with global reach.</h2>
+            </div>
 
-        <div class="game-grid">
-          <article class="game-card featured">
-            <div class="game-art">
-              <div class="game-logo logo-liberty">
-                <img src="1000040642.jpg" alt="Emergency Response: Liberty County logo" />
-              </div>
+            <div class="about-copy">
+              Our games have been played billions of times, attracting hundreds of
+              millions of monthly active users across our portfolio. We've had the
+              privilege of working on some of the top Roblox games, gaining invaluable
+              insights along the way.
             </div>
-            <div class="game-body">
-              <div class="game-header">
-                <h3>Emergency Response: Liberty County</h3>
-                <span class="game-tier">Top game</span>
-              </div>
-              <p>Supporting a high-activity emergency roleplay community with structure, safety, and consistency.</p>
-              <ul class="game-list">
-                <li>Custom standards</li>
-                <li>Community trust</li>
-                <li>Order & discipline</li>
-              </ul>
-            </div>
-          </article>
+          </div>
 
-          <article class="game-card">
-            <div class="game-art">
-              <div class="game-logo logo-flex">
-                <img src="flex-verified-friends.jpg" alt="Flex Verified Friends logo" />
-              </div>
-            </div>
-            <div class="game-body">
-              <div class="game-header">
-                <h3>Flex Verified Friends</h3>
-                <span class="game-tier">Tester</span>
-              </div>
-              <p>Helping test and support a community-focused game experience with a focus on fair play and verification.</p>
-              <ul class="game-list">
-                <li>Gameplay testing</li>
-                <li>Community checks</li>
-                <li>Support & feedback</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <div class="game-art">
-              <div class="game-logo logo-stay">
-                <img src="InShot_20260609_201137247.jpg" alt="Stay for Fortune logo" />
-              </div>
-            </div>
-            <div class="game-body">
-              <div class="game-header">
-                <h3>Stay for Fortune</h3>
-                <span class="game-tier">Live</span>
-              </div>
-              <p>Helping maintain an enjoyable environment where players can compete, interact, and stay engaged.</p>
-              <ul class="game-list">
-                <li>Rule compliance</li>
-                <li>Behavior monitoring</li>
-                <li>Conflict resolution</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <div class="game-art">
-              <div class="game-logo logo-horse">
-                <img src="horse-ranch-logo.png" alt="Horse Ranch logo" />
-              </div>
-            </div>
-            <div class="game-body">
-              <div class="game-header">
-                <h3>Horse Ranch</h3>
-                <span class="game-tier">Top community</span>
-              </div>
-              <p>Building a healthy, active, and welcoming experience for a large and engaged player base.</p>
-              <ul class="game-list">
-                <li>Fair-play enforcement</li>
-                <li>Community support</li>
-                <li>Player protection</li>
-              </ul>
-            </div>
-          </article>
+          <div style="margin-top: 26px" class="about-panel">
+            <a href="#" class="btn primary cta">Join our team</a>
+          </div>
         </div>
       </section>
 
-      <section class="section info-grid" id="about">
-        <article class="card">
-          <h2>About me</h2>
-          <p>
-            I work directly inside game servers to enforce rules, handle reports, investigate suspicious behavior,
-            and keep the overall player experience fun and fair. I focus on creating positive community culture in busy Roblox games.
-          </p>
-          <ul class="checklist" id="services">
-            <li>Enforce community rules and maintain fair play.</li>
-            <li>Investigate exploits, cheating, and suspicious behavior.</li>
-            <li>Review reports and resolve disciplinary issues clearly.</li>
-            <li>Protect the integrity of multiplayer gameplay and player trust.</li>
-          </ul>
-        </article>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="kicker">Game acquisition</span>
+              <h2>Flexible partnerships<br>built for the long term.</h2>
+            </div>
+          </div>
+
+          <div class="acq-grid">
+            <article class="acq-card">
+              <div class="acq-icon">🤝</div>
+              <h3>Flexible Acquisitions</h3>
+              <p>
+                Sell all or part of your game with a structure tailored to your goals,
+                including upfront liquidity and continued ownership.
+              </p>
+            </article>
+
+            <article class="acq-card">
+              <div class="acq-icon">⚙️</div>
+              <h3>Strategic Partnerships</h3>
+              <p>
+                Keep ownership while partnering with our team across development, live ops,
+                marketing, monetization, and growth.
+              </p>
+            </article>
+
+            <article class="acq-card">
+              <div class="acq-icon">📈</div>
+              <h3>Aligned Economics</h3>
+              <p>
+                From upfront consideration to revenue sharing and earn-outs, we build
+                structures that keep incentives aligned.
+              </p>
+            </article>
+
+            <article class="acq-card">
+              <div class="acq-icon">🏗️</div>
+              <h3>Built for the Long Term</h3>
+              <p>
+                Every partnership is different. We focus on preserving what makes your
+                game special while helping it reach its full potential.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact-wrap">
+          <div class="contact-summary">
+            <div class="icon">🤝</div>
+            <h3>Let's get started</h3>
+            <p>Send us a message with your game link and metrics</p>
+          </div>
+
+          <div class="form-panel">
+            <form class="field-group">
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="Email Address..." />
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your message..."></textarea>
+              </div>
+
+              <div class="form-meta">
+                By filling out this form and submitting, you are agreeing to our
+                <a href="#">privacy policy</a>.
+              </div>
+
+              <div class="submit-row">
+                <button type="submit" class="btn primary">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <span class="brand-mark" style="width:26px; height:26px;"></span>
+              <span>Do Big</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-links">
+              <a href="#">Services</a>
+              <a href="#">Game Acquisition</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-links">
+              <a href="#">Company</a>
+              <a href="#">About Us</a>
+              <a href="#">Careers</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-links">
+              <a href="#">Legal</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Bug Bounty Terms</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-links">
+              <a href="#">&nbsp;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy">Mobile Game Advertising &amp; More Inc, Copyright 2026</div>
+      </div>
+    </footer>
   </body>
 </html>

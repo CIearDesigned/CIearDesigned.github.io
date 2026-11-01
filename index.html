@@ -74,7 +74,7 @@
         letter-spacing: 0.03em;
       }
 
-      .brand-mark {
+      .brand-avatar {
         width: 42px;
         height: 42px;
         border-radius: 12px;
@@ -83,6 +83,29 @@
         background: linear-gradient(135deg, var(--primary), var(--accent));
         color: #03121f;
         font-weight: 800;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .brand-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .brand-avatar .brand-initial {
+        display: block;
+      }
+
+      .brand-name {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .brand-name strong {
+        font-size: 0.98rem;
       }
 
       .nav-links {
@@ -472,6 +495,26 @@
         margin-bottom: 12px;
       }
 
+      .user-badge .avatar-mini {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: #041825;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+
+      .user-badge .avatar-mini img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
       .message-thread {
         display: flex;
         flex-direction: column;
@@ -555,8 +598,13 @@
     <header class="site-header">
       <div class="container topbar">
         <div class="brand">
-          <div class="brand-mark">C</div>
-          <span>CIearDesigned</span>
+          <div class="brand-avatar" aria-label="Profile avatar">
+            <img id="brandAvatarImg" alt="Current user avatar" class="hidden" />
+            <span id="brandAvatarInitial" class="brand-initial">C</span>
+          </div>
+          <div class="brand-name">
+            <strong id="brandDisplayName">CIearDesigned</strong>
+          </div>
         </div>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="#about">About</a>
@@ -671,6 +719,10 @@
               <label for="userEmail">Email (optional)</label>
               <input id="userEmail" type="email" placeholder="name@example.com" />
             </div>
+            <div class="field">
+              <label for="userAvatar">Profile picture URL (optional)</label>
+              <input id="userAvatar" type="url" placeholder="https://example.com/avatar.png" />
+            </div>
             <button type="submit" class="button primary">Enter chat</button>
           </form>
 
@@ -691,16 +743,25 @@
       const ADMIN_EMAIL = "admin@ciardesigned.github.io";
       const STORAGE_USER_KEY = "communityChatUser";
       const STORAGE_MESSAGES_KEY = "communityChatMessages";
+      const DEFAULT_ACCOUNT = {
+        name: "CIearDesigned",
+        email: "",
+        avatar: ""
+      };
 
       const identityForm = document.getElementById("identityForm");
       const messageForm = document.getElementById("messageForm");
       const displayNameInput = document.getElementById("displayName");
       const userEmailInput = document.getElementById("userEmail");
+      const userAvatarInput = document.getElementById("userAvatar");
       const userBadge = document.getElementById("userBadge");
       const messageThread = document.getElementById("messageThread");
       const chatArea = document.getElementById("chatArea");
       const logoutBtn = document.getElementById("logoutBtn");
       const messageInput = document.getElementById("messageInput");
+      const brandAvatarImg = document.getElementById("brandAvatarImg");
+      const brandAvatarInitial = document.getElementById("brandAvatarInitial");
+      const brandDisplayName = document.getElementById("brandDisplayName");
 
       function saveCurrentUser(user) {
         localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(user));
@@ -714,6 +775,33 @@
           return JSON.parse(raw);
         } catch (error) {
           return null;
+        }
+      }
+
+      function normalizeUser(user) {
+        const safeUser = user || { ...DEFAULT_ACCOUNT };
+        return {
+          name: safeUser.name || DEFAULT_ACCOUNT.name,
+          email: safeUser.email || "",
+          avatar: safeUser.avatar || ""
+        };
+      }
+
+      function applyAccountBranding(user) {
+        const profile = normalizeUser(user);
+        brandDisplayName.textContent = profile.name;
+        const initial = (profile.name || "C").trim().charAt(0).toUpperCase() || "C";
+
+        if (profile.avatar && /^https?:\/\//i.test(profile.avatar)) {
+          brandAvatarImg.src = profile.avatar;
+          brandAvatarImg.alt = `${profile.name} profile picture`;
+          brandAvatarImg.classList.remove("hidden");
+          brandAvatarInitial.classList.add("hidden");
+        } else {
+          brandAvatarImg.removeAttribute("src");
+          brandAvatarImg.classList.add("hidden");
+          brandAvatarInitial.textContent = initial;
+          brandAvatarInitial.classList.remove("hidden");
         }
       }
 
@@ -804,17 +892,30 @@
           .replace(/'/g, "&#39;");
       }
 
+      function renderUserBadge(user) {
+        const profile = normalizeUser(user);
+        const avatarHtml = profile.avatar && /^https?:\/\//i.test(profile.avatar)
+          ? `<img src="${profile.avatar}" alt="${profile.name} avatar" />`
+          : `<span>${(profile.name || "C").trim().charAt(0).toUpperCase() || "C"}</span>`;
+
+        userBadge.innerHTML = `${avatarHtml} ${profile.name}`;
+      }
+
       function setUserSession(user) {
-        saveCurrentUser(user);
+        const activeUser = normalizeUser(user);
+        saveCurrentUser(activeUser);
+        applyAccountBranding(activeUser);
+        renderUserBadge(activeUser);
         identityForm.classList.add("hidden");
         chatArea.classList.remove("hidden");
         logoutBtn.classList.remove("hidden");
-        userBadge.textContent = `Logged in as ${user.name}${user.email ? ` • ${user.email}` : ""}`;
         renderMessages();
       }
 
       function clearUserSession() {
         localStorage.removeItem(STORAGE_USER_KEY);
+        applyAccountBranding(DEFAULT_ACCOUNT);
+        renderUserBadge(DEFAULT_ACCOUNT);
         identityForm.reset();
         identityForm.classList.remove("hidden");
         chatArea.classList.add("hidden");
@@ -827,6 +928,7 @@
         event.preventDefault();
         const name = displayNameInput.value.trim();
         const email = userEmailInput.value.trim();
+        const avatar = userAvatarInput.value.trim();
 
         if (!name) {
           displayNameInput.focus();
@@ -835,7 +937,8 @@
 
         const user = {
           name,
-          email
+          email,
+          avatar
         };
 
         setUserSession(user);
@@ -871,6 +974,9 @@
       logoutBtn.addEventListener("click", () => {
         clearUserSession();
       });
+
+      applyAccountBranding(DEFAULT_ACCOUNT);
+      renderUserBadge(DEFAULT_ACCOUNT);
 
       const existingUser = getCurrentUser();
       if (existingUser) {

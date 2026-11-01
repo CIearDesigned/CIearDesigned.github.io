@@ -266,76 +266,83 @@
         text-transform: uppercase;
       }
 
-      .game-grid {
+      .games-showcase {
         display: grid;
-        grid-template-columns: 1.3fr 0.7fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 22px;
+        margin-top: 10px;
       }
 
       .game-card {
-        background: var(--card);
+        position: relative;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(10, 17, 28, 0.96));
         border: 1px solid var(--card-border);
         border-radius: 22px;
-        padding: 20px;
+        overflow: hidden;
         box-shadow: 0 18px 48px rgba(2, 6, 23, 0.3);
       }
 
-      .game-card.featured {
-        background: linear-gradient(135deg, rgba(94, 234, 212, 0.08), rgba(15, 23, 42, 0.95));
-      }
-
-      .game-row {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-
-      .game-icon {
-        width: 84px;
-        height: 84px;
-        border-radius: 18px;
+      .game-thumb {
+        height: 140px;
         display: grid;
         place-items: center;
-        font-size: 2rem;
         background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(147, 197, 253, 0.18));
-        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        font-size: 3rem;
       }
 
-      .game-card h3 {
-        margin: 0 0 6px;
+      .game-card.featured {
+        border-color: rgba(94, 234, 212, 0.35);
+        box-shadow: 0 20px 60px rgba(2, 6, 23, 0.4);
+      }
+
+      .game-body {
+        padding: 20px;
+      }
+
+      .game-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .game-name {
+        margin: 0;
         font-size: 1.5rem;
       }
 
-      .visit-pill {
+      .game-badge {
         display: inline-flex;
         align-items: center;
-        margin-top: 10px;
         border-radius: 999px;
         background: rgba(94, 234, 212, 0.08);
         border: 1px solid rgba(94, 234, 212, 0.28);
         color: var(--primary);
-        padding: 6px 10px;
+        padding: 6px 9px;
+        font-size: 0.76rem;
         font-weight: 700;
-        font-size: 0.8rem;
       }
 
-      .game-card p,
-      .game-card li {
+      .game-card p {
         color: var(--muted);
         line-height: 1.7;
+        margin: 0 0 14px;
       }
 
       .game-list {
         list-style: none;
         padding: 0;
-        margin: 14px 0 0;
+        margin: 0;
         display: grid;
-        gap: 10px;
+        gap: 8px;
       }
 
       .game-list li {
+        color: var(--muted);
         display: flex;
-        gap: 10px;
+        gap: 8px;
         align-items: flex-start;
       }
 
@@ -343,6 +350,7 @@
         content: "•";
         color: var(--primary);
         font-size: 1.3rem;
+        line-height: 1;
       }
 
       .mini-stats {
@@ -576,7 +584,7 @@
       @media (max-width: 840px) {
         .hero-grid,
         .content-grid,
-        .game-grid {
+        .games-showcase {
           grid-template-columns: 1fr;
         }
 
@@ -586,10 +594,6 @@
 
         .topbar {
           justify-content: center;
-        }
-
-        .game-row {
-          align-items: flex-start;
         }
       }
     </style>
@@ -647,44 +651,65 @@
 
       <section class="feature-section" id="games">
         <div class="section-heading">
-          <h2>Games & Communities</h2>
+          <h2>Featured games</h2>
           <div class="section-tag">Live support</div>
         </div>
 
-        <div class="game-grid">
+        <div class="games-showcase">
           <article class="game-card featured">
-            <div class="game-row">
-              <div class="game-icon">🐴</div>
-              <div>
-                <h3>Horse Ranch</h3>
-                <div class="visit-pill">100K+ visits</div>
+            <div class="game-thumb">🐴</div>
+            <div class="game-body">
+              <div class="game-meta">
+                <h3 class="game-name">Horse Ranch</h3>
+                <span class="game-badge">100K+ visits</span>
               </div>
+              <p>
+                Active moderation, rule enforcement, and player support to keep the community fun,
+                fair, and safe.
+              </p>
+              <ul class="game-list">
+                <li>Community protection</li>
+                <li>Report handling</li>
+                <li>Fair-play enforcement</li>
+              </ul>
             </div>
-            <p>
-              Horse Ranch is a large and active community where I help maintain a healthy experience,
-              support players, and keep the social environment safe for everyone.
-            </p>
-            <ul class="game-list">
-              <li>Rule enforcement and active moderation</li>
-              <li>Player report handling and conflict resolution</li>
-              <li>Maintaining a fun and respectful server culture</li>
-            </ul>
           </article>
 
-          <div class="mini-stats">
-            <div class="mini-stat">
-              <strong>100K+</strong>
-              <span>Horse Ranch visits</span>
+          <article class="game-card">
+            <div class="game-thumb">💰</div>
+            <div class="game-body">
+              <div class="game-meta">
+                <h3 class="game-name">Stay For Fortune</h3>
+                <span class="game-badge">Community</span>
+              </div>
+              <p>
+                Managing a busy social and competitive environment with a focus on keeping gameplay fair and stable.
+              </p>
+              <ul class="game-list">
+                <li>Server stability</li>
+                <li>Player safety</li>
+                <li>Behavior monitoring</li>
+              </ul>
             </div>
-            <div class="mini-stat">
-              <strong>24/7</strong>
-              <span>Community presence</span>
+          </article>
+
+          <article class="game-card">
+            <div class="game-thumb">🚒</div>
+            <div class="game-body">
+              <div class="game-meta">
+                <h3 class="game-name">Emergency Response: Liberty County</h3>
+                <span class="game-badge">Official</span>
+              </div>
+              <p>
+                Supporting a large emergency-roleplay community with a strong focus on respect, order, and enforcement.
+              </p>
+              <ul class="game-list">
+                <li>Roleplay standards</li>
+                <li>Conflict resolution</li>
+                <li>Community trust</li>
+              </ul>
             </div>
-            <div class="mini-stat">
-              <strong>Safe</strong>
-              <span>Fair gameplay culture</span>
-            </div>
-          </div>
+          </article>
         </div>
       </section>
 

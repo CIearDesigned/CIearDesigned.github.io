@@ -1,29 +1,37 @@
-# CIearDesigned.github.io
+# Devur
 
-Welcome to my personal website! 
+A dark, creator-first marketplace for complete game projects, templates, and studio assets.
 
-## About
+## Local setup
 
-I'm a Moderator and Community Specialist specializing in managing and protecting player communities within Roblox games. I work directly within game servers to:
+Requires Node.js 20.9+.
 
-- Enforce rules and maintain fair play
-- Investigate exploits and cheating
-- Handle player reports and disputes
-- Create a positive gaming environment
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-## Website
+Open http://localhost:3000. Supabase keys are optional for browsing demo listings. Add them to `.env.local` for live client setup.
 
-This website is hosted at `https://ifkabout.github.io`
+## Supabase
 
-## Getting Started
+1. Create a project at https://supabase.com.
+2. Run `supabase/schema.sql` in the SQL Editor.
+3. Enable Email and optional GitHub/Discord providers in Authentication.
+4. Copy the project URL and anon/public key into `.env.local`.
+5. Keep service-role keys server-only and perform purchase/status transitions through trusted server actions or RPC functions.
 
-To modify this website:
+## Pages
 
-1. Clone this repository
-2. Edit `index.html` to customize the content
-3. Commit and push your changes
-4. Your website will update automatically!
+- `/` — landing and featured projects
+- `/explore` — search and filters
+- `/sell` — listing form
+- `/project/[id]` — project detail and inquiry modal
+- `/dashboard` — listings, requests, and profile settings
 
-## Support
+## Deploy to Vercel
 
-For questions or inquiries, feel free to reach out via GitHub or Roblox.
+Push to GitHub, import the repository in Vercel, and keep the Next.js preset. Add both environment variables. Configure the Supabase Auth site URL and redirect URLs with the Vercel domain. Run the schema migration on the production database before enabling writes.
+
+**Note:** GitHub Pages does not execute Next.js server features. Use Vercel or a Node-compatible host.

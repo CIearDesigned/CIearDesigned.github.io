@@ -1,0 +1,21 @@
+-- Devur marketplace schema (Supabase / PostgreSQL)
+create extension if not exists pgcrypto;
+create table if not exists public.profiles (id uuid primary key references auth.users(id) on delete cascade,username text unique not null,avatar_url text,bio text,discord_handle text,portfolio_url text,verified boolean not null default false,created_at timestamptz not null default now());
+create table if not exists public.listings (id uuid primary key default gen_random_uuid(),seller_id uuid not null references public.profiles(id) on delete cascade,title text not null,tagline text not null,description text not null,genre text not null,project_type text not null,price numeric(10,2) not null check(price>=0),demo_url text,images text[] not null default '{}',status text not null default 'Available',created_at timestamptz not null default now());
+create table if not exists public.orders (id uuid primary key default gen_random_uuid(),listing_id uuid not null references public.listings(id) on delete cascade,buyer_id uuid not null references public.profiles(id) on delete cascade,seller_id uuid not null references public.profiles(id) on delete cascade,offer_price numeric(10,2) not null check(offer_price>=0),message text not null default '',status text not null default 'Pending',created_at timestamptz not null default now(),constraint buyer_cannot_buy_own_listing check(buyer_id<>seller_id));
+alter table public.profiles enable row level security;
+alter table public.listings enable row level security;
+alter table public.orders enable row level security;
+create policy "Profiles public read" on public.profiles for select using(true);
+create policy "Own profile insert" on public.profiles for insert with check(auth.uid()=id);
+create policy "Own profile update" on public.profiles for update using(auth.uid()=id) with check(auth.uid()=id);
+create policy "Listings public read" on public.listings for select using(status='Available' or auth.uid()=seller_id);
+create policy "Own listing insert" on public.listings for insert with check(auth.uid()=seller_id);
+create policy "Own listing update" on public.listings for update using(auth.uid()=seller_id) with check(auth.uid()=seller_id);
+create policy "Own listing delete" on public.listings for delete using(auth.uid()=seller_id);
+create policy "Participants read orders" on public.orders for select using(auth.uid()=buyer_id or auth.uid()=seller_id);
+create policy "Buyer create order" on public.orders for insert with check(auth.uid()=buyer_id and auth.uid()<>seller_id);
+create policy "Participant update order" on public.orders for update using(auth.uid()=buyer_id or auth.uid()=seller_id) with check(auth.uid()=buyer_id or auth.uid()=seller_id);
+insert into storage.buckets(id,name,public) values('listing-images','listing-images',true) on conflict(id) do nothing;
+create policy "Public listing images" on storage.objects for select using(bucket_id='listing-images');
+create policy "Creators upload images" on storage.objects for insert to authenticated with check(bucket_id='listing-images');

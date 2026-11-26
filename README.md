@@ -1,25 +1,33 @@
-# SideQuest Roblox Marketplace
+# RoBazaar — Roblox creator marketplace
 
-A static GitHub Pages front end backed by Supabase for Roblox creator listings. The storefront contains **no sample or seeded listings**: it displays only active records submitted by authenticated users.
+This website is a static GitHub Pages app powered by **Firebase Authentication, Cloud Firestore, and Firebase Storage**. There are no mock listings or seed data: only listings published by signed-in users are fetched from Firestore.
 
-## Configure the live site
+## Firebase setup
 
-1. Create a Supabase project.
-2. In the Supabase SQL Editor, run `supabase/roblox-marketplace.sql`.
-3. In Supabase Authentication settings, enable email/password sign-up and set the site's URL/redirect URL to `https://cieardesigned.github.io`.
-4. Open `supabase-config.js` and set `url` to the project URL and `anonKey` to the project's **public anon/publishable key**. This key is intended for browser use with Row Level Security enabled. **Never put a service-role key, database password, or Stripe secret in this file.**
-5. Commit and push the config change. GitHub Pages will deploy the static site; allow a few minutes for the deployment.
+1. Open Firebase Console and create/select the Firebase project you already use.
+2. In **Project settings → Your apps**, create/select a Web app and copy its web configuration into `firebase-config.js`. Replace every `YOUR_...` placeholder. Firebase web API keys are public identifiers; never put service-account private keys or other secrets in this file.
+3. Enable **Authentication → Sign-in method → Email/Password**.
+4. Create a **Cloud Firestore** database in production mode. Publish the contents of `firestore.rules` as its Firestore security rules.
+5. Enable **Firebase Storage** and publish the contents of `storage.rules` as Storage security rules. Confirm that Storage is enabled for your project/billing plan.
+6. In Authentication → Settings → Authorized domains, make sure `cieardesigned.github.io` is allowed.
+7. Commit the Firebase config and setup files, then wait for GitHub Pages to redeploy. The storefront shows an empty state until actual creators post listings.
 
-The site reports an empty-state prompt while unconfigured or when there are no live posts. Authentication, image uploads, listings, and comments require the Supabase setup above. Each creator must sign up and post their own listing; the SQL script inserts no listings.
+Firebase client configuration is not a security boundary: Firestore and Storage rules enforce access. Never deploy admin SDK/service account credentials to GitHub Pages.
 
-## What the demo supports
+## Features
 
-- Supabase email/password sign-up and login with a self-reported Roblox username.
-- Active live listings, search, genre/currency/price filters, thumbnail upload, and creator profile history.
-- Robux instructions and buyer/seller comments. Comment changes update live through Supabase Realtime.
-- USD checkout redirects to a Stripe Payment Link provided by the seller. The browser does not process payments and never stores Stripe secrets. A production marketplace should create/check out orders through a trusted server, verify Stripe webhooks, and handle fulfillment/refunds.
-- Robux payment is an off-site/manual process. Buyers must independently verify gamepasses, group payouts, and transfers. Never share Roblox passwords or account credentials.
+- Firebase email/password signup/login. Creator profile documents live in Firestore.
+- Real-time Firestore marketplace feed, search, genre/currency/price filters, dual Robux/USD prices, and creator links.
+- Authenticated listing form, thumbnail uploads, optional `.rbxl`/`.rbxlx` file uploads to Firebase Storage.
+- Real-time, per-listing Firestore comments. Comments by the listing owner receive a Seller badge.
+- USD checkout can redirect to a seller-provided Stripe Payment Link. Robux instructions are displayed for manual gamepass/group payout arrangements. This static site does not implement payment escrow, secure order fulfillment, or payment verification; add a trusted backend before handling real payments.
+- Roblox usernames and links are self-reported. A public account is not Roblox verification. Never share Roblox passwords.
 
-## Important limitations
+## Data model
 
-GitHub Pages is static hosting; it cannot run Next.js API routes, Prisma, server actions, or private payment processing. The configured Supabase database provides the live data/auth/storage features, but a production financial marketplace also needs a trusted backend, verified creator identity, order/escrow procedures, moderation and dispute handling. The current verified badge indicates a signed-in marketplace profile only; it is not Roblox verification. Roblox username/link is self-reported.
+- `profiles/{uid}` — creator Roblox handle/link.
+- `gameListings/{listingId}` — title, description, genre, asset type, accepted currencies, prices, seller identity, image/file Storage paths and active status.
+- `gameListings/{listingId}/comments/{commentId}` — user identity, body, and server timestamp.
+- Storage paths: `users/{uid}/listings/{listingId}/...`.
+
+No records are seeded. Listing creation and comment posting require Firebase Authentication; public reads are constrained to active listings and their comments by the provided rules.

@@ -1,11 +1,12 @@
-// Public Firebase Web App configuration for RoBazaar (safe to publish).
-// Get these values from Firebase Console > Project settings > Your apps.
-// Never put service account credentials or other server secrets here.
+// Public Firebase Web App configuration for RoBazaar.
+// This config is intended for browser use. Never put service-account credentials
+// or other private server secrets in this file.
 window.ROBazaAR_FIREBASE = {
-  apiKey: 'YOUR_FIREBASE_WEB_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_FIREBASE_APP_ID'
+  apiKey: 'AIzaSyCH3XgI1095TzSRY3qv-u5oE-2LC7fOps8',
+  authDomain: 'cieardesigned.firebaseapp.com',
+  projectId: 'cieardesigned',
+  storageBucket: 'cieardesigned.firebasestorage.app',
+  messagingSenderId: '229183270855',
+  appId: '1:229183270855:web:2e0c8a2ed2d09cddc833e2',
+  measurementId: 'G-31YH5327WP'
 };
